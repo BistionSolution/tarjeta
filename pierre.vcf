@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+CLASS:PUBLIC
+FN:Joe Wegner
+N:Wegner;Joe ;;;
+TITLE:Technology And Systems Administrator
+ORG:Wegner Design
+ADR;TYPE=work:;;21 W. 20th St.;Broadview ;IL;60559;
+EMAIL;TYPE=internet,pref:joe@wegnerdesign.com
+TEL;TYPE=work,voice:7089181512
+TEL;TYPE=HOME,voice:8352355189
+URL:http://www.wegnerdesign.com
+END:VCARD
