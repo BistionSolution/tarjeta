@@ -1,3 +1,4 @@
+
 <div class=wrap>
 <?php
     echo "<h1>".get_admin_page_title()."</h1>";
@@ -5,7 +6,6 @@
 
     $query = "SELECT sum(num_items_sold) AS hola , customer_id, status FROM {$wpdb->prefix}wc_order_stats GROUP BY customer_id, status HAVING status != 'wc-on-hold'";
     $lista = $wpdb->get_results($query,ARRAY_A);
-    echo var_dump($lista);
     foreach ($lista as $key => $value) {
         $custome = $value['hola'];
         echo 'Vakis : '.$custome. '<br>';
@@ -36,7 +36,15 @@
                 <td><?php echo $customer->user_email; ?></td>
                 <td><?php echo wc_get_customer_total_spent($customer_id); ?></td>
                 <td></td>
-                <td><a class="page-title-action">Ver</a></td>
+                <td>
+                    <form method="post" action="<?=esc_url(admin_url('admin.php?page=tarjeta/tarjeta_detalle.php'))?>">
+                        <input type="text" name="valor" hidden value="<?php
+                        global $wpdb; 
+                        echo $custo = $wpdb->get_var("SELECT customer_id FROM {$wpdb->prefix}wc_customer_lookup where user_id=$customer_id");
+                        ?>"/>
+                        <button type="submit">Ver tarjetas</button>
+                    </form> 
+                </td>
             </tr>
         <?php endforeach; ?>
     </tbody>

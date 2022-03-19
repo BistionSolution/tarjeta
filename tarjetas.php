@@ -1,6 +1,16 @@
 <?php
 
-register_activation_hook(__FILE__, 'activar');
+// register_activation_hook(__FILE__, 'activar');
+
+// define('TEST_DIR',__FILE__);
+// define('TEST_PLUGIN_DIR',plugin_dir_path(TEST_DIR));
+
+
+
+
+
+
+
 
 function activar(){
 /* 	global $wpdb;
@@ -22,18 +32,33 @@ function menu_ajuste_tarjetas(){
 	plugin_dir_url(__FILE__).'assets/img/icon.svg',
 	'1'
 	);
+
 	
-/* 	add_submenu_page(
-		'conf-tarjeta',// parent slug
-		'Ajustes',// titulo de la pagina
-		'Ajustes',// titulo del menu
+	add_submenu_page(
+		plugin_dir_path(__FILE__).'clientes.php',// parent slug
+		'Tarjetas Registradas',// titulo de la pagina
+		'Todas las Tarjetas',// titulo del menu
 		'manage_options',
-		'tarjeta_ajustes', // slug
-		'submenu' // funcion
+		plugin_dir_path(__FILE__).'tarjeta_detalle.php', // slug
+		null // funcion
 	);
- */
+ 
 }
+/*
+function menu_ajuste_tarjetas2(){
+	add_menu_page('Tarjetas Registradas',
+	'Todas las tarjetas',
+	'manage_options',
+	plugin_dir_path(__FILE__).'tarjeta_detalle.php', //slug
+	null, // Funcion
+	plugin_dir_url(__FILE__).'assets/img/icon.svg',
+	'2'
+);
+}*/
+
 add_action('admin_menu','menu_ajuste_tarjetas');
+/*add_action('admin_menu','menu_ajuste_tarjetas2');*/
+
 
 function genera_hmtl_pagina(){
 	// $codigo_pagina = get_option('genera_hmtl_pagina');
@@ -52,6 +77,7 @@ function submenu(){
 	</div>
 	<?php
 } */
+
 
 
 
