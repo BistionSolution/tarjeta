@@ -36,6 +36,14 @@ function menu_ajuste_tarjetas(){
 	);
 
 	
+	/* add_submenu_page(
+		plugin_dir_path(__FILE__).'clientes.php',// parent slug
+		'Tarjetas Registradas',// titulo de la pagina
+		'Todas las Tarjetas',// titulo del menu
+		'manage_options',
+		plugin_dir_path(__FILE__).'tarjeta_detalle.php', // slug
+		null // funcion
+	); */
 	add_submenu_page(
 		plugin_dir_path(__FILE__).'clientes.php',// parent slug
 		'Tarjetas Registradas',// titulo de la pagina
