@@ -68,7 +68,7 @@ function productos_cliente($parametros)
 						<figure class="perfil-image">
 							<img src="https://tarjetacenturion.com/wp-content/uploads/perfil-qr/user-qr-be8fb0c5422c0b692b08e65a490c6a1d.png" alt="Perfil QR">
 						</figure>
-						<a href="https://tarjetacenturion.com/cuenta/actualizar-mi-tarjeta/" class="btn btn-beige btn-block btn-sm">Actualizar datos</a>
+						<a href="http://localhost/wordpress/my-account/card-edit/?id=<?= $vcard->id_vcard ?>" class="btn btn-beige btn-block btn-sm">Actualizar datos</a>
 						<div class="qr-download">
 							<i class="fas fa-qrcode"></i> <a href="https://tarjetacenturion.com/wp-content/uploads/perfil-qr/user-qr-be8fb0c5422c0b692b08e65a490c6a1d.png" target="_blank" class="link link-light featured">Descargar QR</a>
 						</div>
@@ -115,7 +115,7 @@ function productos_cliente($parametros)
 				</div>
 			</div>
 		</div>
-	<?php }
+		<?php }
 }
 /** 
  * Modificaciones a menu de mi cuenta 
@@ -127,22 +127,295 @@ add_action('init', 'my_account_new_endpoints');
 
 function my_account_new_endpoints()
 {
-	add_rewrite_endpoint('regalos', EP_ROOT | EP_PAGES);
+	add_rewrite_endpoint('cards', EP_ROOT | EP_PAGES);
+	add_rewrite_endpoint('card-edit', EP_ROOT | EP_PAGES);
 }
 
 /**
  * Recuperando el contenido de la nueva variable
  */
 
-add_action('woocommerce_account_regalos_endpoint', 'regalos_endpoint_content');
-function regalos_endpoint_content()
+add_action('woocommerce_account_card-edit_endpoint', 'card_edit_endpoint_content');
+function card_edit_endpoint_content()
+{
+	global $wpdb;
+	// echo 'VAMO GO : '.$_GET['ga'];
+
+	if (isset($_GET['id'])) :
+		$id = $_GET['id'];
+
+		$user_id = get_current_user_id();
+		$customer_id = $wpdb->get_var("SELECT customer_id FROM {$wpdb->prefix}wc_customer_lookup where user_id='$user_id'");
+		$vcards = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}vcards where customer_id='$customer_id' and id_vcard = $id");
+
+		if (!empty($vcards)) {
+			// var_dump($vcards);
+		?>
+			<div>
+				<form id="perfil-qr-form" class="woocommerce-EditProfileQrForm edit-profile-qr" action="" method="post" enctype="multipart/form-data">
+
+					<header class="form-header">
+						<h2 class="entry-title featured ">Datos de Contacto</h2>
+						<p class="text-muted">Agrega la información que quieras compartir cuando escaneen tu tarjeta. Puedes actualizarla cada vez que lo requieras.</p>
+					</header>
+
+					<div class="profile-img-container">
+						<div class="profile-img">
+							<img class="profile-pic" src="">
+						</div>
+						<div class="profile-button">
+							<i class="fa fa-camera upload-button"></i>
+							<input class="file-upload" type="file" accept="image/*" name="qr_fields[__MEDIA__][__USERIMG__]">
+						</div>
+					</div>
+
+
+					<div class="accordion">
+
+
+						<section class="accordion-row">
+
+							<header id="field-group-1-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-1" aria-expanded="true" aria-controls="field-group-1">
+								<h6 class="title">Datos Personales</h6>
+								<span class="icon"><i class="fas fa-plus"></i></span>
+							</header>
+							<div id="field-group-1" class="accordion-content collapse show" aria-labelledby="field-group-1-heading" data-parent="#perfil-qr-form">
+								<div class="row row-fields row-form-container">
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-1-1">Nombres</label>
+											<input id="field-1-1" name="qr_fields[__PERSONAL__][__FIRSTNAME__]" value="Renzo Jesús">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-1-2">Apellidos</label>
+											<input id="field-1-2" name="qr_fields[__PERSONAL__][__LASTNAME__]" value="Trujillo Mendoza">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-1-3">Seudónimo</label>
+											<input id="field-1-3" name="qr_fields[__PERSONAL__][__NICKNAME__]" value="Renzito">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-1-4">Cumpleaños</label>
+											<input id="field-1-4" name="qr_fields[__PERSONAL__][__BIRTHDATE__]" value="21 de mayo">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-1-7">Página Web Personal</label>
+											<input id="field-1-7" name="qr_fields[__PERSONAL__][__PERSONALWEBSITE__]" value="www.renzo.com">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-1-8">Email Principal</label>
+											<input id="field-1-8" name="qr_fields[__PERSONAL__][__PERSONALEMAIL__]" value="renzotrujillo96@gmail.com">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-1-9">Celular</label>
+											<input id="field-1-9" name="qr_fields[__PERSONAL__][__CELULAR__]" value="‪+51&nbsp;981&nbsp;453&nbsp;349‬">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-1-10">Fijo / Casa</label>
+											<input id="field-1-10" name="qr_fields[__PERSONAL__][__FONOHOME__]" value="01 56354353">
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</section>
+
+
+						<section class="accordion-row">
+
+							<header id="field-group-2-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-2" aria-expanded="false" aria-controls="field-group-2">
+								<h6 class="title">Trabajo</h6>
+								<span class="icon"><i class="fas fa-plus"></i></span>
+							</header>
+							<div id="field-group-2" class="accordion-content collapse " aria-labelledby="field-group-2-heading" data-parent="#perfil-qr-form">
+								<div class="row row-fields row-form-container">
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-2-11">Empresa</label>
+											<input id="field-2-11" name="qr_fields[__WORK__][__NOMBREEMPRESA__]" value="Andino DAO">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-2-12">Cargo</label>
+											<input id="field-2-12" name="qr_fields[__WORK__][__CARGO__]" value="Partner">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-2-13">Página Web</label>
+											<input id="field-2-13" name="qr_fields[__WORK__][__WEBEMPRESA__]" value="https://www.andino.ventures/">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-2-14">Email Corporativo</label>
+											<input id="field-2-14" name="qr_fields[__WORK__][__EMAILEMPRESA__]" value="renzo@andino.ventures">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-2-15">Teléfono</label>
+											<input id="field-2-15" name="qr_fields[__WORK__][__FONOEMPRESA__]" value="‪+51&nbsp;981&nbsp;453&nbsp;349‬">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-2-16">Dirección</label>
+											<input id="field-2-16" name="qr_fields[__WORK__][__EMPRESADIRECCION__]" value="Av. Santa Cruz 1347">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-2-17">Departamento / Región</label>
+											<input id="field-2-17" name="qr_fields[__WORK__][__EMPRESACIUDAD__]" value="Lima">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-2-18">País</label>
+											<input id="field-2-18" name="qr_fields[__WORK__][__EMPRESAPAIS__]" value="Perú">
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</section>
+
+
+						<section class="accordion-row">
+
+							<header id="field-group-3-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-3" aria-expanded="false" aria-controls="field-group-3">
+								<h6 class="title">Domicilio</h6>
+								<span class="icon"><i class="fas fa-plus"></i></span>
+							</header>
+							<div id="field-group-3" class="accordion-content collapse " aria-labelledby="field-group-3-heading" data-parent="#perfil-qr-form">
+								<div class="row row-fields row-form-container">
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-3-19">Dirección</label>
+											<input id="field-3-19" name="qr_fields[__HOME__][__CASADIRECCION__]" value="">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-3-20">Departamento / Región</label>
+											<input id="field-3-20" name="qr_fields[__HOME__][__CASACIUDAD__]" value="Lima">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-3-21">País</label>
+											<input id="field-3-21" name="qr_fields[__HOME__][__CASAPAIS__]" value="Perú">
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</section>
+
+
+						<section class="accordion-row">
+
+							<header id="field-group-4-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-4" aria-expanded="false" aria-controls="field-group-4">
+								<h6 class="title">Perfiles Sociales</h6>
+								<span class="icon"><i class="fas fa-plus"></i></span>
+							</header>
+							<div id="field-group-4" class="accordion-content collapse " aria-labelledby="field-group-4-heading" data-parent="#perfil-qr-form">
+								<div class="row row-fields row-form-container">
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-4-22">Facebook</label>
+											<input id="field-4-22" name="qr_fields[__SOCIAL__][__SOCIALFACEBOOK__]" value="https://www.facebook.com/renzo.trujillo.35">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-4-23">Instagram</label>
+											<input id="field-4-23" name="qr_fields[__SOCIAL__][__SOCIALINSTAGRAM_]" value="https://www.instagram.com/renzo.trujillo.96/">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-4-24">LinkedIn</label>
+											<input id="field-4-24" name="qr_fields[__SOCIAL__][__SOCIALLINKEDIN__]" value="https://www.linkedin.com/in/renzotrujillo/">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-4-25">Twitter</label>
+											<input id="field-4-25" name="qr_fields[__SOCIAL__][__SOCIALTWITTER__]" value="https://twitter.com/renzotrujillom">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-4-26">Tiktok</label>
+											<input id="field-4-26" name="qr_fields[__SOCIAL__][__SOCIALTIKTOK__]" value="">
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</section>
+
+
+						<div class="form-buttons">
+							<input type="hidden" id="_nonce" name="_nonce" value="b45be13a75"><input type="hidden" name="_wp_http_referer" value="/cuenta/actualizar-mi-tarjeta/"> <a href="https://tarjetacenturion.com/cuenta/mi-tarjeta/" class="btn btn-light">Cancelar</a>
+							<button type="submit" class="button btn btn-dark" name="arct_save_profile_qr" value="Guardar cambios">Guardar cambios</button>
+							<input type="hidden" name="action" value="arct_save_profile_qr">
+						</div>
+
+					</div>
+
+				</form>
+			</div>
+<?php
+		} else {
+			echo "TE CAYO LA LEY PRRO";
+		}
+	// if (!empty($_GET['id'])): 
+	//     global $wpdb;
+	//     $token = sanitize_text_field($_GET['token']);
+	//     $table_name = $wpdb->prefix . "vcards";
+	//     $sql = "SELECT * FROM $table_name WHERE token='$token'";
+	//     $wpdb->query($sql);
+	//     // Si es una token válido
+	//     if (!empty($wpdb->last_result)):
+
+	//     $nombre = $wpdb->last_result[0]->company;
+	//     $telefono = $wpdb->last_result[0]->title;
+	//     // $direccion = $wpdb->last_result[0]->address;
+	//     $correo = $wpdb->last_result[0]->email;
+	//     $token = $wpdb->last_result[0]->token;
+	//     $href = "/wp-nfc/wp-vcards/$token.vcf";
+	//     endif;
+	// endif; 
+	endif;
+	// create_nuevo_vc();
+	//get_template_part('mis-tarjetas.php');
+
+}
+
+add_action('woocommerce_account_cards_endpoint', 'cards_endpoint_content');
+function cards_endpoint_content()
 {
 	//echo 'tarjeta';
 	// create_nuevo_vc();
-	if (!is_dir('users/')) {
-		mkdir('users/');
-		echo '<h1>HOLA QUE HACE</h1>';
-	}
+	echo "holas";
 	echo do_shortcode('[productos_cliente]');
 	//get_template_part('mis-tarjetas');
 }
@@ -152,7 +425,7 @@ function regalos_endpoint_content()
 function my_account_menu_order()
 {
 	$menuOrder = array(
-		'regalos'             => __('Tus tarjetas', 'woocommerce'),
+		'cards'             => __('Tus tarjetas', 'woocommerce'),
 		'orders'             => __('Tus pedidos', 'woocommerce'),
 		'edit-address'       => __('Direcciones', 'woocommerce'),
 		'edit-account'    => __('Mis datos', 'woocommerce'),

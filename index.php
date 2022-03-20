@@ -15,6 +15,17 @@ register_activation_hook(__FILE__, 'create_table_vcards');
 register_deactivation_hook(__FILE__, 'drop_table_vcards');
 register_deactivation_hook(__FILE__, 'drop_directory_vcards');
 
+// function edit_vcard(){
+//         $id_vcard = $_POST['vcard'];
+//         wp_redirect(add_query_arg(array(
+//             'ga' => $id_vcard
+//         ), get_home_url(). "/my-account/card-edit"));
+// }
+
+// add_action('admin_post_nopriv_editvcard', 'edit_vcard');
+// add_action('admin_post_editvcard', 'edit_vcard');
+
+
 function add_my_custom_page() {
     // Create post object
     $my_post = array(

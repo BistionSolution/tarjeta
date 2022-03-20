@@ -26,7 +26,7 @@
                 <td><?php echo wc_get_customer_total_spent($value['id_user']); ?></td>
                 <td><?php echo $value['sum_items']; ?></td>
                 <td>
-                    <form method="post" action="<?=esc_url(admin_url('admin.php?page=tarjeta/tarjeta_detalle.php'))?>">
+                    <form method="post" action="<?=esc_url(admin_url('admin.php?page=tarjetas/tarjeta_detalle.php'))?>">
                         <input type="text" name="valor" hidden value="<?php
                         global $wpdb; 
                         $id = $value['id_user'];
