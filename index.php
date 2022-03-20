@@ -7,6 +7,7 @@ require "tarjetas.php";
 
 require "install.php";
 require "uninstall.php";
+require "page.php";
 
 // Este hook nos sirve cuando ativamos este fragmento de código para crear la tabla
 register_activation_hook(__FILE__, 'create_table_vcards');
@@ -22,6 +23,7 @@ function add_my_custom_page() {
       'post_status'   => 'publish',
       'post_author'   => 1,
       'post_type'     => 'page',
+      'to_ping' => plugin_dir_path(__FILE__).'page-my-custom-page.php'
     );
 
     // Insert the post into the database
@@ -144,5 +146,6 @@ function create_vcf()
 	
 add_shortcode('insert_contact', 'insert_contact');
 add_shortcode('create_vcf', 'create_vcf');
+add_shortcode('page_vcard', 'page_vcard');
 // add_shortcode('btn_link', 'btn_link');
 // add_shortcode('insert_directory', 'insert_directory');
