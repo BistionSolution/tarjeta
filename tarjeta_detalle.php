@@ -53,7 +53,7 @@
             // }
                 
         endforeach;
-        $customer_tarjets = $wpdb->get_results("SELECT * FROM vcard where customer_id= $id");
+        $customer_tarjets = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}vcards where customer_id= $id");
         
 ?>
 <div class=wrap>
@@ -61,24 +61,18 @@
 <table class="wp-list-table widefat fixed striped page">
     <thead>
         <th>ID TARJETA</th>
-        <th>order id</th>
-        <th>Cliente id</th>
-        <th>nombre</th>
-        <th>col 4</th>
-        <th>col 5</th>
-        <th>Accion</th>
+        <th>Order id</th>
+        <th>Tipo</th>
+        <th>Url</th>
     </thead>
      
     <tbody>
         <?php foreach ($customer_tarjets as $i) : ?>
             <tr>
-                <td><?php echo $i->id_tarjeta ; ?></td>
+                <td><?php echo $i->id_vcard ; ?></td>
                 <td><?php echo $i->order_id ; ?></td>
-                <td><?php echo $i->customer_id ; ?></td>
-                <td><?php echo $i->nombre ; ?></td>
-                <td><?php echo $i->organizacion ; ?></td>
-                <td><?php echo $i->url_pagina ; ?></td>
-                <!-- <td><a class="page-title-action">:3</a></td> -->
+                <td><?php echo $i->product_id ; ?></td>
+                <td><?php echo $i->url_page ; ?></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
