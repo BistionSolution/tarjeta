@@ -20,11 +20,10 @@
         );
     }*/
         
-        $product_order = $wpdb->get_results("SELECT pl.product_qty, pl.customer_id,pl.product_id,pl.order_id, os.status, pos.post_title as title FROM wp_wc_order_product_lookup as pl INNER JOIN wp_wc_order_stats AS os ON pl.order_id = os.order_id INNER JOIN wp_posts AS pos ON pl.product_id = pos.ID WHERE os.status in ('wc-processing','wc-completed') and os.customer_id = $id;");
-        $insert = "INSERT INTO vcard(customer_id) VALUES (NEW.customer_id)";
+        $product_order = $wpdb->get_results("SELECT pl.product_qty, pl.customer_id,pl.product_id,pl.order_id, os.status, pos.post_title as title FROM {$wpdb->prefix}wc_order_product_lookup as pl INNER JOIN {$wpdb->prefix}wc_order_stats AS os ON pl.order_id = os.order_id INNER JOIN {$wpdb->prefix}posts AS pos ON pl.product_id = pos.ID WHERE os.status in ('wc-processing','wc-completed') and os.customer_id = $id;");
         
         foreach ($product_order as $product):
-            $vcar = $wpdb->get_results("SELECT * FROM vcard where customer_id= $id and order_id = $product->order_id and product_id = $product->product_id ");
+            $vcar = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}vcards where customer_id= $id and order_id = $product->order_id and product_id = $product->product_id ");
             if (empty($vcar)){ // SI NO EXISTE PEDIDO ENTONCES entonces crea
                 $i = 1;
                 do{
@@ -32,15 +31,16 @@
                     // CREAR TOKEN (PIERRE)
                     // CREAR VCARD Y LO GUARDAS EN LA CARPETA
                     // CREAR QR Y LO GUARDAS EN CAPETA QR
-                    $datos = [
-                        'id_tarjeta' => null,
-                        'order_id' => $product->order_id,
-                        'product_id' => $product->product_id,
-                        'nombre' => $product->title,
-                        'customer_id' => $id
-                        // 'link' => funcion
-                    ];
-                    $wpdb->insert("vcard",$datos);
+                    do_shortcode("[insert_contact order={$product->order_id} product={$product->product_id} customer={$id}]");
+                    // $datos = [
+                    //     'id_tarjeta' => null,
+                    //     'order_id' => $product->order_id,
+                    //     'product_id' => $product->product_id,
+                    //     'nombre' => $product->title,
+                    //     'customer_id' => $id
+                    //     // 'link' => funcion
+                    // ];
+                    // $wpdb->insert("vcard",$datos);
                     echo "CREA REGISTRO: ".$product->product_qty."<br>";
                     echo "CREA REGISTRO: ".$product->order_id."<br>";
                     echo "CREA REGISTRO: ".$product->product_id."<br>";
