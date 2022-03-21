@@ -58,7 +58,8 @@ function insert_contact($atts)
         'order_id' => intval($atts['order']),
 		'product_id' => intval($atts['product']),
 		'customer_id' => intval($atts['customer']),
-        'token' => $token
+        'token' => $token,
+        'url_token' => get_home_url()."/view-contact/?token=".$token
 	);
     
     $path_directory = realpath(dirname(__FILE__) . '/../../..') . '/wp-vcards';

@@ -22,7 +22,7 @@ function page_vcard()
             $twitter = $wpdb->last_result[0]->url_twitter;
             $tiktok = $wpdb->last_result[0]->url_tiktok;
             $token = $wpdb->last_result[0]->token;
-            $href = "/wp-nfc/wp-vcards/$token.vcf";
+            $href = "/wordpress/wp-vcards/$token.vcf";
             $short_code_url = get_home_url()."/wp-nfc/wp-vcards/$token.vcf";
         ?>        
             <div class="text-center">
@@ -36,7 +36,7 @@ function page_vcard()
                 <h4><?= $linkedin ?></h4>
                 <h4><?= $twitter ?></h4>
                 <h4><?= $tiktok ?></h4>
-                <a href="<?=$href?>"><img src="<?=get_home_url()?>/images/user.png" alt="" width="40"></a>
+                <a href="<?=$href?>">Download</a>
             </div>
             <div>
                 <?=do_shortcode("[kaya_qrcode content=$short_code_url]");?>

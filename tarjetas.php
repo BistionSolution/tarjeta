@@ -66,7 +66,7 @@ function productos_cliente($parametros)
 				<div class="col-4 col-left">
 					<div class="col-container">
 						<figure class="perfil-image">
-							<img src="https://tarjetacenturion.com/wp-content/uploads/perfil-qr/user-qr-be8fb0c5422c0b692b08e65a490c6a1d.png" alt="Perfil QR">
+							<?=do_shortcode("[kaya_qrcode content=$vcard->url_token]");?>
 						</figure>
 						<a href="<?= $href . '/card-edit/?id=' . $vcard->id_vcard ?>" class="btn btn-beige btn-block btn-sm">Actualizar datos</a>
 						<div class="qr-download">
@@ -85,9 +85,10 @@ function productos_cliente($parametros)
 								<li>
 									<div class="copy-link">
 										<div class="copy-link-container">
-											<span class="textLink user-select-all">https://tarjetacenturion.com/u/wdz37219h54v</span>
-											<button type="button" id="btnCopy" class="btn btn-dark btn-xs">Copiar</button>
-											<input type="hidden" value="https://tarjetacenturion.com/u/wdz37219h54v">
+										<input type="text" id="url" class="textLink user-select-all" value="<?=$vcard->url_token?>"/>
+                                            <span>
+                                                <i class="fa fa-copy"></i>
+                                            </span>
 										</div>
 									</div>
 								</li>
@@ -389,7 +390,6 @@ function cards_endpoint_content()
 {
 	//echo 'tarjeta';
 	// create_nuevo_vc();
-	echo "holas";
 	echo do_shortcode('[productos_cliente]');
 	//get_template_part('mis-tarjetas');
 }

@@ -152,7 +152,7 @@ function actualizarVcard()
             array('id_vcard' => $id_tarje)
         );
     }
-    wp_redirect(get_home_url() . '/my-account/card-edit/?id=' . $id_tarje);
+    wp_redirect(get_home_url() . '/mi-cuenta/card-edit/?id=' . $id_tarje);
 }
 
 // Con esto permitimos que esta vista sea visible para usuarios sin cuentas
