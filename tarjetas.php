@@ -59,7 +59,7 @@ function productos_cliente($parametros)
 	$user_id = get_current_user_id();
 	$customer_id = $wpdb->get_var("SELECT customer_id FROM {$wpdb->prefix}wc_customer_lookup where user_id='$user_id'");
 	$vcards = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}vcards where customer_id='$customer_id'");
-
+	$href = dirname($_SERVER["REQUEST_URI"]);
 	foreach ($vcards as $vcard) { ?>
 		<div id="perfil-qr-page" class="card-view">
 			<div class="row block-row block-header">
@@ -68,7 +68,7 @@ function productos_cliente($parametros)
 						<figure class="perfil-image">
 							<img src="https://tarjetacenturion.com/wp-content/uploads/perfil-qr/user-qr-be8fb0c5422c0b692b08e65a490c6a1d.png" alt="Perfil QR">
 						</figure>
-						<a href="<?=get_home_url()?>/mi-cuenta/card-edit/?id=<?= $vcard->id_vcard ?>" class="btn btn-beige btn-block btn-sm">Actualizar datos</a>
+						<a href="<?= $href . '/card-edit/?id=' . $vcard->id_vcard ?>" class="btn btn-beige btn-block btn-sm">Actualizar datos</a>
 						<div class="qr-download">
 							<i class="fas fa-qrcode"></i> <a href="https://tarjetacenturion.com/wp-content/uploads/perfil-qr/user-qr-be8fb0c5422c0b692b08e65a490c6a1d.png" target="_blank" class="link link-light featured">Descargar QR</a>
 						</div>

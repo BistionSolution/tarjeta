@@ -14,6 +14,7 @@ register_activation_hook(__FILE__, 'create_table_vcards');
 // Este hook nos sirve cuando desactivamos este fragmento de código y con esto borraremos la tabla
 register_deactivation_hook(__FILE__, 'drop_table_vcards');
 register_deactivation_hook(__FILE__, 'drop_directory_vcards');
+register_deactivation_hook(__FILE__, 'drop_directory_photos');
 
 // function edit_vcard(){
 //         $id_vcard = $_POST['vcard'];
