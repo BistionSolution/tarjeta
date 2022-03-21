@@ -41,9 +41,9 @@
                     //     // 'link' => funcion
                     // ];
                     // $wpdb->insert("vcard",$datos);
-                    echo "CREA REGISTRO: ".$product->product_qty."<br>";
-                    echo "CREA REGISTRO: ".$product->order_id."<br>";
-                    echo "CREA REGISTRO: ".$product->product_id."<br>";
+                    // echo "CREA REGISTRO: ".$product->product_qty."<br>";
+                    // echo "CREA REGISTRO: ".$product->order_id."<br>";
+                    // echo "CREA REGISTRO: ".$product->product_id."<br>";
                     $i = $i + 1;
                 }
                 while($i <= $product->product_qty);
@@ -72,7 +72,7 @@
                 <td><?php echo $i->id_vcard ; ?></td>
                 <td><?php echo $i->order_id ; ?></td>
                 <td><?php echo $i->product_id ; ?></td>
-                <td><?php echo $i->url_page ; ?></td>
+                <td><?php echo $i->url_token ; ?></td>
             </tr>
         <?php endforeach; ?>
     </tbody>

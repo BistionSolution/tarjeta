@@ -7,6 +7,7 @@ require "tarjetas.php";
 require "install.php";
 require "uninstall.php";
 require "page.php";
+require "update-vcard.php";
 
 // Este hook nos sirve cuando ativamos este fragmento de código para crear la tabla
 register_activation_hook(__FILE__, 'create_table_vcards');

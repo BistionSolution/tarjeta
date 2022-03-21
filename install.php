@@ -13,7 +13,7 @@ function create_table_vcards()
 		last_names VARCHAR(100),
 		pseudonym VARCHAR(100),
 		birthday DATE,
-		photo VARCHAR(200),
+		photo LONGBLOB,
 		personal_web VARCHAR(100),
 		personal_email VARCHAR(100),
 		personal_cell_phone BIGINT,

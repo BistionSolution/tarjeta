@@ -142,17 +142,16 @@ function card_edit_endpoint_content()
 	// echo 'VAMO GO : '.$_GET['ga'];
 
 	if (isset($_GET['id'])) :
-		$id = $_GET['id'];
 
+		$id = $_GET['id'];
 		$user_id = get_current_user_id();
 		$customer_id = $wpdb->get_var("SELECT customer_id FROM {$wpdb->prefix}wc_customer_lookup where user_id='$user_id'");
 		$vcards = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}vcards where customer_id='$customer_id' and id_vcard = $id");
 
-		if (!empty($vcards)) {
-			// var_dump($vcards);
-		?>
+		if (!empty($vcards)) {?>
 			<div>
-				<form id="perfil-qr-form" class="woocommerce-EditProfileQrForm edit-profile-qr" action="" method="post" enctype="multipart/form-data">
+				<form id="perfil-qr-form" class="woocommerce-EditProfileQrForm edit-profile-qr" action="<?=esc_url(admin_url('admin-post.php')) ?>" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="identificador" value="<?=$id?>">
 				<?php foreach( $vcards as $v): ?>
 					<header class="form-header">
 						<h2 class="entry-title featured ">Datos de Contacto</h2>
@@ -161,11 +160,12 @@ function card_edit_endpoint_content()
 
 					<div class="profile-img-container">
 						<div class="profile-img">
-							<img class="profile-pic" src="">
+							<img class="profile-pic">
+							<?php  echo '<img src="data:image/png;base64,'.base64_encode($v->photo).'"/>';  ?>
 						</div>
 						<div class="profile-button">
 							<i class="fa fa-camera upload-button"></i>
-							<input class="file-upload" type="file" accept="image/*" name="qr_fields[__MEDIA__][__USERIMG__]" value="<?=$v->photo?>">
+							<input class="file-upload" type="file" accept="image/*" name="foto" multiple>
 						</div>
 					</div>
 
@@ -182,49 +182,49 @@ function card_edit_endpoint_content()
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-1-1">Nombres</label>
-											<input id="field-1-1" name="qr_fields[__PERSONAL__][__FIRSTNAME__]" value="<?=$v->names?>">
+											<input id="field-1-1" name="nombres" value="<?=$v->names?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-1-2">Apellidos</label>
-											<input id="field-1-2" name="qr_fields[__PERSONAL__][__LASTNAME__]" value="<?=$v->last_names?>">
+											<input id="field-1-2" name="apellidos" value="<?=$v->last_names?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-1-3">Seudónimo</label>
-											<input id="field-1-3" name="qr_fields[__PERSONAL__][__NICKNAME__]" value="<?=$v->pseudonym?>">
+											<input id="field-1-3" name="seudonimo" value="<?=$v->pseudonym?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-1-4">Cumpleaños</label>
-											<input id="field-1-4" name="qr_fields[__PERSONAL__][__BIRTHDATE__]" value="<?=$v->birthday?>">
+											<input type="date" id="field-1-4" name="cumpleanios" value="<?=$v->birthday?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-1-7">Página Web Personal</label>
-											<input id="field-1-7" name="qr_fields[__PERSONAL__][__PERSONALWEBSITE__]" value="<?=$v->personal_web?>">
+											<input id="field-1-7" name="paginaWebPersonal" value="<?=$v->personal_web?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-1-8">Email Principal</label>
-											<input id="field-1-8" name="qr_fields[__PERSONAL__][__PERSONALEMAIL__]" value="<?=$v->personal_email?>">
+											<input id="field-1-8" name="emailPrincipal" value="<?=$v->personal_email?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-1-9">Celular</label>
-											<input id="field-1-9" name="qr_fields[__PERSONAL__][__CELULAR__]" value="<?=$v->personal_cell_phone?>">
+											<input id="field-1-9" name="celular" value="<?=$v->personal_cell_phone?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-1-10">Fijo / Casa</label>
-											<input id="field-1-10" name="qr_fields[__PERSONAL__][__FONOHOME__]" value="<?=$v->personal_telephone?>">
+											<input id="field-1-10" name="telefonoFijo" value="<?=$v->personal_telephone?>">
 										</div>
 									</div>
 								</div>
@@ -244,49 +244,49 @@ function card_edit_endpoint_content()
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-2-11">Empresa</label>
-											<input id="field-2-11" name="qr_fields[__WORK__][__NOMBREEMPRESA__]" value="<?=$v->company_name?>">
+											<input id="field-2-11" name="empresa" value="<?=$v->company_name?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-2-12">Cargo</label>
-											<input id="field-2-12" name="qr_fields[__WORK__][__CARGO__]" value="<?=$v->company_charge?>">
+											<input id="field-2-12" name="cargo" value="<?=$v->company_charge?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-2-13">Página Web</label>
-											<input id="field-2-13" name="qr_fields[__WORK__][__WEBEMPRESA__]" value="<?=$v->company_web?>">
+											<input id="field-2-13" name="paginaWeb" value="<?=$v->company_web?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-2-14">Email Corporativo</label>
-											<input id="field-2-14" name="qr_fields[__WORK__][__EMAILEMPRESA__]" value="<?=$v->company_mail?>">
+											<input id="field-2-14" name="emailCorporativo" value="<?=$v->company_mail?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-2-15">Teléfono</label>
-											<input id="field-2-15" name="qr_fields[__WORK__][__FONOEMPRESA__]" value="‪+51&nbsp;981&nbsp;453&nbsp;349‬">
+											<input id="field-2-15" name="telefonoTrabajo" value="<?=$v->company_cell_phone?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-2-16">Dirección</label>
-											<input id="field-2-16" name="qr_fields[__WORK__][__EMPRESADIRECCION__]" value="Av. Santa Cruz 1347">
+											<input id="field-2-16" name="direccionTrabajo" value="<?=$v->company_address?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-2-17">Departamento / Región</label>
-											<input id="field-2-17" name="qr_fields[__WORK__][__EMPRESACIUDAD__]" value="Lima">
+											<input id="field-2-17" name="departamentoTrabajo" value="<?=$v->company_department?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-2-18">País</label>
-											<input id="field-2-18" name="qr_fields[__WORK__][__EMPRESAPAIS__]" value="Perú">
+											<input id="field-2-18" name="paisTrabajo" value="<?=$v->company_country?>">
 										</div>
 									</div>
 								</div>
@@ -306,19 +306,19 @@ function card_edit_endpoint_content()
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-3-19">Dirección</label>
-											<input id="field-3-19" name="qr_fields[__HOME__][__CASADIRECCION__]" value="">
+											<input id="field-3-19" name="direccion" value="<?=$v->personal_address?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-3-20">Departamento / Región</label>
-											<input id="field-3-20" name="qr_fields[__HOME__][__CASACIUDAD__]" value="Lima">
+											<input id="field-3-20" name="departamento" value="<?=$v->personal_department?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-3-21">País</label>
-											<input id="field-3-21" name="qr_fields[__HOME__][__CASAPAIS__]" value="Perú">
+											<input id="field-3-21" name="pais" value="<?=$v->personal_country?>">
 										</div>
 									</div>
 								</div>
@@ -338,73 +338,50 @@ function card_edit_endpoint_content()
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-4-22">Facebook</label>
-											<input id="field-4-22" name="qr_fields[__SOCIAL__][__SOCIALFACEBOOK__]" value="https://www.facebook.com/renzo.trujillo.35">
+											<input id="field-4-22" name="facebook" value="<?=$v->url_facebook?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-4-23">Instagram</label>
-											<input id="field-4-23" name="qr_fields[__SOCIAL__][__SOCIALINSTAGRAM_]" value="https://www.instagram.com/renzo.trujillo.96/">
+											<input id="field-4-23" name="instagram" value="<?=$v->url_instagram?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-4-24">LinkedIn</label>
-											<input id="field-4-24" name="qr_fields[__SOCIAL__][__SOCIALLINKEDIN__]" value="https://www.linkedin.com/in/renzotrujillo/">
+											<input id="field-4-24" name="linkedin" value="<?=$v->url_linkedin?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-4-25">Twitter</label>
-											<input id="field-4-25" name="qr_fields[__SOCIAL__][__SOCIALTWITTER__]" value="https://twitter.com/renzotrujillom">
+											<input id="field-4-25" name="twitter" value="<?=$v->url_twitter?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-4-26">Tiktok</label>
-											<input id="field-4-26" name="qr_fields[__SOCIAL__][__SOCIALTIKTOK__]" value="">
+											<input id="field-4-26" name="tiktok" value="<?=$v->url_tiktok?>">
 										</div>
 									</div>
 								</div>
 							</div>
-
 						</section>
 
-
 						<div class="form-buttons">
-							<input type="hidden" id="_nonce" name="_nonce" value="b45be13a75"><input type="hidden" name="_wp_http_referer" value="/cuenta/actualizar-mi-tarjeta/"> <a href="https://tarjetacenturion.com/cuenta/mi-tarjeta/" class="btn btn-light">Cancelar</a>
+							<!-- <input type="hidden" id="_nonce" name="_nonce" value="b45be13a75"><input type="hidden" name="_wp_http_referer" value="/cuenta/actualizar-mi-tarjeta/"> <a href="https://tarjetacenturion.com/cuenta/mi-tarjeta/" class="btn btn-light">Cancelar</a> -->
 							<button type="submit" class="button btn btn-dark" name="arct_save_profile_qr" value="Guardar cambios">Guardar cambios</button>
-							<input type="hidden" name="action" value="arct_save_profile_qr">
+							<input type="hidden" name="action" value="updateVcard">
 						</div>
 
 					</div>
 					<?php endforeach; ?>
 				</form>
 			</div>
-<?php
-		} else {
-			echo "TE CAYO LA LEY PRRO";
-		}
-	// if (!empty($_GET['id'])): 
-	//     global $wpdb;
-	//     $token = sanitize_text_field($_GET['token']);
-	//     $table_name = $wpdb->prefix . "vcards";
-	//     $sql = "SELECT * FROM $table_name WHERE token='$token'";
-	//     $wpdb->query($sql);
-	//     // Si es una token válido
-	//     if (!empty($wpdb->last_result)):
-
-	//     $nombre = $wpdb->last_result[0]->company;
-	//     $telefono = $wpdb->last_result[0]->title;
-	//     // $direccion = $wpdb->last_result[0]->address;
-	//     $correo = $wpdb->last_result[0]->email;
-	//     $token = $wpdb->last_result[0]->token;
-	//     $href = "/wp-nfc/wp-vcards/$token.vcf";
-	//     endif;
-	// endif; 
+		<?php } else {
+			echo "TE CAYO LA LEY PRRO"; }
 	endif;
-	// create_nuevo_vc();
-	//get_template_part('mis-tarjetas.php');
 
 }
 
