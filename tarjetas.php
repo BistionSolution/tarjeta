@@ -68,7 +68,7 @@ function productos_cliente($parametros)
 						<figure class="perfil-image">
 							<img src="https://tarjetacenturion.com/wp-content/uploads/perfil-qr/user-qr-be8fb0c5422c0b692b08e65a490c6a1d.png" alt="Perfil QR">
 						</figure>
-						<a href="http://localhost/wordpress/my-account/card-edit/?id=<?= $vcard->id_vcard ?>" class="btn btn-beige btn-block btn-sm">Actualizar datos</a>
+						<a href="http://localhost/wordpress/mi-cuenta/card-edit/?id=<?= $vcard->id_vcard ?>" class="btn btn-beige btn-block btn-sm">Actualizar datos</a>
 						<div class="qr-download">
 							<i class="fas fa-qrcode"></i> <a href="https://tarjetacenturion.com/wp-content/uploads/perfil-qr/user-qr-be8fb0c5422c0b692b08e65a490c6a1d.png" target="_blank" class="link link-light featured">Descargar QR</a>
 						</div>
