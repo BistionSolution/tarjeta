@@ -29,6 +29,7 @@ function create_table_vcards()
 		company_address VARCHAR(100),
 		company_department VARCHAR(50),
 		company_country VARCHAR(50),
+		url_token VARCHAR(200);
 		url_facebook VARCHAR(200),
 		url_instagram VARCHAR(200),
 		url_linkedin VARCHAR(200),
