@@ -4,7 +4,6 @@
  */
 
 require "tarjetas.php";
-
 require "install.php";
 require "uninstall.php";
 require "page.php";
