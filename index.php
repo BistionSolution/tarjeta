@@ -26,22 +26,25 @@ register_deactivation_hook(__FILE__, 'drop_directory_vcards');
 // add_action('admin_post_editvcard', 'edit_vcard');
 
 
-function add_my_custom_page() {
-    // Create post object
-    $my_post = array(
-      'post_title'    => wp_strip_all_tags( 'My Custom Page' ),
-      'post_content'  => 'My custom page content',
-      'post_status'   => 'publish',
-      'post_author'   => 1,
-      'post_type'     => 'page',
-      'to_ping' => plugin_dir_path(__FILE__).'page-my-custom-page.php'
-    );
 
-    // Insert the post into the database
-    wp_insert_post( $my_post );
-}
 
-register_activation_hook(__FILE__, 'add_my_custom_page');
+// function add_my_custom_page() {
+//     // Create post object
+//     $my_post = array(
+//       'post_title'    => wp_strip_all_tags( 'My Custom Page' ),
+//       'post_content'  => 'My custom page content',
+//       'post_status'   => 'publish',
+//       'post_author'   => 1,
+//       'post_type'     => 'page',
+//       'to_ping' => plugin_dir_path(__FILE__).'page-my-custom-page.php'
+//     );
+
+//     // Insert the post into the database
+//     wp_insert_post( $my_post );
+// }
+
+
+// register_activation_hook(__FILE__, 'add_my_custom_page');
 
 function insert_contact($atts)
 {
@@ -64,19 +67,20 @@ function insert_contact($atts)
         insert_directory($path_directory);
     }
 
-    $content = "BEGIN:VCARD\r\n";
-    $content .= "VERSION:3.0\r\n";
-    $content .= "CLASS:PUBLIC\r\n";
-    $content .= "FN:Joe Wegner\r\n";
-    $content .= "N:Wegner;Joe ;;;\r\n";
-    $content .= "TITLE:Technology And Systems Administrator\r\n";
-    $content .= "ORG:Wegner Design\r\n";
-    $content .= "ADR;TYPE=work:;;21 W. 20th St.;Broadview ;IL;60559;\r\n";
-    $content .= "EMAIL;TYPE=internet,pref:joe@wegnerdesign.com\r\n";
-    $content .= "TEL;TYPE=work,voice:7089181512\r\n";
-    $content .= "TEL;TYPE=HOME,voice:8352355189\r\n";
-    $content .= "URL:http://www.wegnerdesign.com\r\n";
-    $content .= "END:VCARD\r\n";
+    $content = "";
+    // $content = "BEGIN:VCARD\r\n";
+    // $content .= "VERSION:3.0\r\n";
+    // $content .= "CLASS:PUBLIC\r\n";
+    // $content .= "FN:Joe Wegner\r\n";
+    // $content .= "N:Wegner;Joe ;;;\r\n";
+    // $content .= "TITLE:Technology And Systems Administrator\r\n";
+    // $content .= "ORG:Wegner Design\r\n";
+    // $content .= "ADR;TYPE=work:;;21 W. 20th St.;Broadview ;IL;60559;\r\n";
+    // $content .= "EMAIL;TYPE=internet,pref:joe@wegnerdesign.com\r\n";
+    // $content .= "TEL;TYPE=work,voice:7089181512\r\n";
+    // $content .= "TEL;TYPE=HOME,voice:8352355189\r\n";
+    // $content .= "URL:http://www.wegnerdesign.com\r\n";
+    // $content .= "END:VCARD\r\n";
 
     $file = fopen($path_directory . "/$token.vcf", 'w');
     fwrite($file, $content);
@@ -115,8 +119,6 @@ function insert_directory($path)
     // return "<a href='http://localhost/wordpress'><i class='fas fa-user'></i></a>";
 // }
 
-
-
 // function salcodes_cta( $atts ) {
 //     $a = shortcode_atts( array(
 //         'link' => '#',
@@ -132,31 +134,7 @@ function insert_directory($path)
 
 // add_shortcode( 'cta_button', 'salcodes_cta' );
 
-function create_vcf()
-{
-    // global $wpdb;
-    $content = "BEGIN:VCARD\r\n";
-    $content .= "VERSION:3.0\r\n";
-    $content .= "CLASS:PUBLIC\r\n";
-    // $content .= "FN:Joe Wegner\r\n";
-    // $content .= "N:Wegner;Joe ;;;\r\n";
-    // $content .= "TITLE:Technology And Systems Administrator\r\n";
-    // $content .= "ORG:Wegner Design\r\n";
-    // $content .= "ADR;TYPE=work:;;21 W. 20th St.;Broadview ;IL;60559;\r\n";
-    // $content .= "EMAIL;TYPE=internet,pref:joe@wegnerdesign.com\r\n";
-    // $content .= "TEL;TYPE=work,voice:7089181512\r\n";
-    // $content .= "TEL;TYPE=HOME,voice:8352355189\r\n";
-    // $content .= "URL:http://www.wegnerdesign.com\r\n";
-    $content .= "END:VCARD\r\n";
-
-    $file_name = "token.vcf";
-    $file = fopen($file_name,"w"); // W de Write
-    fwrite($file, $content);
-    fclose($file);
-}
-	
 add_shortcode('insert_contact', 'insert_contact');
-add_shortcode('create_vcf', 'create_vcf');
 add_shortcode('page_vcard', 'page_vcard');
 // add_shortcode('btn_link', 'btn_link');
 // add_shortcode('insert_directory', 'insert_directory');
