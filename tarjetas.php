@@ -408,15 +408,13 @@ function my_account_menu_order()
 	);
 	return $menuOrder;
 }
-add_filter('woocommerce_account_menu_items', 'my_account_menu_order');
-
-
-
-
-add_action('wp_enqueue_scripts', 'carga_stilos');
 
 function carga_stilos()
 {
 	wp_register_style('fontawesomecss', plugin_dir_url(__FILE__) . "assets/style.css");
 	wp_enqueue_style('fontawesomecss');
 }
+
+add_filter('woocommerce_account_menu_items', 'my_account_menu_order');
+add_action('wp_enqueue_scripts', 'carga_stilos');
+

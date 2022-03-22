@@ -43,25 +43,16 @@ function create_table_vcards()
 	dbDelta($sql);
 } 
 
-// function pepr_crear_tablas_bd() {
-//     global $wpdb;
-//     // Definimos el nombre de la tabla con el prefijo usado en la instalación:
-//     $notas = $wpdb->prefix . 'pepr_notas';
-//     $charset_collate = $wpdb->get_charset_collate();
-//     // Diseñamos la consulta SQL para la nueva tabla:
-//     $sql = "CREATE TABLE $notas (
-//          id int(9) NOT NULL AUTO_INCREMENT,
-//          proyecto varchar(55) NOT NULL,
-//          titulo varchar(55) NOT NULL,
-//          descripcion varchar(255),
-//          prioridad varchar(55),
-//          periodicidad varchar(55),
-//          UNIQUE KEY id(id)
-//          ) $charset_collate;";
-   
-//     require_once( ABSPATH . 'wp-admin/includes/upgrade.php');
-   
-//     // Ejecutamos la consulta:
-//     dbDelta($sql);
-//    }
-//    register_activation_hook(__FILE__, 'pepr_crear_tablas_bd');
+function add_page_view_contact()
+{
+    // Create post object
+    $my_page = array(
+      'post_title'    => wp_strip_all_tags('View Contact'),
+      'post_status'   => 'publish',
+      'post_author'   => 1,
+      'post_type'     => 'page'
+    );
+
+    // Insert the post into the database
+    wp_insert_post($my_page);
+}

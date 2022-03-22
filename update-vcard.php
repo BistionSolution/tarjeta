@@ -3,10 +3,10 @@
 function actualizarVcard()
 {
     global $wpdb;
-    $href = dirname($_SERVER["REQUEST_URI"]);
+    $href = dirname(dirname($_SERVER["HTTP_REFERER"]));
     $id_tarje = $_POST['identificador'];
     $token = $wpdb->get_var("SELECT token FROM {$wpdb->prefix}vcards where id_vcard='$id_tarje'");
-    // $photo = $wpdb->get_var("SELECT photo FROM {$wpdb->prefix}vcards where id_vcard='$id_tarje'");
+    $file_photo = $wpdb->get_var("SELECT photo FROM {$wpdb->prefix}vcards where id_vcard='$id_tarje'");
     // $url_photo = get_home_url().'/'.$photo;
     
     $names = sanitize_text_field($_POST['nombres']);
@@ -65,9 +65,6 @@ function actualizarVcard()
         //     $image = $_FILES['foto']['tmp_name'];
         //     $imgContent = addslashes(file_get_contents($image));
         // }
-
-
-
         $ar = array(
             'names' => $_POST['nombres'],
             'last_names' => $_POST['apellidos'],
@@ -97,28 +94,37 @@ function actualizarVcard()
         $content = "BEGIN:VCARD\r\n";
         $content .= "VERSION:3.0\r\n";
         $content .= "CLASS:PUBLIC\r\n";
-        if (!empty($_FILES["foto"]["tmp_name"])) {
-            // $tamano = $_FILES['foto']['size'];
-            $tipo = $_FILES['foto']['type'];
-            $arr_tipo = explode("/", $tipo);
-            $type = strtoupper($arr_tipo[1]);
-            // echo $tipo;
+        // Se ha insertado un archivo
+        if (!empty($_FILES["foto"]["tmp_name"])) 
+        {
+            // Si ya hay foto previa almacenada en la BD y se está actualizando la foto
+            if(!empty($file_photo)){
+                // Borramos la foto anterior
+                $path_directory_photo = realpath(dirname(__FILE__) . '/../../..');
+                unlink($path_directory_photo . '/' . $file_photo);
+            }
             $nombre_img = $_FILES['foto']['name'];
             $photo = $_FILES["foto"]["tmp_name"];
             $imgSubida = $path_directory."/$carpeta_user/$id_tarje-$nombre_img";
             $imgCarpeta =  "wp-photos/$carpeta_user/$id_tarje-$nombre_img";
             move_uploaded_file($photo,$imgSubida);
-            // echo $imgSubida;
             // $binarioImagen = fread($imgSubida, $tamano);
             $ar['photo'] = $imgCarpeta;
-            //array($ar,$ar2['photo']);
-            $url_photo = get_home_url().'/'.$imgCarpeta;
+            $url_photo = get_home_url() . '/' . $imgCarpeta;
             
             $contenidoBinario = file_get_contents($url_photo);
             $imagenComoBase64 = base64_encode($contenidoBinario);
-            $content .= "PHOTO;ENCODING=b;TYPE:$imagenComoBase64\r\n";
+            $content .= "PHOTO;ENCODING=b;TYPE:$imagenComoBase64\r\n";            
+        // No se ha insertado un archivo
+        }else{
+            // El campo de url de la foto en la BD no está vacía
+            if(!empty($file_photo)){
+                $path = get_home_url() . '/' . $file_photo;
+                $contentBinary = file_get_contents($path);
+                $imageBase64 = base64_encode($contentBinary);
+                $content .= "PHOTO;ENCODING=b;TYPE:$imageBase64\r\n";
+            }
         }
-
         
         $content .= "N:$last_names;$names;;;\r\n";
         $content .= "FN:$names $last_names\r\n";
@@ -152,7 +158,7 @@ function actualizarVcard()
             array('id_vcard' => $id_tarje)
         );
     }
-    wp_redirect(get_home_url() . '/mi-cuenta/card-edit/?id=' . $id_tarje);
+    wp_redirect($href . '/card-edit/?id=' . $id_tarje);
 }
 
 // Con esto permitimos que esta vista sea visible para usuarios sin cuentas
