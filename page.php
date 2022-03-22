@@ -33,7 +33,7 @@ function page_vcard()
             <?php if(empty($foto)): ?>    
                 <img width="70px" src="<?=plugins_url(basename(__DIR__) . '/assets/img/' . $foto)?>"/>
             <?php else: ?>
-                <img width="70px" src="<?=get_home_url() . $foto?>"/>
+                <img width="70px" src="<?=get_home_url() . '/' . $foto?>"/>
             <?php endif; ?>
                 <div><?= $nombres ?></div>
                 <div><?= $apellidos ?></div>
