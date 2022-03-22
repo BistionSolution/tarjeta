@@ -26,7 +26,7 @@
     <thead>
         <th>ID TARJETA</th>
         <th>Order id</th>
-        <th>Tipo</th>
+        <th>Tipo de Tarjeta</th>
         <th>Url</th>
     </thead>
     <tbody>
@@ -34,7 +34,10 @@
             <tr>
                 <td><?php echo $i->id_vcard ; ?></td>
                 <td><?php echo $i->order_id ; ?></td>
-                <td><?php echo $i->product_id ; ?></td>
+                <td><?php 
+                $id_product = $i->product_id;
+                echo $tipo_targeta = $wpdb->get_var("SELECT post_title FROM {$wpdb->prefix}posts where id=$id_product"); 
+                ?></td>
                 <td><?php echo $i->url_token ; ?></td>
             </tr>
         <?php endforeach; ?>
