@@ -167,7 +167,7 @@ function card_edit_endpoint_content()
 						</div>
 						<div class="profile-button">
 							<i class="fa fa-camera upload-button"></i>
-							<input class="file-upload" id="file_img" type="file" accept="image/*" name="foto" multiple>
+							<input class="file-upload" id="file_img" type="file" accept="image/png, image/jpeg, image/jpg" name="foto" multiple>
 							<div id="preview"></div>
 							<div id="text-img"  style="width: 300px;"></div>
 						</div>

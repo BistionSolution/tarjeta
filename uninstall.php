@@ -19,7 +19,7 @@ function drop_directory_vcards()
 			unlink($archivos_carpeta);
 		}
 	}	
-	rmdir($path_directory);     
+	rmdir($path_directory);
 }
 
 function drop_directory_photos($path_directory)
