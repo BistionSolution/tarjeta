@@ -43,18 +43,18 @@ function create_table_vcards()
 	dbDelta($sql);
 } 
 
-function add_page_view_contact()
-{
-    // Create post object
-    $my_page = array(
-      'post_title'    => wp_strip_all_tags('View Contact'),
-      'post_status'   => 'publish',
-      'post_author'   => 1,
-      'post_type'     => 'page'
-    );
+// function add_page_view_contact()
+// {
+//     // Create post object
+//     $my_page = array(
+//       'post_title'    => wp_strip_all_tags('View Contact'),
+//       'post_status'   => 'publish',
+//       'post_author'   => 1,
+//       'post_type'     => 'page'
+//     );
 
-    // Insert the post into the database
-    $newvalue = wp_insert_post($my_page);
+//     // Insert the post into the database
+//     $newvalue = wp_insert_post($my_page);
 
-	update_option('view_contact', $newvalue);
-}
+// 	update_option('view_contact', $newvalue);
+// }

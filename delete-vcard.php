@@ -38,8 +38,8 @@ function drop_directory_photos($path_directory)
 	rmdir($path_directory);     
 }
 
-function delete_page_view_contact()
-{
-    $page_id = get_option('view_contact');
-    wp_delete_post($page_id);
-}
+// function delete_page_view_contact()
+// {
+//     $page_id = get_option('view_contact');
+//     wp_delete_post($page_id);
+// }
