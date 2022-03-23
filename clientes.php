@@ -5,6 +5,11 @@
     global $wpdb;
     $query = "SELECT sum(wo.num_items_sold) as sum_items, wo.customer_id, wo.status,wc.username as username, wc.user_id as id_user FROM {$wpdb->prefix}wc_order_stats as wo INNER JOIN {$wpdb->prefix}wc_customer_lookup AS wc ON wo.customer_id = wc.customer_id WHERE wo.status in ('wc-processing','wc-completed') GROUP BY wo.customer_id";
     $lista = $wpdb->get_results($query,ARRAY_A);
+    // echo "<pre>";
+    // var_dump($_SERVER);
+    $pag_tarjeta = explode("?page=",$_SERVER['REQUEST_URI']);
+    $pag_tarjeta_oficial = explode("%2F", $pag_tarjeta[1]);
+    $value_pag = $pag_tarjeta_oficial[0];
 ?>
 <br>
 <table class="wp-list-table widefat fixed striped page">
@@ -29,7 +34,7 @@
                         $id = $value['id_user'];
                         $custo = $wpdb->get_var("SELECT customer_id FROM {$wpdb->prefix}wc_customer_lookup where user_id='$id'");
                     ?>
-                    <a class="button" href="<?=esc_url(admin_url('admin.php?page=tarjeta/tarjeta_detalle.php&valor='.$custo))?>">Ver tarjetas</a>
+                    <a class="button" href="<?=esc_url(admin_url('admin.php?page=' . $value_pag . '/tarjeta_detalle.php&valor='.$custo))?>">Ver tarjetas</a>
                 </td>
             </tr>
         <?php endforeach; ?>
