@@ -35,22 +35,58 @@ function page_vcard()
             <?php else: ?>
                 <img width="70px" src="<?=get_home_url() . '/' . $foto?>"/>
             <?php endif; ?>
-                <div><?= $nombres ?></div>
-                <div><?= $apellidos ?></div>
-                <div><?= $correo ?></div>
-                <div><?= $company_name ?></div>
-                <div><?= $company_charge ?></div>
-                <div><?= $company_mail ?></div>
-                <div><?= $instagram ?></div>
-                <div><?= $linkedin ?></div>
-                <div><?= $twitter ?></div>
-                <div><?= $tiktok ?></div>
-                <a href="<?=$href?>"><img width="50px" src="<?=plugins_url(basename(__DIR__) . '/assets/img/user.png')?>"/></a>
-                <a href="tel:<?=$cell_phone?>"><img width="50px" src="<?=plugins_url(basename(__DIR__) . '/assets/img/phone.png')?>"/></a>
-            </div>
             <div>
-                <?=do_shortcode("[kaya_qrcode content=$short_code_url]");?>
-            </div>
+                    <h1><?= $nombres.' '.$apellidos?></h1>
+                </div>
+                <div>
+                    <h2>
+                        <?= $company_charge ?>
+                    </h2>
+                   
+                </div>
+                <div>
+                    <h2>
+                    <?= $company_name ?>
+                    </h2>
+                    
+                </div>
+                <div class="items">
+                    <div class="img-icon">
+                        <a href="mailto:<?= $correo ?>"><img width="50px" src="<?=plugins_url(basename(__DIR__) . '/assets/img/mensaje.svg')?>"/></a>
+                    </div>
+                    <div class="img-icon">
+                        <a href="<?=$href?>"><img width="50px" src="<?=plugins_url(basename(__DIR__) . '/assets/img/user.svg')?>"/></a>
+                    </div>
+                    <div class="img-icon">
+                        <a href="tel:<?=$cell_phone?>"><img width="50px" src="<?=plugins_url(basename(__DIR__) . '/assets/img/cell.svg')?>"/></a> 
+                    </div>
+                </div>
+                              
+                <div>
+                    <a class="perfil-button" href="<?= $company_mail ?>">
+                        <?= $company_mail ?>
+                    </a>
+                </div>
+                <div>
+                    <a class="perfil-button" href="<?= $instagram ?>">
+                        <div>Instagram</div>
+                    </a>    
+                </div>
+                <div>
+                    <a class="perfil-button" href="<?= $linkedin ?>">
+                        <div>Linkedin</div>
+                    </a>    
+                </div>
+                <div>
+                    <a class="perfil-button" href="<?= $twitter ?>">
+                        <div>Twitter</div>
+                    </a>    
+                </div>
+                <div>
+                    <a class="perfil-button" href="<?= $tiktok ?>">
+                        <div>TikTok</div>
+                    </a>    
+                </div>
     </div>
 <?php
         else:

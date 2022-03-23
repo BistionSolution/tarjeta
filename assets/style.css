@@ -12,18 +12,33 @@
 }
 .col-left {
     position: relative;
-    background: rgb(31, 31, 31);
+    background: rgb(43, 43, 43);
     padding: 3rem 2rem;
 }
+
+@media (max-width: 48em){
+    #perfil-qr-page.card-view .block-row>* {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .block-header{
+        display: block;
+    }
+    .woocommerce-MyAccount-content{
+        padding-left: 0px;
+        background: #fff;
+    }
+}
+
+
 #perfil-qr-page.card-view .block-row.block-header .perfil-image {
-    width: 250px;
+    width: 100%;
     height: 250px;
+
     position: relative;
     overflow: hidden;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    border-radius: 5%;
+    text-align: center;
+
     z-index: 10;
 }
 
@@ -168,3 +183,158 @@ input.user-select-all{
     margin-right: 0; 
     margin-left: 0; 
 }
+.row-form-container .form-row:not(.is_checkbox):not(.is_text) .field-container {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    display: block;
+    background-color: #ffffff;
+    border: 1px solid #c2c3c3;
+    position: relative;
+    padding-top: 1.45rem;
+}
+.row-form-container .form-row:not(.is_checkbox):not(.is_text) .field-container label {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: auto;
+    left: 0;
+    padding: 8px 10px 0 10px;
+    z-index: 10;
+    font-size: 0.8rem;
+    line-height: 1em;
+    color: #9c9d9d;
+}
+.row-form-container .form-row:not(.is_checkbox):not(.is_text) .field-container input, .row-form-container .form-row:not(.is_checkbox):not(.is_text) .field-container select {
+    height: 1.85rem;
+}
+.row-form-container .form-row:not(.is_checkbox):not(.is_text) .field-container input, .row-form-container .form-row:not(.is_checkbox):not(.is_text) .field-container select, .row-form-container .form-row:not(.is_checkbox):not(.is_text) .field-container textarea {
+    width: 100%;
+    background-color: transparent;
+    border: none !important;
+    margin: 0;
+    padding: 0 10px;
+    outline: 0 !important;
+}
+.col-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+/*CSS PAGINA PERFIL ENLACES*/
+.wrap{
+    background-image: radial-gradient(circle at 50% -20.71%, #e459ea 0, #c84ded 16.67%, #a544f0 33.33%, #783cf2 50%, #2538f4 66.67%, #0039f5 83.33%, #003af6 100%);
+    position: relative;
+    text-align: center;
+}
+.wrap h1{
+    color: #fff;
+    font-size: 35px;
+}
+.wrap h2{
+    color: #fff;
+    font-size: 20px;
+}
+
+
+.wrap .profile-img {
+    position: relative;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border: 0.4rem solid #fff;
+    background-color: #F1AC89;
+    overflow: hidden;
+    margin:0px auto;
+    z-index: 1;
+}
+.wrap .items{
+    width: 100%;
+    height: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+}
+.items .img-icon img{
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    padding: 5px;
+    
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    width: 55px;
+    height: 55px;
+}
+.wrap .profile-img img {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.perfil-button{
+    /* position: absolute; */
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    /* animation: animate 10s linear infinite; */
+    /* background-color: #4717f5; */
+    color: white;
+    width: 100%;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: .5rem;
+}
+/*MENU DE MI CUETNA*/
+.content-pro .woocommerce{
+    background: rgb(43, 43, 43);
+}
+.woocommerce-MyAccount-content{
+    padding-left: 20px;
+    background: #fff;
+}
+.woocommerce-MyAccount-navigation {
+    background: rgb(43, 43, 43);
+    padding: 50px;
+    width: 200px; /* Set a width if you like */
+  }
+  
+  .woocommerce-MyAccount-navigation a {
+    background-color: #4717f5; /* Grey background color */
+    color: #fff; /* Black text color */
+    display: block; /* Make the links appear below each other */
+    padding: 12px; /* Add some padding */
+    margin-top: 5px;
+    border-radius: 5px;
+    text-decoration: none; /* Remove underline from links */
+  }
+  
+  .woocommerce-MyAccount-navigation a:hover {
+    background-color: #4717f5ad; /* Dark grey background on mouse-over */
+  }
+  
+.woocommerce-MyAccount-navigation a.active {
+    background-color: #4717f5 !important; /* Add a green color to the "active/current" link */
+    color: white;
+  }
