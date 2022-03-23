@@ -4,9 +4,9 @@
  */
 
 require "tarjetas.php";
-require "install.php";
-require "uninstall.php";
-require "page.php";
+require "create-vcard.php";
+require "delete-vcard.php";
+require "page-vcard.php";
 require "error.php";
 require "update-vcard.php";
 
@@ -17,7 +17,7 @@ register_activation_hook(__FILE__, 'add_page_view_contact');
 register_deactivation_hook(__FILE__, 'drop_table_vcards');
 register_deactivation_hook(__FILE__, 'drop_directory_vcards');
 register_deactivation_hook(__FILE__, 'drop_directory_photos');
-register_deactivation_hook( __FILE__, 'delete_page_view_contact' );
+register_deactivation_hook( __FILE__, 'delete_page_view_contact');
 
 function insert_contact($atts)
 {
