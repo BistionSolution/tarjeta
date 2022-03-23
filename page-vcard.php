@@ -29,11 +29,16 @@ function page_vcard()
             $href = home_url() . "/wp-vcards/$token.vcf";
             $short_code_url = home_url() . "/wp-vcards/?token=$token";
         ?>        
-            <div class="text-center">
-            <?php if(empty($foto)): ?>    
-                <img width="70px" src="<?=plugins_url(basename(__DIR__) . '/assets/img/' . $foto)?>"/>
+            <div class="perfil">>
+            <?php if(empty($foto)): ?> 
+                <div class="profile-img"> 
+                    <img class="img-perfil" src="<?=plugins_url(basename(__DIR__) . '/assets/img/avatar.png')?>"/>
+                </div>
             <?php else: ?>
-                <img width="70px" src="<?=get_home_url() . '/' . $foto?>"/>
+                <div class="profile-img">
+                    <img class="profile-pic" src="<?=get_home_url() . '/' . $foto?>"/>
+				</div>
+
             <?php endif; ?>
             <div>
                     <h1><?= $nombres.' '.$apellidos?></h1>
@@ -42,51 +47,74 @@ function page_vcard()
                     <h2>
                         <?= $company_charge ?>
                     </h2>
-                   
                 </div>
                 <div>
                     <h2>
-                    <?= $company_name ?>
+                        <?= $company_name ?>
                     </h2>
-                    
                 </div>
                 <div class="items">
+                <?php if(!empty($company_mail)): ?> 
                     <div class="img-icon">
                         <a href="mailto:<?= $correo ?>"><img width="50px" src="<?=plugins_url(basename(__DIR__) . '/assets/img/mensaje.svg')?>"/></a>
                     </div>
+                <?php endif; ?>
+                <?php if(!empty($company_mail)): ?> 
                     <div class="img-icon">
                         <a href="<?=$href?>"><img width="50px" src="<?=plugins_url(basename(__DIR__) . '/assets/img/user.svg')?>"/></a>
                     </div>
+                <?php endif; ?>
+                <?php if(!empty($company_mail)): ?> 
                     <div class="img-icon">
                         <a href="tel:<?=$cell_phone?>"><img width="50px" src="<?=plugins_url(basename(__DIR__) . '/assets/img/cell.svg')?>"/></a> 
                     </div>
+                <?php endif; ?>                
+                    
                 </div>
-                              
-                <div>
-                    <a class="perfil-button" href="<?= $company_mail ?>">
-                        <?= $company_mail ?>
-                    </a>
-                </div>
-                <div>
-                    <a class="perfil-button" href="<?= $instagram ?>">
-                        <div>Instagram</div>
-                    </a>    
-                </div>
-                <div>
-                    <a class="perfil-button" href="<?= $linkedin ?>">
-                        <div>Linkedin</div>
-                    </a>    
-                </div>
-                <div>
-                    <a class="perfil-button" href="<?= $twitter ?>">
-                        <div>Twitter</div>
-                    </a>    
-                </div>
-                <div>
+                 
+                <?php if(!empty($company_mail)): ?> 
+                    <div>
+                        <a class="perfil-button" href="<?= $company_mail ?>">
+                            Correo corporativo
+                        </a>
+                    </div>
+                <?php endif; ?>
+                <?php if(!empty($company_mail)): ?> 
+                    <div>
+                        <a class="perfil-button" href="<?= $company_mail ?>">
+                            Correo corporativo
+                        </a>
+                    </div>
+                <?php endif; ?>
+                <?php if(!empty($company_mail)): ?> 
+                    <div>
+                        <a class="perfil-button" href="<?= $instagram ?>">
+                            <div>Instagram</div>
+                        </a>    
+                    </div>
+                <?php endif; ?>
+                <?php if(!empty($company_mail)): ?> 
+                    <div>
+                        <a class="perfil-button" href="<?= $linkedin ?>">
+                            <div>Linkedin</div>
+                        </a>    
+                    </div>
+                <?php endif; ?>
+                <?php if(!empty($company_mail)): ?> 
+                    <div>
+                        <a class="perfil-button" href="<?= $twitter ?>">
+                            <div>Twitter</div>
+                        </a>    
+                    </div>
+                <?php endif; ?>
+                <?php if(!empty($company_mail)): ?> 
+                    <div>
                     <a class="perfil-button" href="<?= $tiktok ?>">
                         <div>TikTok</div>
                     </a>    
                 </div>
+                <?php endif; ?>             
+                
     </div>
 <?php
         else:
