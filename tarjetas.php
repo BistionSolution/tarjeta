@@ -104,7 +104,7 @@ function productos_cliente($parametros)
 							<small class="label-small">Compartir por</small>
 							<ul class="social-share-icons">
 								<li class="social-network messenger">
-									<a href="javascript:void(0)" onclick="javascript:window.open( this.dataset.href, '_blank', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600' );return false;" data-href="http://www.facebook.com/dialog/send?app_id=891268654262273&amp;redirect_uri=https%3A%2F%2Ftarjetacenturion.com%2Fu%2Fwdz37219h54v&amp;link=https%3A%2F%2Ftarjetacenturion.com%2Fu%2Fwdz37219h54v&amp;display=popup" target="_blank">
+									<a href="javascript:void(0)" onclick="javascript:window.open( this.dataset.href, '_blank', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600' );return false;" data-href="http://www.facebook.com/dialog/send?app_id=891268654262273&amp;redirect_uri=https%3A%2F%2Ftarjetacenturion.com%2Fu%2Fwdz37219h54v&amp;link=<?php echo $vcard->url_token ;?>&amp;display=popup" target="_blank">
 										<i class="fab fa-facebook-messenger"></i> </a>
 								</li>
 								<li class="social-network whatsapp">
