@@ -13,7 +13,7 @@ var imagen = document.getElementById("file_img");
 					};
 					btnActualizar.disabled = false;
 					let texto = document.getElementById('text-img');
-					texto.innerHTML = '';
+					texto.innerHTML = '2097152';
 					if (peso>250000){ //Limitar el peso		
 						texto.append('El peso de la imagen excede el permitido.');
 						texto.style.color='#ff0000'

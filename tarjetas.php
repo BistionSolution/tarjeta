@@ -161,7 +161,9 @@ function card_edit_endpoint_content()
 
 					<div class="profile-img-container">
 						<div class="profile-img">
-							<img class="profile-pic" src="<?=get_home_url().'/'.$v->photo?>">
+							<div id="preview">
+								<img class="profile-pic" src="<?=get_home_url().'/'.$v->photo?>">
+							</div>
 						</div>
 						<div class="profile-button">
 							<i class="fa fa-camera upload-button"></i>
