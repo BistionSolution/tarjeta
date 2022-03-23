@@ -78,7 +78,7 @@ function productos_cliente($parametros)
 					<div class="col-container">
 						<div class="content-block fullname">
 							<h3><?php 
-							if (empty($vcard->names) || empty($vcard->last_names)){ 
+							if (empty($vcard->names) & empty($vcard->last_names)){ 
 							echo 'Nombres y Apellidos';
 							 }else{
 							echo ucwords($vcard->names.' '. $vcard->last_names); }

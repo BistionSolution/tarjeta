@@ -53,17 +53,17 @@ function page_vcard()
                     </h2>
                 </div>
                 <div class="items">
-                    <?php if(!empty($company_mail)): ?> 
+                    <?php if(!empty($correo)): ?> 
                         <div class="img-icon">
                             <a href="mailto:<?= $correo ?>"><img width="50px" src="<?=plugins_url(basename(__DIR__) . '/assets/img/mensaje.svg')?>"/></a>
                         </div>
                     <?php endif; ?>
-                    <?php if(!empty($company_mail)): ?> 
+                    <?php if(!empty($href)): ?> 
                         <div class="img-icon">
                             <a href="<?=$href?>"><img width="50px" src="<?=plugins_url(basename(__DIR__) . '/assets/img/user.svg')?>"/></a>
                         </div>
                     <?php endif; ?>
-                    <?php if(!empty($company_mail)): ?> 
+                    <?php if(!empty($cell_phone)): ?> 
                         <div class="img-icon">
                             <a href="tel:<?=$cell_phone?>"><img width="50px" src="<?=plugins_url(basename(__DIR__) . '/assets/img/cell.svg')?>"/></a> 
                         </div>
@@ -77,35 +77,28 @@ function page_vcard()
                         </a>
                     </div>
                 <?php endif; ?>
-                <?php if(!empty($company_mail)): ?> 
-                    <div>
-                        <a class="perfil-button" href="<?= $company_mail ?>">
-                            Correo corporativo
-                        </a>
-                    </div>
-                <?php endif; ?>
-                <?php if(!empty($company_mail)): ?> 
+                <?php if(!empty($instagram)): ?> 
                     <div>
                         <a class="perfil-button" href="<?= $instagram ?>">
                             <div>Instagram</div>
                         </a>    
                     </div>
                 <?php endif; ?>
-                <?php if(!empty($company_mail)): ?> 
+                <?php if(!empty($linkedin)): ?> 
                     <div>
                         <a class="perfil-button" href="<?= $linkedin ?>">
                             <div>Linkedin</div>
                         </a>    
                     </div>
                 <?php endif; ?>
-                <?php if(!empty($company_mail)): ?> 
+                <?php if(!empty($twitter)): ?> 
                     <div>
                         <a class="perfil-button" href="<?= $twitter ?>">
                             <div>Twitter</div>
                         </a>    
                     </div>
                 <?php endif; ?>
-                <?php if(!empty($company_mail)): ?> 
+                <?php if(!empty($tiktok)): ?> 
                     <div>
                         <a class="perfil-button" href="<?= $tiktok ?>">
                             <div>TikTok</div>
