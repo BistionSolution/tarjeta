@@ -26,7 +26,7 @@ function menu_ajuste_tarjetas()
 		'1'
 	);
 	add_submenu_page(
-		plugin_dir_path(__FILE__) . 'clientes.php', // parent slug
+		null, // parent slug
 		'Tarjetas Registradas', // titulo de la pagina
 		'Todas las Tarjetas', // titulo del menu
 		'manage_options',
@@ -36,17 +36,17 @@ function menu_ajuste_tarjetas()
 }
 
 add_action('admin_menu', 'menu_ajuste_tarjetas');
-/*add_action('admin_menu','menu_ajuste_tarjetas2');*/
 
+
+/*add_action('admin_menu','menu_ajuste_tarjetas2');*/
 function genera_hmtl_pagina()
 {
-	// $codigo_pagina = get_option('genera_hmtl_pagina');
-?>
+	// $codigo_pagina = get_option('genera_hmtl_pagina')
+	?>
 	<div class="wrap">
 		<h2>Cuentas de clientes</h2>
 	</div>
-	<?php
-}
+<?php }
 
 
 //PRODUCTOS 
@@ -161,14 +161,17 @@ function card_edit_endpoint_content()
 
 					<div class="profile-img-container">
 						<div class="profile-img">
-							<img class="profile-pic" src="<?=get_home_url().'/'.$v->photo?>">
+							<div id="preview">
+								<img class="profile-pic" src="<?=get_home_url().'/'.$v->photo?>">
+							</div>
 						</div>
 						<div class="profile-button">
 							<i class="fa fa-camera upload-button"></i>
-							<input class="file-upload" type="file" accept="image/*" name="foto" multiple>
+							<input class="file-upload" id="file_img" type="file" accept="image/*" name="foto" multiple>
+							<div id="preview"></div>
+							<div id="text-img"  style="width: 300px;"></div>
 						</div>
 					</div>
-
 
 					<div class="accordion">
 						<section class="accordion-row">
@@ -371,7 +374,7 @@ function card_edit_endpoint_content()
 
 						<div class="form-buttons">
 							<!-- <input type="hidden" id="_nonce" name="_nonce" value="b45be13a75"><input type="hidden" name="_wp_http_referer" value="/cuenta/actualizar-mi-tarjeta/"> <a href="https://tarjetacenturion.com/cuenta/mi-tarjeta/" class="btn btn-light">Cancelar</a> -->
-							<button type="submit" class="button btn btn-dark" name="arct_save_profile_qr" value="Guardar cambios">Guardar cambios</button>
+							<button type="submit" id="btn-actualizar" class="button btn btn-dark" name="arct_save_profile_qr" value="Guardar cambios">Guardar cambios</button>
 							<input type="hidden" name="action" value="updateVcard">
 						</div>
 
@@ -379,8 +382,9 @@ function card_edit_endpoint_content()
 					<?php endforeach; ?>
 				</form>
 			</div>
+			<script src="<?=plugins_url(basename(__DIR__))?>/assets/imagen.js"></script>
 		<?php } else {
-			echo "TE CAYO LA LEY PRRO"; }
+			echo "No tienes autorización para acceder aqui."; }
 	endif;
 
 }
