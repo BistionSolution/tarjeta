@@ -1,5 +1,5 @@
 <?php
-require 'error.php';
+// require 'error.php';
 
 function page_vcard()
 {
@@ -54,20 +54,28 @@ function page_vcard()
     </div>
 <?php
         else:
-            $atts = [
-                'message' => 'Link caído',
-                'bye' => 'Consulte con su proveedor →',
-                'href' => 'Volver a página principal'
-            ];
-            page_error($atts);
+            // $atts = [
+            //     'message' => 'Link caído',
+            //     'bye' => 'Consulte con su proveedor →',
+            //     'href' => 'Volver a página principal'
+            // ];
+            // page_error($atts);
+            global $wp_query;
+            $wp_query->set_404();
+            status_header( 404 );
+            get_template_part( 404 ); exit();
         endif;
     else:
-        $atts = [
-            'message' => 'No se encontraron resultados',
-            'bye' => 'Vuelve a',
-            'href' => 'casa campeón!'
-        ];
-        page_error($atts);
+        // $atts = [
+        //     'message' => 'No se encontraron resultados',
+        //     'bye' => 'Vuelve a',
+        //     'href' => 'casa campeón!'
+        // ];
+        // page_error($atts);
+        global $wp_query;
+        $wp_query->set_404();
+        status_header( 404 );
+        get_template_part( 404 ); exit();
     endif;
 }
     

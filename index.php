@@ -7,6 +7,7 @@ require "tarjetas.php";
 require "install.php";
 require "uninstall.php";
 require "page.php";
+require "error.php";
 require "update-vcard.php";
 
 // Este hook nos sirve cuando ativamos este fragmento de código para crear la tabla
@@ -80,4 +81,5 @@ function insert_directory($path)
 
 add_shortcode('insert_contact', 'insert_contact');
 add_shortcode('page_vcard', 'page_vcard');
+add_shortcode('page_error', 'page_error');
 // add_shortcode('insert_directory', 'insert_directory');

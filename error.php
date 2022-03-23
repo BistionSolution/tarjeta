@@ -1,5 +1,5 @@
 <?php
-function page_error($atts)
+function page_error()
 {
     ?>
     <link rel="stylesheet" href="<?=plugins_url(basename(__DIR__))?>/assets/error.css">
@@ -27,8 +27,8 @@ function page_error($atts)
             <use xlink:href="#tornillo" y="60"></use>
         </g>
         </svg>
-        <h2><?=$atts['message']?></h2>
-        <h2><?=$atts['bye']?> <a style="color: #565151;" href="<?=get_home_url()?>"><?=$atts['href']?></a></h2>
+        <h2>No se encontraron resultados</h2>
+        <h2>Vuelve a <a style="color: #565151;" href="<?=get_home_url()?>">casa campeón</a></h2>
     </div>
     <script src="<?=plugins_url(basename(__DIR__))?>/assets/error.js"></script>
     <?php

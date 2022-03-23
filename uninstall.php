@@ -22,12 +22,15 @@ function drop_directory_vcards()
 	rmdir($path_directory);     
 }
 
-function drop_directory_photos()
+function drop_directory_photos($path_directory)
 {
-	$path_directory = realpath(dirname(__FILE__) . '/../../..') . '/wp-photos';
+	if (empty($path_directory))
+	{
+		$path_directory = realpath(dirname(__FILE__) . '/../../..') . '/wp-photos';
+	}
 	foreach(glob($path_directory . "/*") as $archivos_carpeta){             
 		if (is_dir($archivos_carpeta)){
-			drop_directory_vcards($archivos_carpeta);
+			drop_directory_photos($archivos_carpeta);
 		} else {
 			unlink($archivos_carpeta);
 		}
