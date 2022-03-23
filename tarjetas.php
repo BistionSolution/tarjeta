@@ -69,15 +69,20 @@ function productos_cliente($parametros)
 							<?=do_shortcode("[kaya_qrcode content=$vcard->url_token]");?>
 						</figure>
 						<a href="<?= $href . '/card-edit/?id=' . $vcard->id_vcard ?>" class="btn btn-beige btn-block btn-sm">Actualizar datos</a>
-						<div class="qr-download">
+						<!-- <div class="qr-download">
 							<i class="fas fa-qrcode"></i> <a href="https://tarjetacenturion.com/wp-content/uploads/perfil-qr/user-qr-be8fb0c5422c0b692b08e65a490c6a1d.png" target="_blank" class="link link-light featured">Descargar QR</a>
-						</div>
+						</div> -->
 					</div>
 				</div>
 				<div class="col-8 col-right">
 					<div class="col-container">
 						<div class="content-block fullname">
-							<h3>Renzo Jesús Trujillo Mendoza</h3>
+							<h3><?php 
+							if (empty($vcard->names) || empty($vcard->last_names)){ 
+							echo 'Nombres y Apellidos';
+							 }else{
+							echo ucwords($vcard->names.' '. $vcard->last_names); }
+							?></h3>
 						</div>
 						<div class="content-block profile-lins">
 							<small class="label-small">Enlace para compartir</small>
@@ -103,12 +108,8 @@ function productos_cliente($parametros)
 										<i class="fab fa-facebook-messenger"></i> </a>
 								</li>
 								<li class="social-network whatsapp">
-									<a href="https://wa.me/?text=Ahora+tengo+mi+Tarjeta+Centuri%C3%B3n+y+puedes+descargar+mis+datos+aqu%C3%AD%3A+https%3A%2F%2Ftarjetacenturion.com%2Fu%2Fwdz37219h54v" target="_blank">
+									<a href="https://wa.me/?text=Ahora+tengo+mi+Tarjeta+Zentoc+y+puedes+descargar+mis+datos+aqu%C3%AD%3A+<?php echo $vcard->url_token?>" target="_blank">
 										<i class="fab fa-whatsapp"></i> </a>
-								</li>
-								<li class="social-network 0">
-									<a target="_blank">
-									</a>
 								</li>
 							</ul>
 						</div>
@@ -403,12 +404,12 @@ function cards_endpoint_content()
 function my_account_menu_order()
 {
 	$menuOrder = array(
+		'dashboard'          => __('Inicio', 'woocommerce'),
 		'cards'             => __('Tus tarjetas', 'woocommerce'),
 		'orders'             => __('Tus pedidos', 'woocommerce'),
-		'edit-address'       => __('Direcciones', 'woocommerce'),
 		'edit-account'    => __('Mis datos', 'woocommerce'),
-		'customer-logout'    => __('Salir', 'woocommerce'),
-		'dashboard'          => __('Inicio', 'woocommerce'),
+		'edit-address'       => __('Direcciones', 'woocommerce'),
+		'customer-logout'    => __('Salir', 'woocommerce')
 	);
 	return $menuOrder;
 }
