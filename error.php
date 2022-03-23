@@ -2,7 +2,6 @@
 function page_error()
 {
     ?>
-    <link rel="stylesheet" href="<?=plugins_url(basename(__DIR__))?>/assets/error.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee">
     <div class="err" style="padding-top: 80px; padding-bottom: 80px;">
         <svg xmlns="http://www.w3.org/2000/svg" id="robot-error" viewBox="0 0 260 118.9">
@@ -28,7 +27,7 @@ function page_error()
         </g>
         </svg>
         <h2>No se encontraron resultados</h2>
-        <h2>Vuelve a <a style="color: #565151;" href="<?=get_home_url()?>">casa campeón</a></h2>
+        <h2><a style="color: #565151;" href="<?=get_home_url()?>">Regresar</a></h2>
     </div>
     <script src="<?=plugins_url(basename(__DIR__))?>/assets/error.js"></script>
     <?php
