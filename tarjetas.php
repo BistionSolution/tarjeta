@@ -416,9 +416,12 @@ function my_account_menu_order()
 function carga_stilos()
 {
 	wp_register_style('fontawesomecss', plugin_dir_url(__FILE__) . "assets/style.css");
+	wp_register_style('estilos_404',plugin_dir_url(__FILE__) . "assets/error.css");
 	wp_enqueue_style('fontawesomecss');
+	wp_enqueue_style('estilos_404');
 }
 
 add_filter('woocommerce_account_menu_items', 'my_account_menu_order');
 add_action('wp_enqueue_scripts', 'carga_stilos');
+
 
