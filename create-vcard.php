@@ -54,7 +54,7 @@ function add_page_view_contact()
     );
 
     // Insert the post into the database
-    $newvalue = wp_insert_post($my_page);
+    // $newvalue = wp_insert_post($my_page);
 
-	update_option('view_contact', $newvalue);
+	// update_option('view_contact', $newvalue);
 }
