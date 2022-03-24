@@ -28,6 +28,7 @@
         <th>Order id</th>
         <th>Tipo de Tarjeta</th>
         <th>Url</th>
+        <th>QR</th>
     </thead>
     <tbody>
         <?php foreach ($customer_tarjets as $i) : ?>
@@ -39,8 +40,10 @@
                 echo $tipo_targeta = $wpdb->get_var("SELECT post_title FROM {$wpdb->prefix}posts where id=$id_product"); 
                 ?></td>
                 <td><?php echo $i->url_token ; ?></td>
+                <td><a href="<?=home_url() . "/qr-download/?url_token=$i->url_token"?>" target="_blank">Ir a descargar</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
-</div>      
+</div>
+    

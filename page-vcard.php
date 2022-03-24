@@ -27,7 +27,6 @@ function page_vcard()
             $tiktok = $result[0]->url_tiktok;
             $token = $result[0]->token;
             $href = home_url() . "/wp-vcards/$token.vcf";
-            $short_code_url = home_url() . "/wp-vcards/?token=$token";
         ?>        
             <div class="perfil">
                 <?php if(empty($foto)): ?> 
@@ -104,8 +103,7 @@ function page_vcard()
                             <div>TikTok</div>
                         </a>    
                     </div>
-                <?php endif; ?>             
-                
+                    <?php endif; ?>                
     </div>
                 </div>
 <?php

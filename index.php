@@ -9,6 +9,7 @@ require "delete-vcard.php";
 require "page-vcard.php";
 require "error.php";
 require "update-vcard.php";
+require "qr-download.php";
 
 // Este hook nos sirve cuando ativamos este fragmento de código para crear la tabla
 register_activation_hook(__FILE__, 'create_table_vcards');
@@ -82,4 +83,6 @@ function insert_directory($path)
 add_shortcode('insert_contact', 'insert_contact');
 add_shortcode('page_vcard', 'page_vcard');
 add_shortcode('page_error', 'page_error');
+add_shortcode('qr_download', 'qr_download');
+
 // add_shortcode('insert_directory', 'insert_directory');
