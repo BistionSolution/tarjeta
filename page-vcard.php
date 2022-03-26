@@ -26,6 +26,7 @@ function page_vcard()
             $twitter = $result[0]->url_twitter;
             $tiktok = $result[0]->url_tiktok;
             $token = $result[0]->token;
+            $per_infor = $result[0]->personal_information ;
             $href = home_url() . "/wp-vcards/$token.vcf";
         ?>        
             <div class="perfil">
@@ -69,6 +70,12 @@ function page_vcard()
                     <?php endif; ?>                
                 </div>
                  
+                <?php if(!empty($per_infor)): ?> 
+                    <div>
+                        <?= $per_infor ?>
+                    </div>
+                <?php endif; ?>
+                
                 <?php if(!empty($company_mail)): ?> 
                     <div>
                         <a class="perfil-button" href="<?= $company_mail ?>">
