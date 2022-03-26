@@ -21,6 +21,7 @@ function create_table_vcards()
 		personal_address VARCHAR(100),
 		personal_department VARCHAR(50),
 		personal_country VARCHAR(50),
+		personal_information TEXT,
 		company_name VARCHAR(100),
 		company_charge VARCHAR(100),
 		company_web VARCHAR(100),

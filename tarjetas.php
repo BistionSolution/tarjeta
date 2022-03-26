@@ -244,6 +244,12 @@ function card_edit_endpoint_content()
 											<input id="field-1-10" name="telefonoFijo" value="<?=$v->personal_telephone?>">
 										</div>
 									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-1-10">Sobre Mi</label>
+											<textarea class="form-control" id="field-1-11" rows="3" name="mi_informacion"><?=$v->personal_information?></textarea>
+										</div>
+									</div>
 								</div>
 							</div>
 

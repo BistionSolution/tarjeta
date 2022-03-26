@@ -20,6 +20,7 @@ function actualizarVcard()
     $personal_address = sanitize_text_field($_POST['direccion']);
     $personal_department = sanitize_text_field($_POST['departamento']);
     $personal_country = sanitize_text_field($_POST['pais']);
+    // $personal_information = sanitize_text_field($_POST['mi_informacion']);
     $company_name = sanitize_text_field($_POST['empresa']);
     $company_charge = sanitize_text_field($_POST['cargo']);
     $company_web = sanitize_text_field($_POST['paginaWeb']);
@@ -77,6 +78,7 @@ function actualizarVcard()
             'personal_address' => $_POST['direccion'],
             'personal_department' => $_POST['departamento'],
             'personal_country' => $_POST['pais'],
+            'personal_information' => $_POST['mi_informacion'],
             'company_name' => $_POST['empresa'],
             'company_charge' => $_POST['cargo'],
             'company_web' => $_POST['paginaWeb'],
