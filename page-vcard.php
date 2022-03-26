@@ -29,17 +29,18 @@ function page_vcard()
             $href = home_url() . "/wp-vcards/$token.vcf";
             $short_code_url = home_url() . "/wp-vcards/?token=$token";
         ?>        
-            <div class="perfil">
-                <?php if(empty($foto)): ?> 
-                    <div class="profile-img"> 
-                        <img class="img-perfil" src="<?=plugins_url(basename(__DIR__) . '/assets/img/avatar.png')?>"/>
-                    </div>
-                <?php else: ?>
-                    <div class="profile-img">
-                        <img class="profile-pic" src="<?=get_home_url() . '/' . $foto?>"/>
-                    </div>
-                <?php endif; ?>
-                <div>
+            <div class="perfil">>
+            <?php if(empty($foto)): ?> 
+                <div class="profile-img"> 
+                    <img class="img-perfil" src="<?=plugins_url(basename(__DIR__) . '/assets/img/avatar.png')?>"/>
+                </div>
+            <?php else: ?>
+                <div class="profile-img">
+                    <img class="profile-pic" src="<?=get_home_url() . '/' . $foto?>"/>
+				</div>
+
+            <?php endif; ?>
+            <div>
                     <h1><?= $nombres.' '.$apellidos?></h1>
                 </div>
                 <div>
@@ -53,21 +54,22 @@ function page_vcard()
                     </h2>
                 </div>
                 <div class="items">
-                    <?php if(!empty($company_mail)): ?> 
-                        <div class="img-icon">
-                            <a href="mailto:<?= $correo ?>"><img width="50px" src="<?=plugins_url(basename(__DIR__) . '/assets/img/mensaje.svg')?>"/></a>
-                        </div>
-                    <?php endif; ?>
-                    <?php if(!empty($company_mail)): ?> 
-                        <div class="img-icon">
-                            <a href="<?=$href?>"><img width="50px" src="<?=plugins_url(basename(__DIR__) . '/assets/img/user.svg')?>"/></a>
-                        </div>
-                    <?php endif; ?>
-                    <?php if(!empty($company_mail)): ?> 
-                        <div class="img-icon">
-                            <a href="tel:<?=$cell_phone?>"><img width="50px" src="<?=plugins_url(basename(__DIR__) . '/assets/img/cell.svg')?>"/></a> 
-                        </div>
-                    <?php endif; ?>                
+                <?php if(!empty($company_mail)): ?> 
+                    <div class="img-icon">
+                        <a href="mailto:<?= $correo ?>"><img width="50px" src="<?=plugins_url(basename(__DIR__) . '/assets/img/mensaje.svg')?>"/></a>
+                    </div>
+                <?php endif; ?>
+                <?php if(!empty($company_mail)): ?> 
+                    <div class="img-icon">
+                        <a href="<?=$href?>"><img width="50px" src="<?=plugins_url(basename(__DIR__) . '/assets/img/user.svg')?>"/></a>
+                    </div>
+                <?php endif; ?>
+                <?php if(!empty($company_mail)): ?> 
+                    <div class="img-icon">
+                        <a href="tel:<?=$cell_phone?>"><img width="50px" src="<?=plugins_url(basename(__DIR__) . '/assets/img/cell.svg')?>"/></a> 
+                    </div>
+                <?php endif; ?>                
+                    
                 </div>
                  
                 <?php if(!empty($company_mail)): ?> 
@@ -107,14 +109,13 @@ function page_vcard()
                 <?php endif; ?>
                 <?php if(!empty($company_mail)): ?> 
                     <div>
-                        <a class="perfil-button" href="<?= $tiktok ?>">
-                            <div>TikTok</div>
-                        </a>    
-                    </div>
+                    <a class="perfil-button" href="<?= $tiktok ?>">
+                        <div>TikTok</div>
+                    </a>    
+                </div>
                 <?php endif; ?>             
                 
     </div>
-                </div>
 <?php
         else:
             // $atts = [

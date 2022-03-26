@@ -65,6 +65,19 @@ function productos_cliente($parametros)
 			<div class="row block-row block-header">
 				<div class="col-4 col-left">
 					<div class="col-container">
+						<div class="col-container">
+
+                <figure class="perfil-image">
+                        <img src="https://tarjetacenturion.com/wp-content/uploads/perfil-qr/user-qr-be8fb0c5422c0b692b08e65a490c6a1d.png" alt="Perfil QR">
+                </figure>
+
+                <a href="https://tarjetacenturion.com/cuenta/actualizar-mi-tarjeta/" class="btn btn-beige btn-block btn-sm">Actualizar datos</a>
+
+                                <div class="qr-download">
+                        <i class="fas fa-qrcode"></i> <a href="https://tarjetacenturion.com/wp-content/uploads/perfil-qr/user-qr-be8fb0c5422c0b692b08e65a490c6a1d.png" target="_blank" class="link link-light featured">Descargar QR</a>
+                </div>
+                
+        </div>
 						<figure class="perfil-image">
 							<?=do_shortcode("[kaya_qrcode content=$vcard->url_token]");?>
 						</figure>
