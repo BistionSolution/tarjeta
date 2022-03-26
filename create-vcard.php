@@ -16,8 +16,8 @@ function create_table_vcards()
 		photo VARCHAR(100),
 		personal_web VARCHAR(100),
 		personal_email VARCHAR(100),
-		personal_cell_phone BIGINT,
-		personal_telephone BIGINT,
+		personal_cell_phone VARCHAR(100),
+		personal_telephone VARCHAR(100),
 		personal_address VARCHAR(100),
 		personal_department VARCHAR(50),
 		personal_country VARCHAR(50),
@@ -25,7 +25,7 @@ function create_table_vcards()
 		company_charge VARCHAR(100),
 		company_web VARCHAR(100),
 		company_mail VARCHAR(100),
-		company_cell_phone BIGINT,
+		company_cell_phone VARCHAR(100),
 		company_address VARCHAR(100),
 		company_department VARCHAR(50),
 		company_country VARCHAR(50),
@@ -43,18 +43,18 @@ function create_table_vcards()
 	dbDelta($sql);
 } 
 
-function add_page_view_contact()
-{
-    // Create post object
-    $my_page = array(
-      'post_title'    => wp_strip_all_tags('View Contact'),
-      'post_status'   => 'publish',
-      'post_author'   => 1,
-      'post_type'     => 'page'
-    );
+// function add_page_view_contact()
+// {
+//     // Create post object
+//     $my_page = array(
+//       'post_title'    => wp_strip_all_tags('View Contact'),
+//       'post_status'   => 'publish',
+//       'post_author'   => 1,
+//       'post_type'     => 'page'
+//     );
 
-    // Insert the post into the database
-    $newvalue = wp_insert_post($my_page);
+//     // Insert the post into the database
+//     $newvalue = wp_insert_post($my_page);
 
-	update_option('view_contact', $newvalue);
-}
+// 	update_option('view_contact', $newvalue);
+// }

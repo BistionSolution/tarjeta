@@ -82,15 +82,20 @@ function productos_cliente($parametros)
 							<?=do_shortcode("[kaya_qrcode content=$vcard->url_token]");?>
 						</figure>
 						<a href="<?= $href . '/card-edit/?id=' . $vcard->id_vcard ?>" class="btn btn-beige btn-block btn-sm">Actualizar datos</a>
-						<div class="qr-download">
+						<!-- <div class="qr-download">
 							<i class="fas fa-qrcode"></i> <a href="https://tarjetacenturion.com/wp-content/uploads/perfil-qr/user-qr-be8fb0c5422c0b692b08e65a490c6a1d.png" target="_blank" class="link link-light featured">Descargar QR</a>
-						</div>
+						</div> -->
 					</div>
 				</div>
 				<div class="col-8 col-right">
 					<div class="col-container">
 						<div class="content-block fullname">
-							<h3>Renzo Jesús Trujillo Mendoza</h3>
+							<h3><?php 
+							if (empty($vcard->names) & empty($vcard->last_names)){ 
+							echo 'Nombres y Apellidos';
+							 }else{
+							echo ucwords($vcard->names.' '. $vcard->last_names); }
+							?></h3>
 						</div>
 						<div class="content-block profile-lins">
 							<small class="label-small">Enlace para compartir</small>
@@ -112,16 +117,12 @@ function productos_cliente($parametros)
 							<small class="label-small">Compartir por</small>
 							<ul class="social-share-icons">
 								<li class="social-network messenger">
-									<a href="javascript:void(0)" onclick="javascript:window.open( this.dataset.href, '_blank', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600' );return false;" data-href="http://www.facebook.com/dialog/send?app_id=891268654262273&amp;redirect_uri=https%3A%2F%2Ftarjetacenturion.com%2Fu%2Fwdz37219h54v&amp;link=https%3A%2F%2Ftarjetacenturion.com%2Fu%2Fwdz37219h54v&amp;display=popup" target="_blank">
+									<a href="javascript:void(0)" onclick="javascript:window.open( this.dataset.href, '_blank', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600' );return false;" data-href="http://www.facebook.com/dialog/send?app_id=891268654262273&amp;redirect_uri=https%3A%2F%2Ftarjetacenturion.com%2Fu%2Fwdz37219h54v&amp;link=<?php echo $vcard->url_token ;?>&amp;display=popup" target="_blank">
 										<i class="fab fa-facebook-messenger"></i> </a>
 								</li>
 								<li class="social-network whatsapp">
-									<a href="https://wa.me/?text=Ahora+tengo+mi+Tarjeta+Centuri%C3%B3n+y+puedes+descargar+mis+datos+aqu%C3%AD%3A+https%3A%2F%2Ftarjetacenturion.com%2Fu%2Fwdz37219h54v" target="_blank">
+									<a href="https://wa.me/?text=Ahora+tengo+mi+Tarjeta+Zentoc+y+puedes+descargar+mis+datos+aqu%C3%AD%3A+<?php echo $vcard->url_token?>" target="_blank">
 										<i class="fab fa-whatsapp"></i> </a>
-								</li>
-								<li class="social-network 0">
-									<a target="_blank">
-									</a>
 								</li>
 							</ul>
 						</div>
@@ -234,7 +235,7 @@ function card_edit_endpoint_content()
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-1-9">Celular</label>
-											<input id="field-1-9" name="celular" value="<?=$v->personal_cell_phone?>">
+											<input id="field-1-9" name="celular" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="<?=$v->personal_cell_phone?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
@@ -284,7 +285,7 @@ function card_edit_endpoint_content()
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-2-15">Teléfono</label>
-											<input id="field-2-15" name="telefonoTrabajo" value="<?=$v->company_cell_phone?>">
+											<input id="field-2-15" name="telefonoTrabajo" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="<?=$v->company_cell_phone?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
@@ -416,12 +417,12 @@ function cards_endpoint_content()
 function my_account_menu_order()
 {
 	$menuOrder = array(
+		'dashboard'          => __('Inicio', 'woocommerce'),
 		'cards'             => __('Tus tarjetas', 'woocommerce'),
 		'orders'             => __('Tus pedidos', 'woocommerce'),
-		'edit-address'       => __('Direcciones', 'woocommerce'),
 		'edit-account'    => __('Mis datos', 'woocommerce'),
-		'customer-logout'    => __('Salir', 'woocommerce'),
-		'dashboard'          => __('Inicio', 'woocommerce'),
+		'edit-address'       => __('Direcciones', 'woocommerce'),
+		'customer-logout'    => __('Salir', 'woocommerce')
 	);
 	return $menuOrder;
 }
