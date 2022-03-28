@@ -13,12 +13,12 @@ require "qr-download.php";
 
 // Este hook nos sirve cuando ativamos este fragmento de código para crear la tabla
 register_activation_hook(__FILE__, 'create_table_vcards');
-register_activation_hook(__FILE__, 'add_page_view_contact');
+// register_activation_hook(__FILE__, 'add_page_view_contact');
 // Este hook nos sirve cuando desactivamos este fragmento de código y con esto borraremos la tabla
 register_deactivation_hook(__FILE__, 'drop_table_vcards');
 register_deactivation_hook(__FILE__, 'drop_directory_vcards');
 register_deactivation_hook(__FILE__, 'drop_directory_photos');
-register_deactivation_hook( __FILE__, 'delete_page_view_contact');
+// register_deactivation_hook( __FILE__, 'delete_page_view_contact');
 
 function insert_contact($atts)
 {
