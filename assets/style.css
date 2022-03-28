@@ -13,9 +13,15 @@
 .col-left {
     position: relative;
     background: rgb(43, 43, 43);
+ 
     padding: 2rem 2rem;
+    flex: 3;
 }
-
+.col-right{
+    padding: 2rem 2rem;
+    width: 100%;
+    flex: 5;
+}
 @media (max-width: 48em){
     #perfil-qr-page.card-view .block-row>* {
         flex: 0 0 100%;
@@ -41,7 +47,19 @@
     margin-left: 1rem;
 }
 #perfil-qr-page ul.social-share-icons li.whatsapp a {
+    position: block;
+    width: 2.3rem;
+    height: 2.3rem;
     background-color: #25d366;
+}
+#perfil-qr-page ul.social-share-icons li.messenger a {
+    width: 2.3rem;
+    height: 2.3rem;
+    background-color: #1877f2;
+}
+.fa-copy{
+    position: block;
+    padding: 5px;
 }
 #perfil-qr-page ul.social-share-icons li a {
     color: #fff;
@@ -56,9 +74,7 @@
     text-align: center;
     line-height: 2.3rem;
 }
-#perfil-qr-page ul.social-share-icons li.messenger a {
-    background-color: #1877f2;
-}
+
 #perfil-qr-page.card-view .block-row.block-header .perfil-image {
     width: 100%;
     height: 250px;
@@ -95,28 +111,29 @@
 .fa-copy{
     margin-right: 15px;
 }
-.col-right{
-    padding: 2rem 2rem;
-    
-}
+
 .col-right h3, small, ul{
     color: #000;
 }
 
+.profile-qr-links li{
+    position: relative;
+}
 #perfil-qr-page .copy-link {
+    position: relative;
     border-radius: 15px;
-    right: 0;
-    height: 60px;
     background: rgb(231, 231, 231);
-    width: 430px;
+    
+    width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; 
     padding: 0.5rem 1rem;
 }
-#perfil-qr-page .copy-link .copy-link-container{
-    position: absolute;
+.copy-link-container{
+    padding-right: 18px;
 }
+
 #perfil-qr-page ul.profile-qr-links {
     list-style: none;
     margin: 0;
@@ -124,7 +141,7 @@
 }
 
 input.user-select-all{
-    width: 380px;
+    width: 100%;
     border: 0;
 }
 
@@ -338,14 +355,18 @@ input.user-select-all{
 }
 /*MENU DE MI CUETNA*/
 .content-pro .woocommerce{
-    background: rgb(43, 43, 43);
+    position: relative;
+ 
 }
 .woocommerce-MyAccount-content{
     padding-left: 20px;
+    padding-top: 50px;
+    padding-right: 50px;
     background: #fff;
+    height: 100% !important;
 }
 .woocommerce-MyAccount-navigation {
-    background: rgb(43, 43, 43);
+    background:rgb(43, 43, 43);
     padding: 50px;
     width: 200px; /* Set a width if you like */
   }
@@ -359,12 +380,13 @@ input.user-select-all{
     border-radius: 5px;
     text-decoration: none; /* Remove underline from links */
   }
+
   
   .woocommerce-MyAccount-navigation a:hover {
     background-color: #4717f5ad; /* Dark grey background on mouse-over */
   }
   
-.woocommerce-MyAccount-navigation a.active {
-    background-color: #4717f5 !important; /* Add a green color to the "active/current" link */
-    color: white;
+.woocommerce-MyAccount-navigation a:active  {
+    background-color: #4717f5ad !important;
+    color: #4717f5ad;
   }
