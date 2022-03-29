@@ -29,7 +29,7 @@ function page_vcard()
             $per_infor = $result[0]->personal_information ;
             $href = home_url() . "/wp-vcards/$token.vcf";
         ?>        
-            <div class="perfil">>
+        <div class="perfil">
             <?php if(empty($foto)): ?> 
                 <div class="profile-img"> 
                     <img class="img-perfil" src="<?=plugins_url(basename(__DIR__) . '/assets/img/avatar.png')?>"/>
@@ -41,8 +41,8 @@ function page_vcard()
 
             <?php endif; ?>
             <div>
-                    <h1><?= $nombres.' '.$apellidos?></h1>
-                </div>
+                <h1><?= $nombres.' '.$apellidos?></h1>
+            </div>
                 <div>
                     <h2>
                         <?= $company_charge ?>
@@ -111,7 +111,8 @@ function page_vcard()
                             <div>TikTok</div>
                         </a>    
                     </div>
-                    <?php endif; ?>                
+                <?php endif; ?>                
+        </div>
     </div>
 <?php
         else:
