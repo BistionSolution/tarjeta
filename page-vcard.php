@@ -21,6 +21,7 @@ function page_vcard()
             $company_name = $result[0]->company_name;
             $company_charge = $result[0]->company_charge;
             $company_mail = $result[0]->company_mail;
+            $facebook = $result[0]->url_facebook;
             $instagram = $result[0]->url_instagram;
             $linkedin = $result[0]->url_linkedin;
             $twitter = $result[0]->url_twitter;
@@ -44,34 +45,82 @@ function page_vcard()
                 <h1><?= $nombres.' '.$apellidos?></h1>
             </div>
                 <div>
+                
                     <h2>
-                        <?= $company_charge ?>
-                    </h2>
-                </div>
-                <div>
-                    <h2>
+                        <?= $company_charge ?> de 
                         <?= $company_name ?>
                     </h2>
                 </div>
+
                 <div class="items">
                     <?php if(!empty($correo)): ?> 
                         <div class="img-icon">
-                            <a href="mailto:<?= $correo ?>"><img width="50px" src="<?=plugins_url(basename(__DIR__) . '/assets/img/mensaje.svg')?>"/></a>
+                            <a href="mailto:<?= $correo ?>"><i class="fa fa-envelope"></i></a>
                         </div>
                     <?php endif; ?>
                     <?php if(!empty($href)): ?> 
                         <div class="img-icon">
-                            <a href="<?=$href?>"><img width="50px" src="<?=plugins_url(basename(__DIR__) . '/assets/img/user.svg')?>"/></a>
+                            <a href="<?=$href?>"><i class="fa fa-address-book"></i></a>
                         </div>
                     <?php endif; ?>
                     <?php if(!empty($cell_phone)): ?> 
                         <div class="img-icon">
-                            <a href="tel:<?=$cell_phone?>"><img width="50px" src="<?=plugins_url(basename(__DIR__) . '/assets/img/cell.svg')?>"/></a> 
+                            <a href="tel:<?=$cell_phone?>"><i class="fa fa-phone"></i></a> 
                         </div>
                     <?php endif; ?>                
                 </div>
+                
+                <div>
+                    <h2>Redes Sociales</h2>
+                </div>
+                <div class="redes-sociales">
+                    <?php if(!empty($facebook)): ?> 
+                        <div>
+                            <a class="perfil-button" href="<?= $instagram ?>">
+                                
+                                <i class="fab fa-facebook"></i>
+                            </a>    
+                        </div>
+                    <?php endif; ?>
+                    <?php if(!empty($instagram)): ?> 
+                        <div>
+                            <a class="perfil-button" href="<?= $instagram ?>">
+                                
+                                <i class="fab fa-instagram"></i>
+                            </a>    
+                            
+                        </div>
+                    <?php endif; ?>
+                    <?php if(!empty($linkedin)): ?> 
+                        <div>
+                            <a class="perfil-button" href="<?= $linkedin ?>">
+                                
+                                <i class="fab fa-linkedin"></i>
+                            </a>    
+                        </div>
+                    <?php endif; ?>
+                    <?php if(!empty($twitter)): ?> 
+                        <div>
+                            <a class="perfil-button" href="<?= $twitter ?>">
+                                
+                                <i class="fab fa-twitter"></i>
+                            </a>    
+                        </div>
+                    <?php endif; ?>
+                    <?php if(!empty($tiktok)): ?> 
+                        <div>
+                            <a class="perfil-button" href="<?= $tiktok ?>">
+                                
+                                <i class="fab fa-tiktok"></i>
+                            </a>    
+                        </div>
+                    <?php endif; ?>  
+                </div>
                  
                 <?php if(!empty($per_infor)): ?> 
+                    <div>
+                        <h2>Sobre mí</h2>
+                    </div>
                     <div>
                         <?= $per_infor ?>
                     </div>
@@ -82,36 +131,10 @@ function page_vcard()
                         <a class="perfil-button" href="<?= $company_mail ?>">
                             Correo corporativo
                         </a>
+    
                     </div>
                 <?php endif; ?>
-                <?php if(!empty($instagram)): ?> 
-                    <div>
-                        <a class="perfil-button" href="<?= $instagram ?>">
-                            <div>Instagram</div>
-                        </a>    
-                    </div>
-                <?php endif; ?>
-                <?php if(!empty($linkedin)): ?> 
-                    <div>
-                        <a class="perfil-button" href="<?= $linkedin ?>">
-                            <div>Linkedin</div>
-                        </a>    
-                    </div>
-                <?php endif; ?>
-                <?php if(!empty($twitter)): ?> 
-                    <div>
-                        <a class="perfil-button" href="<?= $twitter ?>">
-                            <div>Twitter</div>
-                        </a>    
-                    </div>
-                <?php endif; ?>
-                <?php if(!empty($tiktok)): ?> 
-                    <div>
-                        <a class="perfil-button" href="<?= $tiktok ?>">
-                            <div>TikTok</div>
-                        </a>    
-                    </div>
-                <?php endif; ?>                
+                              
         </div>
     </div>
 <?php
