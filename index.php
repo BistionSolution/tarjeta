@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Mis tarjetas
- * Version: 3.0.0
+ * Version: 4.2.0
  */
 
 require "tarjetas.php";
