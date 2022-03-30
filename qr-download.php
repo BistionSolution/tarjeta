@@ -3,8 +3,14 @@
 function qr_download()
 {
     ?><div class="wrap"><?php
-    if(isset($_GET['url_token']) && !empty($_GET['url_token'])): 
+    if(isset($_GET['url_token']) && !empty($_GET['url_token'])):
+        global $wpdb; 
         $url_token = sanitize_text_field($_GET['url_token']);
+        $table_name = $wpdb->prefix . "vcards";        
+        $sql = "SELECT * FROM $table_name WHERE url_token='$url_token'";
+        $wpdb->query($sql);
+        $result = $wpdb->last_result;
+        if (!empty($result)):
         ?>        
         <?php echo do_shortcode("[kaya_qrcode content=$url_token]"); ?>
         <a href="#" id="content-qr-download" onclick="downloadqr()">Descargar QR</a>
@@ -24,6 +30,12 @@ function qr_download()
         }
     </script>
 <?php
+    else:
+        global $wp_query;
+        $wp_query->set_404();
+        status_header( 404 );
+        get_template_part( 404 ); exit();
+    endif;
     else:
         global $wp_query;
         $wp_query->set_404();
