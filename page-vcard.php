@@ -16,6 +16,7 @@ function page_vcard()
             $foto =$result[0]->photo;
             $nombres = $result[0]->names;
             $apellidos = $result[0]->last_names;
+            $personal_phone =$result[0]->personal_cell_phone;
             $cell_phone = $result[0]->company_cell_phone;
             $correo = $result[0]->personal_email;
             $company_name = $result[0]->company_name;
@@ -55,13 +56,20 @@ function page_vcard()
             <?php endif; ?>
             
                 <div>
-                
-                    <h2>
-                        <?= $company_charge ?> de 
-                        <?= $company_name ?>
-                    </h2>
+
+                    <?php if(!empty($company_charge)): ?> 
+                        <h2>
+                            <?= $company_charge ?> de 
+                            <?= $company_name ?>
+                        </h2>
+                    <?php else: ?>
+                        <h2>
+                            <?= $company_name ?>
+                        </h2>
+                    <?php endif; ?>
+                    
                     <?php if(!empty($correo)): ?> 
-                        <div class="img-icon">
+                        <div class="img-icon mail">
                             <a href="mailto:<?= $correo ?>"><i class="fa fa-envelope"></i> <?= $correo ?></a>
                         </div>
                     <?php endif; ?>
@@ -76,7 +84,7 @@ function page_vcard()
                     <?php endif; ?>
                     <?php if(!empty($cell_phone)): ?> 
                         <div class="img-icon cell">
-                            <a href="tel:<?=$cell_phone?>"><i class="fa fa-phone"></i></a> 
+                            <a href="tel:<?=$personal_phone?>"><i class="fa fa-phone"></i></a> 
                         </div>
                     <?php endif; ?>                
                 </div>
@@ -160,7 +168,7 @@ function page_vcard()
             global $wp_query;
             $wp_query->set_404();
             status_header( 404 );
-            // get_template_part( 404 ); exit();
+            get_template_part( 404 ); exit();
         endif;
     else:
         // $atts = [
@@ -172,7 +180,7 @@ function page_vcard()
         global $wp_query;
         $wp_query->set_404();
         status_header( 404 );
-        // get_template_part( 404 ); exit();
+        get_template_part( 404 ); exit();
     endif;
 }
     

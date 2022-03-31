@@ -270,10 +270,13 @@ input.user-select-all{
 
 /*CSS PAGINA PERFIL ENLACES*/
 .perfil-vcard{
-    background: #eeeeeed8;
+    background: #f8f8f8;
 }
 .wrap .contenido{
     padding: 15px;
+}
+.wrap .mail a{
+    color: #000;
 }
 .wrap .perfil{
     text-align: left;
@@ -308,6 +311,7 @@ input.user-select-all{
     margin-bottom: 1.5rem;
     margin-top: 1.5rem;
     text-align: center;
+    
 }
 .items .cell i{
     background: rgba(255, 255, 255, 0.5);
@@ -322,18 +326,21 @@ input.user-select-all{
     width: 55px;
     height: 55px;
     font-size: 16px;
-    padding: 15px 15px;
+    padding: 17px 17px;
     margin-bottom: .5rem;
 }
 .items .vcard{
     position: relative;
     float: left;
 }
+.items .vcard a{
+    color: #000;
+} 
 .items .vcard i{
     background: rgba(255, 255, 255, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 5px;
-        
+    color: #000;
     backdrop-filter: blur(5px);
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1) !important;
     border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
@@ -341,7 +348,7 @@ input.user-select-all{
     width: 100%;
     height: 55px;
     font-size: 16px;
-    padding: 15px 15px;
+    padding: 17px 17px;
 
 }
 .wrap .profile-img img {
@@ -357,6 +364,8 @@ input.user-select-all{
     object-position: center;
 }
 .wrap .redes-sociales{
+    padding-top: 5px;
+    padding-bottom: 15px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
