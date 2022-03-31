@@ -33,7 +33,7 @@ function page_vcard()
         <div class="perfil">
             <?php if(empty($foto)): ?> 
                 <div class="profile-img"> 
-                    <img class="img-perfil" src="<?=plugins_url(basename(__DIR__) . '/assets/img/avatar.png')?>"/>
+                    <img class="img-perfil" src="<?=plugins_url(basename(__DIR__) . '/assets/img/ZENTOC-perfil.png')?>"/>
                 </div>
             <?php else: ?>
                 <div class="profile-img">
@@ -41,30 +41,41 @@ function page_vcard()
 				</div>
 
             <?php endif; ?>
-            <div>
-                <h1><?= $nombres.' '.$apellidos?></h1>
-            </div>
+            <div class="contenido">
+
+            
+            <?php if(empty($nombres) && empty($apellidos)): ?> 
+                <div class="names">
+                    <h1>Nombres y apellidos</h1>
+                </div>
+            <?php else: ?>
+                <div class="names">
+                    <h1><?= $nombres.' '.$apellidos?></h1>
+                </div>
+            <?php endif; ?>
+            
                 <div>
                 
                     <h2>
                         <?= $company_charge ?> de 
                         <?= $company_name ?>
                     </h2>
+                    <?php if(!empty($correo)): ?> 
+                        <div class="img-icon">
+                            <a href="mailto:<?= $correo ?>"><i class="fa fa-envelope"></i> <?= $correo ?></a>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
                 <div class="items">
-                    <?php if(!empty($correo)): ?> 
-                        <div class="img-icon">
-                            <a href="mailto:<?= $correo ?>"><i class="fa fa-envelope"></i></a>
-                        </div>
-                    <?php endif; ?>
+                    
                     <?php if(!empty($href)): ?> 
-                        <div class="img-icon">
-                            <a href="<?=$href?>"><i class="fa fa-address-book"></i></a>
+                        <div class="img-icon vcard">
+                            <a href="<?=$href?>"><i class="fa fa-address-book"> Vcard</i> </a>
                         </div>
                     <?php endif; ?>
                     <?php if(!empty($cell_phone)): ?> 
-                        <div class="img-icon">
+                        <div class="img-icon cell">
                             <a href="tel:<?=$cell_phone?>"><i class="fa fa-phone"></i></a> 
                         </div>
                     <?php endif; ?>                
@@ -116,11 +127,11 @@ function page_vcard()
                         </div>
                     <?php endif; ?>  
                 </div>
-                 
-                <?php if(!empty($per_infor)): ?> 
-                    <div>
+                <div>
                         <h2>Sobre mí</h2>
                     </div>
+                <?php if(!empty($per_infor)): ?> 
+                    
                     <div>
                         <?= $per_infor ?>
                     </div>
@@ -134,6 +145,7 @@ function page_vcard()
     
                     </div>
                 <?php endif; ?>
+            </div>
                               
         </div>
     </div>
