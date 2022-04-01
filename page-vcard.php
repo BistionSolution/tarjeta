@@ -22,6 +22,7 @@ function page_vcard()
             $company_charge = $result[0]->company_charge;
             $company_mail = $result[0]->company_mail;
             $facebook = $result[0]->url_facebook;
+            $youtube = $result[0]->url_youtube;
             $instagram = $result[0]->url_instagram;
             $linkedin = $result[0]->url_linkedin;
             $twitter = $result[0]->url_twitter;
@@ -76,9 +77,17 @@ function page_vcard()
                 <div class="redes-sociales">
                     <?php if(!empty($facebook)): ?> 
                         <div>
-                            <a class="perfil-button" href="<?= $instagram ?>">
+                            <a class="perfil-button" href="<?= $facebook ?>">
                                 
                                 <i class="fab fa-facebook"></i>
+                            </a>    
+                        </div>
+                    <?php endif; ?>
+                    <?php if(!empty($youtube)): ?> 
+                        <div>
+                            <a class="perfil-button" href="<?= $youtube ?>">
+                                
+                                <i class="fab fa-youtube"></i>
                             </a>    
                         </div>
                     <?php endif; ?>

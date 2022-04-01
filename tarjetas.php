@@ -355,6 +355,12 @@ function card_edit_endpoint_content()
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
+											<label for="field-4-22">Youtube</label>
+											<input id="field-4-22" name="youtube" value="<?=$v->url_youtube?>">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
 											<label for="field-4-23">Instagram</label>
 											<input id="field-4-23" name="instagram" value="<?=$v->url_instagram?>">
 										</div>

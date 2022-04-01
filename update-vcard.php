@@ -30,6 +30,7 @@ function actualizarVcard()
     $company_department = sanitize_text_field($_POST['departamentoTrabajo']);
     $company_country = sanitize_text_field($_POST['paisTrabajo']);
     $url_facebook = sanitize_text_field($_POST['facebook']);
+    $url_youtube = sanitize_text_field($_POST['youtube']);
     $url_instagram = sanitize_text_field($_POST['instagram']);
     $url_linkedin = sanitize_text_field($_POST['linkedin']);
     $url_twitter = sanitize_text_field($_POST['twitter']);
@@ -88,6 +89,7 @@ function actualizarVcard()
             'company_department' => $_POST['departamentoTrabajo'],
             'company_country' => $_POST['paisTrabajo'],
             'url_facebook' => $_POST['facebook'],
+            'url_youtube' => $_POST['youtube'],
             'url_instagram' => $_POST['instagram'],
             'url_linkedin' => $_POST['linkedin'],
             'url_twitter' => $_POST['twitter'],
@@ -143,6 +145,7 @@ function actualizarVcard()
         $content .= "URL:$personal_web\r\n";
         $content .= "URL;WORK:$company_web\r\n";
         $content .= "URL;TYPE=Facebook;CHARSET=UTF-8:$url_facebook\r\n";
+        $content .= "URL;TYPE=Youtube;CHARSET=UTF-8:$url_youtube\r\n";
         $content .= "URL;TYPE=Instagram;CHARSET=UTF-8:$url_instagram\r\n";
         $content .= "URL;TYPE=LinkedIn;CHARSET=UTF-8:$url_linkedin\r\n";
         $content .= "URL;TYPE=Twitter;CHARSET=UTF-8:$url_twitter\r\n";
