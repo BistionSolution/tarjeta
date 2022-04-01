@@ -270,10 +270,15 @@ input.user-select-all{
 
 /*CSS PAGINA PERFIL ENLACES*/
 .perfil-vcard{
-    background: #f8f8f8d8;
+    background: #f8f8f8;
+}
+.wrap .contenido{
+    padding: 15px;
+}
+.wrap .mail a{
+    color: #000;
 }
 .wrap .perfil{
-    display: block;
     text-align: left;
 }
 .wrap h1{
@@ -283,6 +288,9 @@ input.user-select-all{
 .wrap h2{
     color: #000;
     font-size: 20px;
+}
+.wrap .names{
+    margin-top: 5px;
 }
 
 .wrap .profile-img {
@@ -299,23 +307,48 @@ input.user-select-all{
     width: 100%;
     height: 60px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 4fr 1fr;
     margin-bottom: 1.5rem;
     margin-top: 1.5rem;
     text-align: center;
+    
 }
-.items .img-icon i{
-    background: rgba(255, 255, 255, 0.1);
+.items .cell i{
+    background: rgba(255, 255, 255, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 50%;
-    
-    
+    color:#000;    
     backdrop-filter: blur(5px);
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1) !important;
     border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     width: 55px;
     height: 55px;
+    font-size: 16px;
+    padding: 17px 17px;
+    margin-bottom: .5rem;
+}
+.items .vcard{
+    position: relative;
+    float: left;
+}
+.items .vcard a{
+    color: #000;
+} 
+.items .vcard i{
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    color: #000;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+    height: 55px;
+    font-size: 16px;
+    padding: 17px 17px;
+
 }
 .wrap .profile-img img {
     display: block;
@@ -330,18 +363,21 @@ input.user-select-all{
     object-position: center;
 }
 .wrap .redes-sociales{
+    padding-top: 5px;
+    padding-bottom: 15px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
-.perfil-button{
+.redes-sociales div{
     /* position: absolute; */
-    height: 80px;
 
+    
+    text-align: center;
 }
 .perfil-button i{
     /* position: absolute; */
 
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     backdrop-filter: blur(5px);
