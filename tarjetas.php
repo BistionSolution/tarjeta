@@ -79,6 +79,10 @@ function productos_cliente($parametros)
 				<div class="col-8 col-right">
 					<div class="col-container">
 						<div class="content-block fullname">
+							<h3>
+								Tipo: <?php  echo $wpdb->get_var("SELECT post_title FROM {$wpdb->prefix}posts where id=$vcard->product_id"); 
+							?>
+							</h3>
 							<h3><?php 
 							if (empty($vcard->names) & empty($vcard->last_names)){ 
 							echo 'Nombres y Apellidos';
