@@ -46,7 +46,7 @@ function page_vcard()
             <?php endif; ?>
 
             <?php if(empty($foto_business)): ?> 
-                <div class="profile-img"> 
+                <div class="img-business"> 
                     <img class="img-perfil" src="<?=plugins_url(basename(__DIR__) . '/assets/img/ZENTOC-perfil.png')?>"/>
                 </div>
             <?php else: ?>
