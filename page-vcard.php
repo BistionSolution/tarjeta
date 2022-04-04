@@ -96,7 +96,7 @@ function page_vcard()
                             <a href="<?=$href?>"><i class="fa fa-address-book"> Vcard</i> </a>
                         </div>
                     <?php endif; ?>
-                    <?php if(!empty($cell_phone)): ?> 
+                    <?php if(!empty($personal_phone)): ?> 
                         <div class="img-icon cell">
                             <a href="tel:<?=$personal_phone?>"><i class="fa fa-phone"></i></a> 
                         </div>
