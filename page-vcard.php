@@ -14,6 +14,7 @@ function page_vcard()
         // Si es una token válido
         if (!empty($result)):
             $foto =$result[0]->photo;
+            $foto_business =$result[0]->photo_business;
             $nombres = $result[0]->names;
             $apellidos = $result[0]->last_names;
             $personal_phone =$result[0]->personal_cell_phone;
@@ -43,6 +44,18 @@ function page_vcard()
 				</div>
 
             <?php endif; ?>
+
+            <?php if(empty($foto_business)): ?> 
+                <div class="profile-img"> 
+                    <img class="img-perfil" src="<?=plugins_url(basename(__DIR__) . '/assets/img/ZENTOC-perfil.png')?>"/>
+                </div>
+            <?php else: ?>
+                <div class="profile-img">
+                    <img class="profile-pic" src="<?=get_home_url() . '/' . $foto_business?>"/>
+				</div>
+
+            <?php endif; ?>
+
             <div class="contenido">
 
             
