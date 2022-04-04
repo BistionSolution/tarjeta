@@ -275,6 +275,10 @@ input.user-select-all{
 .wrap .contenido{
     padding: 25px 15px 15px 15px;
 }
+.wrap .contenido .names{
+    padding-right: 120px;
+}
+
 .wrap .mail a{
     color: #000;
 }
@@ -283,11 +287,11 @@ input.user-select-all{
 }
 .wrap h1{
     color: #000;
-    font-size: 35px;
+    font-size: 25px;
 }
 .wrap h2{
     color: #000;
-    font-size: 20px;
+    font-size: 18px;
 }
 .wrap .names{
     margin-top: 5px;
@@ -368,8 +372,8 @@ input.user-select-all{
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border: 0.4rem solid #fff;
     background-color: #F1AC89;
     overflow: hidden;
