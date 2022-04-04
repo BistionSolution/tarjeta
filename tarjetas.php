@@ -166,19 +166,38 @@ function card_edit_endpoint_content()
 						<p class="text-muted">Agrega la información que quieras compartir cuando escaneen tu tarjeta. Puedes actualizarla cada vez que lo requieras.</p>
 					</header>
 
-					<div class="profile-img-container">
-						<div class="profile-img">
-							<div id="preview">
-								<img class="profile-pic" src="<?=get_home_url().'/'.$v->photo?>">
+					<div class="profile-img" style="display: flex; justify-content:space-around">
+						
+						<div class="profile-img-container">
+							<p>Vcard</p>
+							<div class="profile-img">
+								<div id="preview">
+									<img class="profile-pic" src="<?=get_home_url().'/'.$v->photo?>">
+								</div>
+							</div>
+							<div class="profile-button">
+								<i class="fa fa-camera upload-button"></i>
+								<input class="file-upload" id="file_img" type="file" accept="image/png, image/jpeg, image/jpg" name="foto" multiple>
+								<div id="text-img"  style="width: 300px;"></div>
 							</div>
 						</div>
-						<div class="profile-button">
-							<i class="fa fa-camera upload-button"></i>
-							<input class="file-upload" id="file_img" type="file" accept="image/png, image/jpeg, image/jpg" name="foto" multiple>
-							<div id="preview"></div>
-							<div id="text-img"  style="width: 300px;"></div>
+
+
+						<div class="profile-img-container">
+							<p>Logo</p>
+							<div class="profile-img">
+								<div id="preview_business">
+									<img class="profile-pic" src="<?=get_home_url().'/'.$v->photo_business?>">
+								</div>
+							</div>
+							<div class="profile-button">
+								<i class="fa fa-camera upload-button"></i>
+								<input class="file-upload" id="file_img_business" type="file" accept="image/png, image/jpeg, image/jpg" name="foto_business" multiple>
+								<div id="text-img-business"  style="width: 300px;"></div>
+							</div>
 						</div>
 					</div>
+
 
 					<div class="accordion">
 						<section class="accordion-row">

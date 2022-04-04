@@ -7,6 +7,7 @@ function actualizarVcard()
     $id_tarje = $_POST['identificador'];
     $token = $wpdb->get_var("SELECT token FROM {$wpdb->prefix}vcards where id_vcard='$id_tarje'");
     $file_photo = $wpdb->get_var("SELECT photo FROM {$wpdb->prefix}vcards where id_vcard='$id_tarje'");
+    $file_photo_business = $wpdb->get_var("SELECT photo_business FROM {$wpdb->prefix}vcards where id_vcard='$id_tarje'");
     // $url_photo = get_home_url().'/'.$photo;
     
     $names = sanitize_text_field($_POST['nombres']);
@@ -98,6 +99,27 @@ function actualizarVcard()
         $content = "BEGIN:VCARD\r\n";
         $content .= "VERSION:3.0\r\n";
         $content .= "CLASS:PUBLIC\r\n";
+
+
+        // Se ha insertado un archivo
+        if (!empty($_FILES["foto_business"]["tmp_name"])) 
+        {
+            // Si ya hay foto previa almacenada en la BD y se está actualizando la foto
+            if(!empty($file_photo_business)){
+                // Borramos la foto anterior
+                $path_directory_photo = realpath(dirname(__FILE__) . '/../../..');
+                unlink($path_directory_photo . '/' . $file_photo_business);
+            }
+            $nombre_img_business = $_FILES['foto_business']['name'];
+            $photo_business = $_FILES["foto_business"]["tmp_name"];
+            $imgSubida_business = $path_directory."/$carpeta_user/$id_tarje-business-$nombre_img_business";
+            $imgCarpetaBusiness =  "wp-photos/$carpeta_user/$id_tarje-business-$nombre_img_business";
+            move_uploaded_file($photo_business,$imgSubida_business);
+            // $binarioImagen = fread($imgSubida, $tamano);
+            $ar['photo_business'] = $imgCarpetaBusiness;
+        }
+
+
         // Se ha insertado un archivo
         if (!empty($_FILES["foto"]["tmp_name"])) 
         {
@@ -156,7 +178,7 @@ function actualizarVcard()
         $file = fopen($path_directory . "/$token.vcf", 'w');
         fwrite($file, $content);
         fclose($file);
-
+        var_dump($ar);
         $wpdb->update(
             $wpdb->prefix . 'vcards',
             $ar,
