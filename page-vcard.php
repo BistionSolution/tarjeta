@@ -50,7 +50,7 @@ function page_vcard()
                     <img class="img-perfil" src="<?=plugins_url(basename(__DIR__) . '/assets/img/ZENTOC-perfil.png')?>"/>
                 </div>
             <?php else: ?>
-                <div class="profile-img">
+                <div class="img-business">
                     <img class="profile-pic" src="<?=get_home_url() . '/' . $foto_business?>"/>
 				</div>
 
