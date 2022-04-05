@@ -449,21 +449,37 @@ input.user-select-all{
 /*MENU DE MI CUETNA*/
 .content-pro .woocommerce{
     position: relative;
+    overflow: hidden;
  
 }
 .woocommerce-MyAccount-content{
     padding-left: 20px;
     padding-top: 50px;
     padding-right: 50px;
+    padding-bottom: 50px;
     background: #fff;
     height: 100% !important;
 }
 .woocommerce-MyAccount-navigation {
+    display: block;
+    position: relative;
     background:rgb(43, 43, 43);
+  
     padding: 50px;
+    
     width: 200px; /* Set a width if you like */
   }
-  
+  .woocommerce-MyAccount-navigation::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100% !important;
+    height: 2000px;
+    
+    background:rgb(43, 43, 43);
+    z-index: -1;
+  }
+
   .woocommerce-MyAccount-navigation a {
     background-color: #4717f5; /* Grey background color */
     color: #fff; /* Black text color */
@@ -473,6 +489,7 @@ input.user-select-all{
     border-radius: 5px;
     text-decoration: none; /* Remove underline from links */
   }
+
 
   
   .woocommerce-MyAccount-navigation a:hover {
