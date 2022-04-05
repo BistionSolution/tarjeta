@@ -29,6 +29,8 @@ function page_vcard()
             $linkedin = $result[0]->url_linkedin;
             $twitter = $result[0]->url_twitter;
             $calendly = $result[0]->calendly;
+            $opensea = $result[0]->opensea;
+            $metamask = $result[0]->metamask;
             $tiktok = $result[0]->url_tiktok;
             $token = $result[0]->token;
             $per_infor = $result[0]->personal_information ;
@@ -165,12 +167,27 @@ function page_vcard()
                             </a>    
                         </div>
                     <?php endif; ?> 
+                    <?php if(!empty($opensea)): ?> 
+                        <div>
+                            <a class="perfil-button" href="<?= $opensea ?>">Opensea
+                                
+                            <!-- <i class="fab fa-tiktok"></i> -->
+                            </a>    
+                        </div>
+                    <?php endif; ?> 
+                    <?php if(!empty($metamask)): ?> 
+                        <div>
+                            <a class="perfil-button" href="<?= $metamask ?>">Metamask
+                                
+                            <!-- <i class="fab fa-tiktok"></i> -->
+                            </a>    
+                        </div>
+                    <?php endif; ?> 
                 </div>
                 <div>
-                        <h2>Sobre mí</h2>
-                    </div>
-                <?php if(!empty($per_infor)): ?> 
-                    
+                    <h2>Sobre mí</h2>
+                </div>
+                <?php if(!empty($per_infor)): ?>                    
                     <div>
                         <?= $per_infor ?>
                     </div>
@@ -180,8 +197,7 @@ function page_vcard()
                     <div>
                         <a class="perfil-button" href="<?= $company_mail?>">
                             Correo corporativo
-                        </a>
-    
+                        </a>    
                     </div>
                 <?php endif; ?>
             </div>
