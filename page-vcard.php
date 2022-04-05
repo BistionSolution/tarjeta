@@ -28,6 +28,7 @@ function page_vcard()
             $instagram = $result[0]->url_instagram;
             $linkedin = $result[0]->url_linkedin;
             $twitter = $result[0]->url_twitter;
+            $calendly = $result[0]->calendly;
             $tiktok = $result[0]->url_tiktok;
             $token = $result[0]->token;
             $per_infor = $result[0]->personal_information ;
@@ -112,7 +113,7 @@ function page_vcard()
                             <a class="perfil-button" href="<?= $facebook ?>">
                                 
                                 <i class="fab fa-facebook"></i>
-                            </a>    
+                            </a>   
                         </div>
                     <?php endif; ?>
                     <?php if(!empty($youtube)): ?> 
@@ -156,6 +157,14 @@ function page_vcard()
                             </a>    
                         </div>
                     <?php endif; ?>  
+                    <?php if(!empty($calendly)): ?> 
+                        <div>
+                            <a class="perfil-button" href="<?= $calendly ?>">Calendly
+                                
+                            <!-- <i class="fab fa-tiktok"></i> -->
+                            </a>    
+                        </div>
+                    <?php endif; ?> 
                 </div>
                 <div>
                         <h2>Sobre mí</h2>
@@ -169,7 +178,7 @@ function page_vcard()
                 
                 <?php if(!empty($company_mail)): ?> 
                     <div>
-                        <a class="perfil-button" href="<?= $company_mail ?>">
+                        <a class="perfil-button" href="<?= $company_mail?>">
                             Correo corporativo
                         </a>
     

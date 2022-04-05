@@ -89,6 +89,7 @@ function actualizarVcard()
             'company_address' => $_POST['direccionTrabajo'],
             'company_department' => $_POST['departamentoTrabajo'],
             'company_country' => $_POST['paisTrabajo'],
+            'calendly' => $_POST['calendly'],
             'url_facebook' => $_POST['facebook'],
             'url_youtube' => $_POST['youtube'],
             'url_instagram' => $_POST['instagram'],

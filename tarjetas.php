@@ -406,6 +406,12 @@ function card_edit_endpoint_content()
 											<input id="field-4-26" name="tiktok" value="<?=$v->url_tiktok?>">
 										</div>
 									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-4-26">Calendly</label>
+											<input id="field-4-26" name="calendly" value="<?=$v->calendly?>">
+										</div>
+									</div>
 								</div>
 							</div>
 						</section>
