@@ -36,6 +36,9 @@ function actualizarVcard()
     $url_linkedin = sanitize_text_field($_POST['linkedin']);
     $url_twitter = sanitize_text_field($_POST['twitter']);
     $url_tiktok = sanitize_text_field($_POST['tiktok']);
+    $calendly = sanitize_text_field($_POST['calendly']);
+    $opensea = sanitize_text_field($_POST['opensea']);
+    $metamask = sanitize_text_field($_POST['metamask']);
 
     $carpeta_user = get_current_user_id();
     $path_directory = realpath(dirname(__FILE__) . '/../../..') . '/wp-photos';
@@ -90,6 +93,8 @@ function actualizarVcard()
             'company_department' => $_POST['departamentoTrabajo'],
             'company_country' => $_POST['paisTrabajo'],
             'calendly' => $_POST['calendly'],
+            'opensea' => $_POST['opensea'],
+            'metamask' => $_POST['metamask'],
             'url_facebook' => $_POST['facebook'],
             'url_youtube' => $_POST['youtube'],
             'url_instagram' => $_POST['instagram'],
@@ -173,6 +178,9 @@ function actualizarVcard()
         $content .= "URL;TYPE=LinkedIn;CHARSET=UTF-8:$url_linkedin\r\n";
         $content .= "URL;TYPE=Twitter;CHARSET=UTF-8:$url_twitter\r\n";
         $content .= "URL;TYPE=Tiktok;CHARSET=UTF-8:$url_tiktok\r\n";
+        $content .= "URL;TYPE=Calendly;CHARSET=UTF-8:$calendly\r\n";
+        $content .= "URL;TYPE=Opensea;CHARSET=UTF-8:$opensea\r\n";
+        $content .= "URL;TYPE=Metamask;CHARSET=UTF-8:$metamask\r\n";
         $content .= "END:VCARD\r\n";
 
         $path_directory = realpath(dirname(__FILE__) . '/../../..') . '/wp-vcards';

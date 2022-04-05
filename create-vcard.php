@@ -32,6 +32,8 @@ function create_table_vcards()
 		company_department VARCHAR(50),
 		company_country VARCHAR(50),
 		calendly VARCHAR(200),
+		opensea VARCHAR(200),
+		metamask VARCHAR(200),
 		url_token VARCHAR(200),
 		url_facebook VARCHAR(200),
 		url_youtube VARCHAR(200),

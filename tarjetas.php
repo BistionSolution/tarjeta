@@ -412,6 +412,18 @@ function card_edit_endpoint_content()
 											<input id="field-4-26" name="calendly" value="<?=$v->calendly?>">
 										</div>
 									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-4-26">Opensea</label>
+											<input id="field-4-26" name="opensea" value="<?=$v->opensea?>">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-4-26">Metamask</label>
+											<input id="field-4-26" name="metamask" value="<?=$v->metamask?>">
+										</div>
+									</div>
 								</div>
 							</div>
 						</section>
