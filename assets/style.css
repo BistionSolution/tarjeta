@@ -464,7 +464,7 @@ input.user-select-all{
     position: relative;
     overflow: hidden;
 }
-.woocommerce-MyAccount-content{
+.content-pro .woocommerce-MyAccount-content{
     padding-left: 20px;
     padding-top: 50px;
     padding-right: 50px;
