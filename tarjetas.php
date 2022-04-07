@@ -166,10 +166,10 @@ function card_edit_endpoint_content()
 						<p class="text-muted">Agrega la información que quieras compartir cuando escaneen tu tarjeta. Puedes actualizarla cada vez que lo requieras.</p>
 					</header>
 
-					<div class="profile-img" style="display: flex; justify-content:space-around">
+					<div class="profile-img discard-pro" >
 						
 						<div class="profile-img-container">
-							<p>Vcard</p>
+							<p>Foto perfil</p>
 							<div class="profile-img">
 								<div id="preview">
 									<img class="profile-pic" src="<?=get_home_url().'/'.$v->photo?>">
@@ -184,7 +184,7 @@ function card_edit_endpoint_content()
 
 
 						<div class="profile-img-container">
-							<p>Logo</p>
+							<p>Foto logo</p>
 							<div class="profile-img">
 								<div id="preview_business">
 									<img class="profile-pic" src="<?=get_home_url().'/'.$v->photo_business?>">
@@ -412,6 +412,19 @@ function card_edit_endpoint_content()
 											<input id="field-4-26" name="calendly" value="<?=$v->calendly?>">
 										</div>
 									</div>
+									
+								</div>
+							</div>
+						</section>
+
+						<section class="accordion-row">
+
+							<header id="field-group-3-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-3" aria-expanded="false" aria-controls="field-group-3">
+								<h6 class="title">Web 3</h6>
+								<span class="icon"><i class="fas fa-plus"></i></span>
+							</header>
+							<div id="field-group-3" class="accordion-content collapse " aria-labelledby="field-group-3-heading" data-parent="#perfil-qr-form">
+								<div class="row row-fields row-form-container">
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-4-26">Opensea</label>
@@ -426,6 +439,7 @@ function card_edit_endpoint_content()
 									</div>
 								</div>
 							</div>
+
 						</section>
 
 						<div class="form-buttons">
