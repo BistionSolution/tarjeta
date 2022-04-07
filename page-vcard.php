@@ -191,12 +191,14 @@ function page_vcard()
                         </div>                    
                 </div>
                 <?php endif; ?>
+
+                <?php if(!empty($opensea) && (!empty($metamask))): ?> 
                     <div class="web3">
                         <h2>Web 3</h2>
                     
                         <?php if(!empty($opensea)): ?> 
                             <div class="web3-img">
-                                <img class="img-web" src="<?=plugins_url(basename(__DIR__) . '/assets/img/Opensea.svg')?>"/>
+                                <img class="img-web" src="<?=plugins_url(basename(__DIR__) . '/assets/img/opensea.svg')?>"/>
                                 <p>Opensea: <a class="perfil-button" href="<?= $opensea ?>"><?= $opensea ?>
                                     
                                     <!-- <i class="fab fa-tiktok"></i> -->
@@ -214,6 +216,7 @@ function page_vcard()
                             </div>
                         <?php endif; ?> 
                     </div>
+                <?php endif; ?> 
             </div>
         </div>
     </div>
