@@ -95,14 +95,23 @@ function productos_cliente($parametros)
 							<ul class="profile-qr-links">
 								<li>
 									<div class="copy-link">
+									
+										
 										<div class="copy-link-container">
+											
 										<input type="text" id="url" class="textLink user-select-all" value="<?=$vcard->url_token?>"/>
-                                            <span>
-                                                <i class="fa fa-copy"></i>
+                                            <span class="icon">
+                                                <i class="fa fa-copy" title="Copiar para pegar"></i>
                                             </span>
 										</div>
 									</div>
+									<span id="tooltip"></span> 
+									
 								</li>
+								<li>
+								
+								</li>
+								
 							</ul>
 						</div>
 
@@ -123,6 +132,7 @@ function productos_cliente($parametros)
 				</div>
 			</div>
 		</div>
+		<script src="<?=plugins_url(basename(__DIR__))?>/assets/copy_text.js"></script>
 		<?php }
 }
 /** 

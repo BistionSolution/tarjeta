@@ -53,14 +53,17 @@ function page_vcard()
                     <img class="img-perfil" src="<?=plugins_url(basename(__DIR__) . '/assets/img/ZENTOC-perfil.png')?>"/>
                 </div>
             <?php else: ?>
-                <div class="img-business">
-                    <img class="profile-pic" src="<?=get_home_url() . '/' . $foto_business?>"/>
-				</div>
+                <div class="for-border">
+
+                
+                    <div class="img-business">
+                        <img class="profile-pic" src="<?=get_home_url() . '/' . $foto_business?>"/>
+                    </div>
+                </div>
 
             <?php endif; ?>
 
             <div class="contenido">
-           
                 <?php if(empty($nombres) && empty($apellidos)): ?> 
                     <div class="names">
                         <h1>Nombres y apellidos</h1>
@@ -80,8 +83,7 @@ function page_vcard()
                     <h2>
                         <?= $company_name ?>
                     </h2>
-                <?php endif; ?>
-                
+                <?php endif; ?>                
                 <div>
                     <?php if(!empty($correo)): ?> 
                         <div class="img-icon mail">
@@ -105,16 +107,34 @@ function page_vcard()
                             <a href="tel:<?=$cell_phone?>"><i class="fa fa-phone"></i><?=$cell_phone?></a> 
                         </div>
                     <?php endif; ?>
+                </div>
+                <div>
+                    <?php if(!empty($correo)): ?> 
+                        <div class="img-icon mail">
+                            <a href="mailto:<?= $correo ?>"><i class="fa fa-envelope"></i> <?= $correo ?></a>
+                        </div>
+                    <?php endif; ?>
+                    
+
+                    <?php if(!empty($personal_phone)): ?> 
+                        <div class="img-icon cell">
+                            <a href="tel:<?=$personal_phone?>"><i class="fa fa-phone"></i><?=$personal_phone?></a> 
+                        </div>
+                    <?php endif; ?> 
+                    
                     
                 </div>
-
-
                 <div class="items">                    
                     <?php if(!empty($href)): ?> 
                         <div class="img-icon vcard">
                             <a href="<?=$href?>"><i class="fa fa-user-plus"> Contacto</i> </a>
                         </div>
                     <?php endif; ?>
+                    <?php if(!empty($personal_phone)): ?> 
+                            <div class="img-icon cell">
+                                <a href="tel:<?=$personal_phone?>"><i class="fa fa-phone"></i></a> 
+                            </div>
+                    <?php endif; ?>  
                     <?php if(!empty($calendly)): ?> 
                         <div class="img-icon cell">
                             <a class="perfil-button" href="<?= $calendly ?>">
@@ -122,7 +142,7 @@ function page_vcard()
                             <!-- <i class="fab fa-tiktok"></i> -->
                             </a>    
                         </div>
-                    <?php endif; ?>              
+                    <?php endif; ?>                                 
                 </div>
                 
                 <div>

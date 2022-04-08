@@ -3,6 +3,7 @@ var imagen_negocio = document.getElementById("file_img_business");
 var btnActualizar = document.getElementById('btn-actualizar');
 var peso_imagen=false;
 var peso_imagen_business = false;
+
 imagen.onchange = function(e) 
 {
 
@@ -61,3 +62,6 @@ imagen_negocio.onchange = function(e)
 		btnActualizar.disabled = false;
 	}
 }
+
+
+
