@@ -92,14 +92,7 @@ function page_vcard()
                             <a href="mailto:<?= $correo ?>" target="_blank"><i class="fa fa-envelope"></i> <?= $correo ?></a>
                         </div>
                     <?php endif; ?>
-                    
-
-                    <?php if(!empty($personal_phone)): ?> 
-                        <div class="img-icon cell">
-                            <a href="tel:<?=$personal_phone?>"><i class="fa fa-phone"></i><?=$personal_phone?></a> 
-                        </div>
-                    <?php endif; ?>   
-  
+                      
                 </div>
 
                 <div class="items">                    
