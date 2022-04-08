@@ -32,6 +32,8 @@ function page_vcard()
             $opensea = $result[0]->opensea;
             $metamask = $result[0]->metamask;
             $tiktok = $result[0]->url_tiktok;
+            $spotify = $result[0]->url_spotify;
+            $apple_music = $result[0]->url_apple_music;
             $token = $result[0]->token;
             $per_infor = $result[0]->personal_information ;
             $href = home_url() . "/wp-vcards/$token.vcf";
@@ -198,7 +200,23 @@ function page_vcard()
                                 <i class="fab fa-tiktok"></i>
                             </a>    
                         </div>
-                    <?php endif; ?>            
+                    <?php endif; ?>
+                    <?php if(!empty($spotify)): ?> 
+                        <div>
+                            <a class="perfil-button" href="<?= $spotify ?>">
+                                
+                                <i class="fab fa-spotify"></i>
+                            </a>    
+                        </div>
+                    <?php endif; ?>
+                    <?php if(!empty($apple_music)): ?> 
+                        <div>
+                            <a class="perfil-button" href="<?= $apple_music ?>">
+                                
+                                <i class="fab fa-apple"></i>
+                            </a>    
+                        </div>
+                    <?php endif; ?>
                 </div>
                 <?php if(!empty($per_infor)): ?>    
                 <div class="sobre-mi">

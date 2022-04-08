@@ -418,6 +418,18 @@ function card_edit_endpoint_content()
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
+											<label for="field-4-26">Spotify</label>
+											<input id="field-4-26" name="spotify" value="<?=$v->url_spotify?>">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-4-26">Apple Music</label>
+											<input id="field-4-26" name="apple_music" value="<?=$v->url_apple_music?>">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
 											<label for="field-4-26">Calendly</label>
 											<input id="field-4-26" name="calendly" value="<?=$v->calendly?>">
 										</div>

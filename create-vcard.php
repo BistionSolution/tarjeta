@@ -41,6 +41,8 @@ function create_table_vcards()
 		url_linkedin VARCHAR(200),
 		url_twitter VARCHAR(200),
 		url_tiktok VARCHAR(200),
+		url_spotify VARCHAR(200),
+		url_apple_music VARCHAR(200),
 		token varchar(100)
 	);";
 	

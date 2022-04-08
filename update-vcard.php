@@ -36,6 +36,8 @@ function actualizarVcard()
     $url_linkedin = sanitize_text_field($_POST['linkedin']);
     $url_twitter = sanitize_text_field($_POST['twitter']);
     $url_tiktok = sanitize_text_field($_POST['tiktok']);
+    $url_spotify = sanitize_text_field($_POST['spotify']);
+    $url_apple_music = sanitize_text_field($_POST['apple_music']);
     $calendly = sanitize_text_field($_POST['calendly']);
     $opensea = sanitize_text_field($_POST['opensea']);
     $metamask = sanitize_text_field($_POST['metamask']);
@@ -100,7 +102,9 @@ function actualizarVcard()
             'url_instagram' => $_POST['instagram'],
             'url_linkedin' => $_POST['linkedin'],
             'url_twitter' => $_POST['twitter'],
-            'url_tiktok' => $_POST['tiktok']
+            'url_tiktok' => $_POST['tiktok'],
+            'url_spotify' => $_POST['spotify'],
+            'url_apple_music' => $_POST['apple_music']
         );
         $content = "BEGIN:VCARD\r\n";
         $content .= "VERSION:3.0\r\n";
@@ -178,6 +182,8 @@ function actualizarVcard()
         $content .= "URL;TYPE=LinkedIn;CHARSET=UTF-8:$url_linkedin\r\n";
         $content .= "URL;TYPE=Twitter;CHARSET=UTF-8:$url_twitter\r\n";
         $content .= "URL;TYPE=Tiktok;CHARSET=UTF-8:$url_tiktok\r\n";
+        $content .= "URL;TYPE=Spotify;CHARSET=UTF-8:$url_spotify\r\n";
+        $content .= "URL;TYPE=Apple Music;CHARSET=UTF-8:$url_apple_music\r\n";
         $content .= "URL;TYPE=Calendly;CHARSET=UTF-8:$calendly\r\n";
         $content .= "URL;TYPE=Opensea;CHARSET=UTF-8:$opensea\r\n";
         $content .= "URL;TYPE=Metamask;CHARSET=UTF-8:$metamask\r\n";
