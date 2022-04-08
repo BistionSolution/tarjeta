@@ -62,15 +62,15 @@ function page_vcard()
             <div class="contenido">
 
             
-            <?php if(empty($nombres) && empty($apellidos)): ?> 
+            <?php if(empty($nombres) && empty($apellidos)):?> 
                 <div class="names">
                     <h1>Nombres y apellidos</h1>
                 </div>
-            <?php else: ?>
+            <?php else:?>
                 <div class="names">
                     <h1><?= $nombres.' '.$apellidos?></h1>
                 </div>
-            <?php endif; ?>
+            <?php endif;?>
             
                 <div>
 
@@ -109,6 +109,7 @@ function page_vcard()
                 <div>
                     <h2>Redes Sociales</h2>
                 </div>
+
                 <div class="redes-sociales">
                     <?php if(!empty($facebook)): ?> 
                         <div>
@@ -184,6 +185,7 @@ function page_vcard()
                         </div>
                     <?php endif; ?> 
                 </div>
+                
                 <div>
                     <h2>Sobre mí</h2>
                 </div>
