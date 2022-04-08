@@ -146,6 +146,16 @@ input.user-select-all{
 }
 
 /*CSS FORMULARIO TARJETAS*/
+.discard-pro{
+    position: relative;
+    display: flex; 
+    justify-content:space-around;
+    padding-bottom: 15px;
+}
+.discard-pro .profile-img-container{
+    position: absolute;
+    right: 0;
+}
 #perfil-qr-form .profile-img-container {
     position: relative;
     width: 7rem;
@@ -160,7 +170,7 @@ input.user-select-all{
     width: 150px;
     height: 150px;
     border: 0.4rem solid rgb(187, 184, 184);
-    background-color: #F1AC89;
+    background-color: #ffffff;
     overflow: hidden;
     z-index: 1;
 }
@@ -176,6 +186,7 @@ input.user-select-all{
     object-fit: cover;
     object-position: center;
 }
+
 .accordion-header h6 {
     display: block;
 
@@ -272,9 +283,7 @@ input.user-select-all{
 .perfil-vcard{
     background: #f8f8f8;
 }
-.wrap .contenido{
-    padding: 15px 15px 15px 15px;
-}
+
 .wrap .contenido .names{
     padding-right: 100px;
 }
@@ -284,6 +293,7 @@ input.user-select-all{
 }
 .wrap .perfil{
     text-align: left;
+    padding: 15px;
 }
 .wrap h1{
     color: #000;
@@ -302,11 +312,25 @@ input.user-select-all{
     width: 100%;
     height: 330px;
     /* border-bottom: 0.2rem solid #fff; */
-    background-color: #F1AC89;
+    border-radius: 15px;
+    background-color: #ffffff;
     overflow: hidden;
-    margin:0px auto;
     z-index: 1;
 }
+.wrap .profile-img img {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
 .wrap .items{
     width: 100%;
     height: 60px;
@@ -354,7 +378,22 @@ input.user-select-all{
     padding: 17px 17px;
 
 }
-/*PERFGIL*/
+.wrap .web3{
+    margin-top: 15px;
+}
+.web3-img{
+    display: flex;
+    text-align: left;
+}
+.web3-img p{
+    margin-bottom: 0;
+}
+.img-web{
+    width: 20px;
+    margin-right: 5px;
+}
+
+/*PERFIL*/
 .wrap .img-business img{
     display: block;
     position: absolute;
@@ -376,40 +415,14 @@ input.user-select-all{
     width: 80px;
     height: 80px;
     border: 0.4rem solid #fff;
-    background-color: rgb(177, 12, 12);
+    background-color: rgb(255, 255, 255);
     overflow: hidden;
     z-index: 1;
     margin-top: -40px;
     right: 0;
     margin-right: 15px;
 }
-/*PERFGIL*/
-/*Formulario*/
-#perfil-qr-form .profile-img-container .profile-img {
-    position: relative;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    border: 0.4rem solid rgb(187, 184, 184);
-    background-color: #F1AC89;
-    overflow: hidden;
-    z-index: 1;
-}
-#perfil-qr-form .profile-img-container .profile-img img {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
+
 /*Formulario*/
 
 .wrap .redes-sociales{
@@ -449,21 +462,36 @@ input.user-select-all{
 /*MENU DE MI CUETNA*/
 .content-pro .woocommerce{
     position: relative;
- 
+    overflow: hidden;
 }
-.woocommerce-MyAccount-content{
+.content-pro .woocommerce-MyAccount-content{
     padding-left: 20px;
     padding-top: 50px;
     padding-right: 50px;
+    padding-bottom: 50px;
     background: #fff;
     height: 100% !important;
 }
 .woocommerce-MyAccount-navigation {
+    display: block;
+    position: relative;
     background:rgb(43, 43, 43);
+  
     padding: 50px;
+    
     width: 200px; /* Set a width if you like */
   }
-  
+  .woocommerce-MyAccount-navigation::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100% !important;
+    height: 2000px;
+    
+    background:rgb(43, 43, 43);
+    z-index: -1;
+  }
+
   .woocommerce-MyAccount-navigation a {
     background-color: #4717f5; /* Grey background color */
     color: #fff; /* Black text color */
@@ -473,7 +501,6 @@ input.user-select-all{
     border-radius: 5px;
     text-decoration: none; /* Remove underline from links */
   }
-
   
   .woocommerce-MyAccount-navigation a:hover {
     background-color: #4717f5ad; /* Dark grey background on mouse-over */

@@ -60,50 +60,69 @@ function page_vcard()
             <?php endif; ?>
 
             <div class="contenido">
-
+           
+                <?php if(empty($nombres) && empty($apellidos)): ?> 
+                    <div class="names">
+                        <h1>Nombres y apellidos</h1>
+                    </div>
+                <?php else: ?>
+                    <div class="names">
+                        <h1><?= $nombres.' '.$apellidos?></h1>
+                    </div>
+                <?php endif; ?>
             
-            <?php if(empty($nombres) && empty($apellidos)):?> 
-                <div class="names">
-                    <h1>Nombres y apellidos</h1>
-                </div>
-            <?php else:?>
-                <div class="names">
-                    <h1><?= $nombres.' '.$apellidos?></h1>
-                </div>
-            <?php endif;?>
-            
+                <?php if(!empty($company_charge)): ?> 
+                    <h2>
+                        <?= $company_charge ?> de 
+                        <?= $company_name ?>
+                    </h2>
+                <?php else: ?>
+                    <h2>
+                        <?= $company_name ?>
+                    </h2>
+                <?php endif; ?>
+                
                 <div>
-
-                    <?php if(!empty($company_charge)): ?> 
-                        <h2>
-                            <?= $company_charge ?> de 
-                            <?= $company_name ?>
-                        </h2>
-                    <?php else: ?>
-                        <h2>
-                            <?= $company_name ?>
-                        </h2>
-                    <?php endif; ?>
-                    
                     <?php if(!empty($correo)): ?> 
                         <div class="img-icon mail">
                             <a href="mailto:<?= $correo ?>"><i class="fa fa-envelope"></i> <?= $correo ?></a>
                         </div>
                     <?php endif; ?>
-                </div>
-
-                <div class="items">
-                    
-                    <?php if(!empty($href)): ?> 
-                        <div class="img-icon vcard">
-                            <a href="<?=$href?>"><i class="fa fa-address-book"> Vcard</i> </a>
+                    <?php if(!empty($company_mail)): ?> 
+                        <div class="img-icon mail">
+                            <a  href="mailto:<?= $company_mail?>"><i class="fa fa-envelope"></i> <?= $company_mail ?>
+                            </a>    
                         </div>
                     <?php endif; ?>
+
                     <?php if(!empty($personal_phone)): ?> 
                         <div class="img-icon cell">
-                            <a href="tel:<?=$personal_phone?>"><i class="fa fa-phone"></i></a> 
+                            <a href="tel:<?=$personal_phone?>"><i class="fa fa-phone"></i><?=$personal_phone?></a> 
                         </div>
-                    <?php endif; ?>                
+                    <?php endif; ?>   
+                    <?php if(!empty($cell_phone)): ?> 
+                        <div class="img-icon cell">
+                            <a href="tel:<?=$cell_phone?>"><i class="fa fa-phone"></i><?=$cell_phone?></a> 
+                        </div>
+                    <?php endif; ?>
+                    
+                </div>
+
+
+                <div class="items">                    
+                    <?php if(!empty($href)): ?> 
+                        <div class="img-icon vcard">
+                            <a href="<?=$href?>"><i class="fa fa-user-plus"> Contacto</i> </a>
+                        </div>
+                    <?php endif; ?>
+                    <?php if(!empty($calendly)): ?> 
+                        <div class="img-icon cell">
+                            <a class="perfil-button" href="<?= $calendly ?>">
+                            <i class="fa fa-calendar"></i>                              
+                            <!-- <i class="fab fa-tiktok"></i> -->
+                            </a>    
+                        </div>
+                    <?php endif; ?>              
                 </div>
                 
                 <div>
@@ -159,51 +178,43 @@ function page_vcard()
                                 <i class="fab fa-tiktok"></i>
                             </a>    
                         </div>
-                    <?php endif; ?>  
-                    <?php if(!empty($calendly)): ?> 
-                        <div>
-                            <a class="perfil-button" href="<?= $calendly ?>">Calendly
-                                
-                            <!-- <i class="fab fa-tiktok"></i> -->
-                            </a>    
-                        </div>
-                    <?php endif; ?> 
-                    <?php if(!empty($opensea)): ?> 
-                        <div>
-                            <a class="perfil-button" href="<?= $opensea ?>">Opensea
-                                
-                            <!-- <i class="fab fa-tiktok"></i> -->
-                            </a>    
-                        </div>
-                    <?php endif; ?> 
-                    <?php if(!empty($metamask)): ?> 
-                        <div>
-                            <a class="perfil-button" href="<?= $metamask ?>">Metamask
-                                
-                            <!-- <i class="fab fa-tiktok"></i> -->
-                            </a>    
-                        </div>
-                    <?php endif; ?> 
+                    <?php endif; ?>            
                 </div>
-                
-                <div>
-                    <h2>Sobre mí</h2>
+                <?php if(!empty($per_infor)): ?>    
+                <div class="sobre-mi">
+                    <h2>Sobre mí</h2>                  
+                        <div>
+                            <?= $per_infor ?>
+                        </div>                    
                 </div>
-                <?php if(!empty($per_infor)): ?>                    
-                    <div>
-                        <?= $per_infor ?>
-                    </div>
                 <?php endif; ?>
-                
-                <?php if(!empty($company_mail)): ?> 
-                    <div>
-                        <a class="perfil-button" href="<?= $company_mail?>">
-                            Correo corporativo
-                        </a>    
+
+                <?php if(!empty($opensea) && (!empty($metamask))): ?> 
+                    <div class="web3">
+                        <h2>Web 3</h2>
+                    
+                        <?php if(!empty($opensea)): ?> 
+                            <div class="web3-img">
+                                <img class="img-web" src="<?=plugins_url(basename(__DIR__) . '/assets/img/opensea.svg')?>"/>
+                                <p>Opensea: <a class="perfil-button" href="<?= $opensea ?>"><?= $opensea ?>
+                                    
+                                    <!-- <i class="fab fa-tiktok"></i> -->
+                                    </a>  </p>
+                                
+                            </div>
+                        <?php endif; ?> 
+                        <?php if(!empty($metamask)): ?> 
+                            <div class="web3-img">
+                                <img class="img-web" src="<?=plugins_url(basename(__DIR__) . '/assets/img/MetaMask_Fox.svg')?>"/>
+                                <p class="metamask" >Metamask: <?= $metamask ?>
+                                    
+                                <!-- <i class="fab fa-tiktok"></i> -->
+                                </p>    
+                            </div>
+                        <?php endif; ?> 
                     </div>
-                <?php endif; ?>
+                <?php endif; ?> 
             </div>
-                              
         </div>
     </div>
 <?php
