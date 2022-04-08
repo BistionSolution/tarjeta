@@ -201,57 +201,64 @@ function page_vcard()
                             </a>    
                         </div>
                     <?php endif; ?>
-                    <?php if(!empty($spotify)): ?> 
-                        <div>
-                            <a class="perfil-button" href="<?= $spotify ?>">
-                                
-                                <i class="fab fa-spotify"></i>
-                            </a>    
-                        </div>
-                    <?php endif; ?>
-                    <?php if(!empty($apple_music)): ?> 
-                        <div>
-                            <a class="perfil-button" href="<?= $apple_music ?>">
-                                
-                                <i class="fab fa-apple"></i>
-                            </a>    
-                        </div>
-                    <?php endif; ?>
+                    
                 </div>
                 <?php if(!empty($per_infor)): ?>    
-                <div class="sobre-mi">
-                    <h2>Sobre mí</h2>                  
-                        <div>
-                            <?= $per_infor ?>
-                        </div>                    
-                </div>
+                    <div class="sobre-mi">
+                        <h2>Sobre mí</h2>                  
+                            <div>
+                                <?= $per_infor ?>
+                            </div>                    
+                    </div>
                 <?php endif; ?>
 
-                <?php if(!empty($opensea) && (!empty($metamask))): ?> 
-                    <div class="web3">
-                        <h2>Web 3</h2>
-                    
-                        <?php if(!empty($opensea)): ?> 
-                            <div class="web3-img">
-                                <img class="img-web" src="<?=plugins_url(basename(__DIR__) . '/assets/img/opensea.svg')?>"/>
-                                <p>Opensea: <a class="perfil-button" href="<?= $opensea ?>"><?= $opensea ?>
-                                    
+                    <?php if(!empty($opensea) && (!empty($metamask))): ?> 
+                        <div class="web3">
+                            <h2>Web 3</h2>
+                            <?php if(!empty($opensea)): ?> 
+                                <div class="web3-img">
+                                    <img class="img-web" src="<?=plugins_url(basename(__DIR__) . '/assets/img/opensea.svg')?>"/>
+                                    <p>Opensea: <a class="perfil-button" href="<?= $opensea ?>"><?= $opensea ?>                                       
+                                        <!-- <i class="fab fa-tiktok"></i> --></a>  </p>                                   
+                                </div>
+                            <?php endif; ?> 
+                            <?php if(!empty($metamask)): ?> 
+                                <div class="web3-img">
+                                    <img class="img-web" src="<?=plugins_url(basename(__DIR__) . '/assets/img/MetaMask_Fox.svg')?>"/>
+                                    <p class="metamask" >Metamask: <?= $metamask ?>
+                                        
                                     <!-- <i class="fab fa-tiktok"></i> -->
-                                    </a>  </p>
-                                
+                                    </p>    
+                                </div>
+                            <?php endif; ?> 
+                        </div>
+                    <?php endif; ?> 
+
+                    <?php if(!empty($spotify) && (!empty($apple_music))): ?> 
+                        <div class="musica">
+                            <h2>Mi música</h2>
+                            <div class="cajita">
+                                <?php if(!empty($spotify)): ?> 
+                                    <div>
+                                        <a class="perfil-button" href="<?= $spotify ?>">
+                                            
+                                            <i class="fab fa-spotify"></i>
+                                        </a>    
+                                    </div>
+                                <?php endif; ?>
+                                <?php if(!empty($apple_music)): ?> 
+                                    <div>
+                                        <a class="perfil-button" href="<?= $apple_music ?>">
+                                            
+                                            <i class="fab fa-apple"></i>
+                                        </a>    
+                                    </div>
+                                <?php endif; ?>
                             </div>
-                        <?php endif; ?> 
-                        <?php if(!empty($metamask)): ?> 
-                            <div class="web3-img">
-                                <img class="img-web" src="<?=plugins_url(basename(__DIR__) . '/assets/img/MetaMask_Fox.svg')?>"/>
-                                <p class="metamask" >Metamask: <?= $metamask ?>
-                                    
-                                <!-- <i class="fab fa-tiktok"></i> -->
-                                </p>    
-                            </div>
-                        <?php endif; ?> 
-                    </div>
-                <?php endif; ?> 
+                        </div>
+                    <?php endif; ?> 
+
+
             </div>
         </div>
     </div>

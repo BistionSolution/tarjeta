@@ -398,6 +398,16 @@ input.user-select-all{
     width: 20px;
     margin-right: 5px;
 }
+.wrap .musica{
+    margin-top: 15px;
+    
+}
+.wrap .cajita{
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+
 
 /*PERFIL*/
 .wrap .for-border{
@@ -452,7 +462,7 @@ input.user-select-all{
     padding-top: 5px;
     padding-bottom: 15px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 .redes-sociales div{
     /* position: absolute; */
