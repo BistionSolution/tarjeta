@@ -89,47 +89,23 @@ function page_vcard()
                 <div>
                     <?php if(!empty($correo)): ?> 
                         <div class="img-icon mail">
-                            <a href="mailto:<?= $correo ?>"><i class="fa fa-envelope"></i> <?= $correo ?></a>
+                            <a href="mailto:<?= $correo ?>" target="_blank"><i class="fa fa-envelope"></i> <?= $correo ?></a>
                         </div>
                     <?php endif; ?>
-                    <?php if(!empty($company_mail)): ?> 
-                        <div class="img-icon mail">
-                            <a  href="mailto:<?= $company_mail?>"><i class="fa fa-envelope"></i> <?= $company_mail ?>
-                            </a>    
-                        </div>
-                    <?php endif; ?>
+                    
 
                     <?php if(!empty($personal_phone)): ?> 
                         <div class="img-icon cell">
                             <a href="tel:<?=$personal_phone?>"><i class="fa fa-phone"></i><?=$personal_phone?></a> 
                         </div>
                     <?php endif; ?>   
-                    <?php if(!empty($cell_phone)): ?> 
-                        <div class="img-icon cell">
-                            <a href="tel:<?=$cell_phone?>"><i class="fa fa-phone"></i><?=$cell_phone?></a> 
-                        </div>
-                    <?php endif; ?>
+  
                 </div>
-                <div>
-                    <?php if(!empty($correo)): ?> 
-                        <div class="img-icon mail">
-                            <a href="mailto:<?= $correo ?>"><i class="fa fa-envelope"></i> <?= $correo ?></a>
-                        </div>
-                    <?php endif; ?>
-                    
 
-                    <?php if(!empty($personal_phone)): ?> 
-                        <div class="img-icon cell">
-                            <a href="tel:<?=$personal_phone?>"><i class="fa fa-phone"></i><?=$personal_phone?></a> 
-                        </div>
-                    <?php endif; ?> 
-                    
-                    
-                </div>
                 <div class="items">                    
                     <?php if(!empty($href)): ?> 
                         <div class="img-icon vcard">
-                            <a href="<?=$href?>"><i class="fa fa-user-plus"> Contacto</i> </a>
+                            <a href="<?=$href?>"><i class="fa fa-user-plus" target="_blank"> Contacto</i> </a>
                         </div>
                     <?php endif; ?>
                     <?php if(!empty($personal_phone)): ?> 
@@ -139,7 +115,7 @@ function page_vcard()
                     <?php endif; ?>  
                     <?php if(!empty($calendly)): ?> 
                         <div class="img-icon cell">
-                            <a class="perfil-button" href="<?= $calendly ?>">
+                            <a class="perfil-button" href="<?= $calendly ?>" target="_blank">
                             <i class="fa fa-calendar"></i>                              
                             <!-- <i class="fab fa-tiktok"></i> -->
                             </a>    
@@ -154,7 +130,7 @@ function page_vcard()
                 <div class="redes-sociales">
                     <?php if(!empty($facebook)): ?> 
                         <div>
-                            <a class="perfil-button" href="<?= $facebook ?>">
+                            <a class="perfil-button" href="<?= $facebook ?>" target="_blank">
                                 
                                 <i class="fab fa-facebook"></i>
                             </a>   
@@ -162,7 +138,7 @@ function page_vcard()
                     <?php endif; ?>
                     <?php if(!empty($youtube)): ?> 
                         <div>
-                            <a class="perfil-button" href="<?= $youtube ?>">
+                            <a class="perfil-button" href="<?= $youtube ?>" target="_blank">
                                 
                                 <i class="fab fa-youtube"></i>
                             </a>    
@@ -170,7 +146,7 @@ function page_vcard()
                     <?php endif; ?>
                     <?php if(!empty($instagram)): ?> 
                         <div>
-                            <a class="perfil-button" href="<?= $instagram ?>">
+                            <a class="perfil-button" href="<?= $instagram ?>" target="_blank">
                                 
                                 <i class="fab fa-instagram"></i>
                             </a>    
@@ -179,7 +155,7 @@ function page_vcard()
                     <?php endif; ?>
                     <?php if(!empty($linkedin)): ?> 
                         <div>
-                            <a class="perfil-button" href="<?= $linkedin ?>">
+                            <a class="perfil-button" href="<?= $linkedin ?>" target="_blank">
                                 
                                 <i class="fab fa-linkedin"></i>
                             </a>    
@@ -187,7 +163,7 @@ function page_vcard()
                     <?php endif; ?>
                     <?php if(!empty($twitter)): ?> 
                         <div>
-                            <a class="perfil-button" href="<?= $twitter ?>">
+                            <a class="perfil-button" href="<?= $twitter ?>" target="_blank">
                                 
                                 <i class="fab fa-twitter"></i>
                             </a>    
@@ -195,7 +171,7 @@ function page_vcard()
                     <?php endif; ?>
                     <?php if(!empty($tiktok)): ?> 
                         <div>
-                            <a class="perfil-button" href="<?= $tiktok ?>">
+                            <a class="perfil-button" href="<?= $tiktok ?>" target="_blank">
                                 
                                 <i class="fab fa-tiktok"></i>
                             </a>    
@@ -218,7 +194,7 @@ function page_vcard()
                             <?php if(!empty($opensea)): ?> 
                                 <div class="web3-img">
                                     <img class="img-web" src="<?=plugins_url(basename(__DIR__) . '/assets/img/opensea.svg')?>"/>
-                                    <p>Opensea: <a class="perfil-button" href="<?= $opensea ?>"><?= $opensea ?>                                       
+                                    <p>Opensea: <a class="perfil-button" href="<?= $opensea ?>" target="_blank"><?= $opensea ?>                                       
                                         <!-- <i class="fab fa-tiktok"></i> --></a>  </p>                                   
                                 </div>
                             <?php endif; ?> 
@@ -240,7 +216,7 @@ function page_vcard()
                             <div class="cajita">
                                 <?php if(!empty($spotify)): ?> 
                                     <div>
-                                        <a class="perfil-button" href="<?= $spotify ?>">
+                                        <a class="perfil-button" href="<?= $spotify ?>" target="_blank">
                                             
                                             <i class="fab fa-spotify"></i>
                                         </a>    
@@ -248,7 +224,7 @@ function page_vcard()
                                 <?php endif; ?>
                                 <?php if(!empty($apple_music)): ?> 
                                     <div>
-                                        <a class="perfil-button" href="<?= $apple_music ?>">
+                                        <a class="perfil-button" href="<?= $apple_music ?>"  target="_blank">
                                             
                                             <i class="fab fa-apple"></i>
                                         </a>    
