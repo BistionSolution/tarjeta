@@ -192,7 +192,7 @@ function page_vcard()
                         <div class="web3">
                             <h2>Web 3</h2>
                             <?php if(!empty($opensea)): ?> 
-                                <div class="web3-img">
+                                <div class="web3-img opensea">
                                     <img class="img-web" src="<?=plugins_url(basename(__DIR__) . '/assets/img/opensea.svg')?>"/>
                                     <p>Opensea: <a class="perfil-button" href="<?= $opensea ?>" target="_blank"><?= $opensea ?>                                       
                                         <!-- <i class="fab fa-tiktok"></i> --></a>  </p>                                   
@@ -200,12 +200,22 @@ function page_vcard()
                             <?php endif; ?> 
                             <?php if(!empty($metamask)): ?> 
                                 <div class="web3-img">
+                                    
                                     <img class="img-web" src="<?=plugins_url(basename(__DIR__) . '/assets/img/MetaMask_Fox.svg')?>"/>
-                                    <p class="metamask" >Metamask: <?= $metamask ?>
-                                        
+                                    
+                                    <span>Metamask: </span>
+                                    
+                                        <button id="buttongo" class="button-go "><i class="fa fa-copy" title="Copiar para pegar"></i><span class="for-copy"><?= $metamask ?>  </span>
+                                    
+                                        </button>
+                                        <span id="tooltip"></span> 
+                                      
+                                    
                                     <!-- <i class="fab fa-tiktok"></i> -->
-                                    </p>    
+    
                                 </div>
+                                
+
                             <?php endif; ?> 
                         </div>
                     <?php endif; ?> 
@@ -238,6 +248,7 @@ function page_vcard()
             </div>
         </div>
     </div>
+    <script src="<?=plugins_url(basename(__DIR__))?>/assets/copy_fast.js"></script>
 <?php
         else:
             // $atts = [

@@ -388,11 +388,83 @@ input.user-select-all{
     margin-top: 15px;
 }
 .web3-img{
+    position: relative;
     display: flex;
     text-align: left;
 }
 .web3-img p{
     margin-bottom: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.web3-img span{
+    margin-bottom: 0;
+}
+.web3-img .button-go{
+    position: relative;
+    width: 300px;
+    right: 0;
+    left: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 2px 5px 2px 5px;
+    background: #fff;
+    border-radius: 15px;
+    border: 1px solid #007bff;
+      
+  color: #007bff;
+  transition: color .15s ease-in-out,
+    background-color .15s ease-in-out;
+    margin-left: 5px;
+}
+
+/*INICIO TOLTIP*/
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+    
+}
+.tooltip .tiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    padding: 6px 0;
+    position: absolute;
+    z-index: 1;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+#tiptext::after {
+    content: "";
+    position: absolute;
+    border-width: 5px;
+    border-style: solid;
+}
+.tooltip:hover .tiptext {
+    visibility: visible;
+}
+#tooltip{
+    margin-left: -60px;
+    bottom: 150%;
+    left: 50%;
+}
+#tooltip::after{
+    margin-left: -5px;
+    top: 10%;
+    left: 50%;
+    border-color: #2E2E2E transparent transparent transparent;
+}
+/*fin tiltip*/
+.web3-img .button-go:hover{
+
+    background: #fff;
+    border-radius: 15px;
+    color:#4717f5;    
 }
 .img-web{
     width: 20px;
