@@ -179,30 +179,32 @@ function card_edit_endpoint_content()
 					<div class="profile-img discard-pro" >
 						
 						<div class="profile-img-container">
-							<p>Foto perfil</p>
+							<h5>Foto perfil</h5>
 							<div class="profile-img">
 								<div id="preview">
 									<img class="profile-pic" src="<?=get_home_url().'/'.$v->photo?>">
 								</div>
 							</div>
 							<div class="profile-button">
-								<i class="fa fa-camera upload-button"></i>
-								<input class="file-upload" id="file_img" type="file" accept="image/png, image/jpeg, image/jpg" name="foto" multiple>
+								
+								<input class="file-upload" id="file_img" type="file" accept="image/png, image/jpeg, image/jpg" name="foto" >
+								<label for="file_img" class="label-pro"><i class="fa fa-camera upload-button"></i> Subir archivo</label>
 								<div id="text-img"  style="width: 300px;"></div>
 							</div>
 						</div>
 
 
 						<div class="profile-img-container">
-							<p>Foto logo</p>
+							<h5>Foto logo</h5>
 							<div class="profile-img">
 								<div id="preview_business">
 									<img class="profile-pic" src="<?=get_home_url().'/'.$v->photo_business?>">
 								</div>
 							</div>
 							<div class="profile-button">
-								<i class="fa fa-camera upload-button"></i>
+
 								<input class="file-upload" id="file_img_business" type="file" accept="image/png, image/jpeg, image/jpg" name="foto_business" multiple>
+								<label for="file_img_business" class="label-pro-business"><i class="fa fa-camera upload-button"></i> Subir archivo</label>
 								<div id="text-img-business"  style="width: 300px;"></div>
 							</div>
 						</div>

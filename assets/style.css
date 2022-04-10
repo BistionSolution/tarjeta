@@ -148,10 +148,32 @@ input.user-select-all{
 /*CSS FORMULARIO TARJETAS*/
 .discard-pro{
     position: relative;
-    display: flex; 
-    justify-content:space-around;
+    display: grid; 
+    grid-template-columns: auto auto;
     padding-bottom: 15px;
 }
+input[type="file"] {
+    display: none;
+}
+.label-pro {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    text-align: center;
+    width: 150px;
+    cursor: pointer;
+}
+
+.label-pro-business {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    text-align: center;
+    width: 150px;
+    cursor: pointer;
+}
+/**/
+
 .discard-pro .profile-img-container{
     position: absolute;
     right: 0;
@@ -410,7 +432,7 @@ input.user-select-all{
     text-overflow: ellipsis;
     overflow: hidden;
     padding: 2px 5px 2px 5px;
-    background: #fff;
+    background: rgb(12, 153, 7);
     border-radius: 15px;
     border: 1px solid #007bff;
       
