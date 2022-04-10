@@ -433,7 +433,7 @@ input[type="file"] {
     padding: 2px 5px 2px 5px;
     border-radius: 15px;
     border: 1px solid #007bff;
-      
+    background: #fff;
   color: #007bff;
   transition: color .15s ease-in-out,
     background-color .15s ease-in-out;
