@@ -251,10 +251,10 @@ function page_vcard()
             // ];
             // page_error($atts);
 
-            // global $wp_query;
-            // $wp_query->set_404();
-            // status_header( 404 );
-            // get_template_part( 404 ); exit();
+            global $wp_query;
+            $wp_query->set_404();
+            status_header( 404 );
+            get_template_part( 404 ); exit();
         endif;
     else:
         // $atts = [
@@ -264,10 +264,10 @@ function page_vcard()
         // ];
         // page_error($atts);
 
-        // global $wp_query;
-        // $wp_query->set_404();
-        // status_header( 404 );
-        // get_template_part( 404 ); exit();
+        global $wp_query;
+        $wp_query->set_404();
+        status_header( 404 );
+        get_template_part( 404 ); exit();
     endif;
 }
     

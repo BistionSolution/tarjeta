@@ -265,9 +265,7 @@ function employees_list_init()
           </form>
     <?php
     // Display table
-//     $token = str_shuffle(uniqid());
-$token = uniqid('COD',FALSE);
-        var_dump("TOKEN : ",$token);
+
     $empTable->display();
     echo '</div>';
 }
