@@ -25,14 +25,15 @@ function insert_contact($atts)
 {
 	global $wpdb;
 
-      $token = uniqid('COD');
+      $token = uniqid('cod');
+      var_dump('fas');
 	$vcard_info = array(
         'order_id' => intval($atts['order']),
 		'product_id' => intval($atts['product']),
 		'customer_id' => intval($atts['customer']),
         'token' => $token,
         // 'url_token' => get_home_url()."/view-contact/?token=".$token
-        'url_token' => get_home_url()."/c/?token=".$token
+        'url_token' => get_home_url()."/card/?token=".$token
 	);
     
     $path_directory = realpath(dirname(__FILE__) . '/../../..') . '/wp-vcards';
