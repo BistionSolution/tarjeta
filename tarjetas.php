@@ -16,15 +16,15 @@ function activar()
 }
 function menu_ajuste_tarjetas()
 {
-	add_menu_page(
-		'Cuentas de tarjetas',
-		'Cuentas de Tarjetas',
-		'manage_options',
-		plugin_dir_path(__FILE__) . 'clientes.php', //slug
-		null, // Funcion
-		plugin_dir_url(__FILE__) . 'assets/img/icon.svg',
-		'1'
-	);
+	// add_menu_page(
+	// 	'Cuentas de tarjetas',
+	// 	'Cuentas de Tarjetas',
+	// 	'manage_options',
+	// 	plugin_dir_path(__FILE__) . 'clientes.php', //slug
+	// 	null, // Funcion
+	// 	plugin_dir_url(__FILE__) . 'assets/img/icon.svg',
+	// 	'1'
+	// );
 	add_submenu_page(
 		null, // parent slug
 		'Tarjetas Registradas', // titulo de la pagina
@@ -486,7 +486,7 @@ function card_edit_endpoint_content()
 add_action('woocommerce_account_cards_endpoint', 'cards_endpoint_content');
 function cards_endpoint_content()
 {
-	//echo 'tarjeta';
+	// echo 'tarjeta';
 	// create_nuevo_vc();
 	echo do_shortcode('[productos_cliente]');
 	//get_template_part('mis-tarjetas');
