@@ -259,7 +259,7 @@ function card_edit_endpoint_content()
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-1-9">Celular</label>
-											<input id="field-1-9" name="celular" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="<?=$v->personal_cell_phone?>">
+											<input id="field-1-9" name="celular" value="<?=$v->personal_cell_phone?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
@@ -315,7 +315,7 @@ function card_edit_endpoint_content()
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-2-15">Teléfono</label>
-											<input id="field-2-15" name="telefonoTrabajo" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="<?=$v->company_cell_phone?>">
+											<input id="field-2-15" name="telefonoTrabajo" value="<?=$v->company_cell_phone?>">
 										</div>
 									</div>
 									<div class="form-row col-6">
