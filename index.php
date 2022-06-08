@@ -26,12 +26,16 @@ function insert_contact($atts)
 	global $wpdb;
 
       $token = uniqid('cod');
-      var_dump('fas');
+      echo "DATO 1: ". $atts['order'];
+      echo "DATO 1: ". $atts['product'];
+      echo "DATO 1: ". $atts['customer'];
+      echo "DATO 1: ". $atts['hiden_ref'];
 	$vcard_info = array(
-        'order_id' => intval($atts['order']),
-		'product_id' => intval($atts['product']),
-		'customer_id' => intval($atts['customer']),
-        'token' => $token,
+      'order_id' => intval($atts['order']),
+      'product_id' => intval($atts['product']),
+      'customer_id' => intval($atts['customer']),
+      'hiden_ref' => $atts['hiden_ref'],
+      'token' => $token,
         // 'url_token' => get_home_url()."/view-contact/?token=".$token
         'url_token' => get_home_url()."/card/?token=".$token
 	);
@@ -136,7 +140,7 @@ class Employees_List_Table extends WP_List_Table
                 'id_user' => 'ID Usuario',
                 'username' => 'Username',
                 'sum_items'    => 'Cantidad',
-                'customer_id'      => 'ID Pedido',
+                'customer_id'      => 'ID Cliente',
                 'accion' => 'Accion' 
           );
           return $columns;
