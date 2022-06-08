@@ -1,42 +1,19 @@
-// const copyToClipboard = (element) => {
-//     const $tempInput = jQuery("<input>");
+// FUNCION PARA COPIAR EN TARJETA DE CUENTAS
+// var copy_click = document.querySelector("i.fa-copy");
 
-//     jQuery("body").append($tempInput);
-//     $tempInput.val(jQuery(element).text()).select();
-//     document.execCommand("copy");
-//     $tempInput.remove();
 
-//     tooltipFunction();
-// };
+var este = jQuery('i.fa-copy')
+este.click(function(e){
+    var id = e.target.id;
+    console.log("xdxdxd : ",id);
 
-// const tooltipFunction = () => {  
-//     const tooltip = document.getElementById("tooltip");
+    const input = document.querySelector('.textLink'+id);
+    const message = document.querySelector('#tooltip');
 
-//     tooltip.classList.add('active');
-//     setTimeout(() => {
-//        tooltip.classList.remove('active');
-//     }, 1500);
-// }
-
-// jQuery(".copy-link .icon").click(function() {
-//     copyToClipboard('.copy-link .text');
-
-//     // With text marked.
-//     textField.addClass('input_copy_selected');
-// });
-
-const button = document.querySelector('i.fa-copy');
-const input = document.querySelector('.textLink');
-const message = document.querySelector('#tooltip');
-
-button.addEventListener('click', function(){
     input.focus();
     document.execCommand('SelectAll');
     document.execCommand('copy');
-
     message.innerHTML = "Copiado al portapapeles";
-    setTimeout(()=>message.innerHTML="",4000);
-    
-})
+    setTimeout(()=>message.innerHTML="",5000);
 
-
+});

@@ -27,13 +27,15 @@ function insert_contact($atts)
 
       $token = uniqid('cod');
       echo "DATO 1: ". $atts['order'];
-      echo "DATO 1: ". $atts['product'];
-      echo "DATO 1: ". $atts['customer'];
-      echo "DATO 1: ". $atts['hiden_ref'];
+      echo "<br>DATO 2: ". $atts['product'];
+      echo "<br>DATO 3: ". $atts['customer'];
+      echo "<br>DATO 3: ". $atts['user'];
+      echo "<br>DATO 4: ". $atts['hiden_ref'];  
 	$vcard_info = array(
       'order_id' => intval($atts['order']),
       'product_id' => intval($atts['product']),
       'customer_id' => intval($atts['customer']),
+      'user_id' => intval($atts['user']),
       'hiden_ref' => $atts['hiden_ref'],
       'token' => $token,
         // 'url_token' => get_home_url()."/view-contact/?token=".$token
@@ -123,7 +125,10 @@ class Employees_List_Table extends WP_List_Table
                       ARRAY_A
                 );
           }else{
-                $sql = "SELECT sum(wo.num_items_sold) as sum_items, wo.customer_id, wo.status,wc.username as username, wc.user_id as id_user FROM {$wpdb->prefix}wc_order_stats as wo INNER JOIN {$wpdb->prefix}wc_customer_lookup AS wc ON wo.customer_id = wc.customer_id WHERE wo.status in ('wc-processing','wc-completed') GROUP BY wo.customer_id";
+                $sql = "SELECT sum(wo.num_items_sold) as sum_items, wo.customer_id, wo.status,wc.username as username, wc.user_id as id_user 
+                        FROM {$wpdb->prefix}wc_order_stats as wo 
+                        INNER JOIN {$wpdb->prefix}wc_customer_lookup AS wc ON wo.customer_id = wc.customer_id 
+                        WHERE wo.status in ('wc-processing','wc-completed') GROUP BY wo.customer_id";
                 // $sql = "SELECT ID,user_login,user_email,display_name from {$wpdb->prefix}users";
                 return $wpdb->get_results(
                       $sql,
@@ -199,8 +204,9 @@ class Employees_List_Table extends WP_List_Table
                     return ucwords($item[$column_name]);
             case 'accion':
                   $id_tabla = $GLOBALS['tablita_id'];
-                    $custo = $wpdb->get_var("SELECT customer_id FROM {$wpdb->prefix}wc_customer_lookup where user_id='$id_tabla'");
-                    return '<a class="button" href="'.esc_url(admin_url('admin.php?page='.$value_pag.'/tarjeta_detalle.php&valor='.$custo)).'">Ver tarjetas</a>';
+                  //$custo = $wpdb->get_var("SELECT customer_id FROM {$wpdb->prefix}wc_customer_lookup where user_id='$id_tabla'");  // activar si no finciona
+                  //return '<a class="button" href="'.esc_url(admin_url('admin.php?page='.$value_pag.'/tarjeta_detalle.php&valor='.$custo)).'">Ver tarjetas</a>'; // activar si no finciona
+                  return '<a class="button" href="'.esc_url(admin_url('admin.php?page='.$value_pag.'/tarjeta_detalle.php&valor='.$id_tabla)).'">Ver tarjetas</a>';// quitar si no finciona
             default:
                     return print_r($item, true); //Show the whole array for troubleshooting purposes
         }

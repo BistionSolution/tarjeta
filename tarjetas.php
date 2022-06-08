@@ -46,9 +46,8 @@ function genera_hmtl_pagina()
 	<div class="wrap">
 		<h2>Cuentas de clientes</h2>
 	</div>
-<?php }
-
-
+<?php 
+}
 //PRODUCTOS 
 add_shortcode('productos_cliente', 'productos_cliente');
 
@@ -57,9 +56,12 @@ function productos_cliente($parametros)
 {
 	global $wpdb;
 	$user_id = get_current_user_id();
-	$customer_id = $wpdb->get_var("SELECT customer_id FROM {$wpdb->prefix}wc_customer_lookup where user_id='$user_id'");
-	$vcards = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}vcards where customer_id='$customer_id'");
+	//$customer_id = $wpdb->get_var("SELECT customer_id FROM {$wpdb->prefix}wc_customer_lookup where user_id='$user_id'"); // activar
+	//$vcards = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}vcards where customer_id='$customer_id'"); //activas
+	$vcards = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}vcards where user_id='$user_id'"); // scar si no funciona
 	$href = dirname($_SERVER["REQUEST_URI"]);
+
+	$count = 1;
 	foreach ($vcards as $vcard) { ?>
 		<div id="perfil-qr-page" class="card-view">
 			<div class="row block-row block-header">
@@ -99,14 +101,16 @@ function productos_cliente($parametros)
 										
 										<div class="copy-link-container">
 											
-										<input type="text" id="url" class="textLink user-select-all" value="<?=$vcard->url_token?>"/>
+										<input type="text" id="url" class="textLink<?=$count?> user-select-all" value="<?=$vcard->url_token?>"/>
                                             <span class="icon">
-                                                <i class="fa fa-copy" title="Copiar para pegar"></i>
+                                                <i class="fa fa-copy" id="<?=$count?>" title="Copiar para pegar"></i>
                                             </span>
 										</div>
 									</div>
-									<span id="tooltip"></span> 
-									
+									<span id="tooltip" class="tooltip"></span> 
+									<?php 
+										$count += 1;
+									?>
 								</li>
 								<li>
 								

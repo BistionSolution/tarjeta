@@ -475,6 +475,8 @@ input[type="file"] {
     margin-left: -60px;
     bottom: 150%;
     left: 50%;
+    width: 20px;
+    height: 20px;
 }
 #tooltip::after{
     margin-left: -5px;
