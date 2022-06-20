@@ -86,6 +86,7 @@ function actualizarVcard()
             'personal_department' => $_POST['departamento'],
             'personal_country' => $_POST['pais'],
             'personal_information' => $_POST['mi_informacion'],
+            'whatsapp_ms' => $_POST['whatsapp_mensaje'],
             'company_name' => $_POST['empresa'],
             'company_charge' => $_POST['cargo'],
             'company_web' => $_POST['paginaWeb'],

@@ -25,18 +25,27 @@ function menu_ajuste_tarjetas()
 	// 	plugin_dir_url(__FILE__) . 'assets/img/icon.svg',
 	// 	'1'
 	// );
-	add_submenu_page(
-		null, // parent slug
-		'Tarjetas Registradas', // titulo de la pagina
-		'Todas las Tarjetas', // titulo del menu
-		'manage_options',
-		plugin_dir_path(__FILE__) . 'tarjeta_detalle.php', // slug
-		null // funcion
-	);
+	
+	// add_submenu_page(
+	// 	null, // parent slug
+	// 	'Tarjetas Registradas', // titulo de la pagina
+	// 	'Todas las Tarjetas', // titulo del menu
+	// 	'manage_options',
+	// 	plugin_dir_path(__FILE__) . 'tarjeta_detalle.php', // slug
+	// 	null // funcion
+	// );
+
+	// add_submenu_page(
+	// 	'employees_list_table', // parent slug
+	// 	'Tarjetas pendientes', // titulo de la pagina
+	// 	'Tarjetas pendientes', // titulo del menu
+	// 	'manage_options', // permisos al admin solo - capability
+	// 	'manager_pro', // slug
+	// 	'pendient_goes' // funcion
+	// );
 }
 
-add_action('admin_menu', 'menu_ajuste_tarjetas');
-
+// add_action('admin_menu', 'menu_ajuste_tarjetas');
 
 /*add_action('admin_menu','menu_ajuste_tarjetas2');*/
 function genera_hmtl_pagina()
@@ -270,6 +279,12 @@ function card_edit_endpoint_content()
 										<div class="field-container">
 											<label for="field-1-10">Fijo / Casa</label>
 											<input id="field-1-10" name="telefonoFijo" value="<?=$v->personal_telephone?>">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-1-10">Whatsapp Msg</label>
+											<textarea class="form-control" id="field-1-11" rows="3" name="whatsapp_mensaje"><?=$v->whatsapp_ms?></textarea>
 										</div>
 									</div>
 									<div class="form-row col-6">

@@ -1,5 +1,9 @@
 <?php
 // require 'error.php';
+function encodeURIComponent($str) {
+    $revert = array('%21'=>'!', '%2A'=>'*', '%27'=>"'", '%28'=>'(', '%29'=>')');
+    return strtr(rawurlencode($str), $revert);
+}
 
 function page_vcard()
 {
@@ -18,6 +22,7 @@ function page_vcard()
             $nombres = $result[0]->names;
             $apellidos = $result[0]->last_names;
             $personal_phone =$result[0]->personal_cell_phone;
+            $whatsapp_message =$result[0]->whatsapp_ms;
             $cell_phone = $result[0]->company_cell_phone;
             $correo = $result[0]->personal_email;
             $company_name = $result[0]->company_name;
@@ -113,7 +118,15 @@ function page_vcard()
                             <!-- <i class="fab fa-tiktok"></i> -->
                             </a>    
                         </div>
-                    <?php endif; ?>                                 
+                    <?php endif; ?>       
+                    <?php if(!empty($whatsapp_message)): ?> 
+                        <div class="img-icon cell wsp-efect">
+                            <a class="perfil-button" href="<?= "https://wa.me/".$personal_phone."?text=".encodeURIComponent($whatsapp_message) ?>" target="_blank">
+                            <i class="fa fa-whatsapp wsap-button"></i>                              
+                            <!-- <i class="fab fa-tiktok"></i> -->
+                            </a>    
+                        </div>                        
+                    <?php endif; ?>                            
                 </div>
                 
                 <div>

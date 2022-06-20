@@ -372,7 +372,7 @@ input[type="file"] {
     border-radius: 50%;
     color:#000;    
     backdrop-filter: blur(5px);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1) !important;
     border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     width: 55px;
@@ -380,7 +380,26 @@ input[type="file"] {
     font-size: 16px;
     padding: 17px 17px;
     margin-bottom: .5rem;
+    
 }
+.wsp-efect i{
+    background: rgba(5, 224, 104, 0.616) !important;
+    color: #fff !important;
+    padding: 11px 11px !important;
+    font-size: 30px !important;
+    animation: borderPulse 1000ms infinite ease-out !important;
+}
+
+@keyframes borderPulse {
+    0% {
+      box-shadow: inset 0px 0px 0px 5px rgba(255, 255, 255,.4), 0px 0px 0px 0px rgba(255,255,255,1);
+    }
+    100% {
+      box-shadow: inset 0px 0px 0px 3px rgba(117, 117, 255,.2), 0px 0px 0px 10px rgba(255,255,255,0);
+    }
+  }
+
+
 .items .vcard{
     position: relative;
     float: left;
@@ -396,7 +415,7 @@ input[type="file"] {
     border-radius: 5px;
     color: #000;
     backdrop-filter: blur(5px);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1) !important;
     border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     width: 100%;
