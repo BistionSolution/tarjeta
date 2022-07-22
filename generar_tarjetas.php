@@ -14,7 +14,7 @@ class Cuenta_lista_table extends WP_List_Table
           global $wpdb;
 
           if (!empty($search)) {
-                $sql = "SELECT id_vcard, order_id, product_id, url_token, user_id,state FROM {$wpdb->prefix}vcards ";
+                $sql = "SELECT id_vcard, order_id, product_id, url_token, user_id,state FROM {$wpdb->prefix}vcards GROUP BY id_vcard DESC";
                 // $sql = "SELECT ID,user_login,user_email,display_name from {$wpdb->prefix}users WHERE ID Like '%{$search}%' OR user_login Like '%{$search}%' OR user_email Like '%{$search}%' OR display_name Like '%{$search}%'";
 
                 return $wpdb->get_results(
