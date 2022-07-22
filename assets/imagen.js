@@ -11,20 +11,13 @@ imagen.onchange = function(e)
 	let reader = new FileReader();
 	var peso = e.target.files[0].size; //peso en bytes
 	reader.readAsDataURL(e.target.files[0]);
-	// reader.onload = function(){
-	// 	let preview = document.getElementById('preview'),
-	// 			image = document.createElement('img');
-	// 	image.src = reader.result;
-	// 	preview.innerHTML = '';
-	// 	preview.append(image);
-	// };
 	let texto = document.getElementById('text-img');
 	texto.innerHTML = '';
 	if (peso>2097152){ //Limitar el peso		
 		texto.append('El peso de la imagen excede el permitido(2MB).');
 		texto.style.color='#ff0000'
-		btnActualizar.disabled = true;
-		peso_imagen = true;		
+		// btnActualizar.disabled = true;
+		peso_imagen = true;	
 	}else{
 		reader.onload = function(){
 			let preview = document.getElementById('preview'),
@@ -74,51 +67,67 @@ imagen_negocio.onchange = function(e)
 
 delete_img.onclick = function(e) 
 {
-	jQuery('#cargaModal').modal('show');
-	jQuery.ajax({
-		type:"post",
-		url:ajax_object.url,
-		data:{
-			'action':'delete_img',
-			'id_vcard':jQuery('.identificador-vcard').val()
-		},
-		success: function(data){
-			var url = data.slice(0, -1);
-			let preview = document.getElementById('preview'),
+	
+	imagen.value = '';
+	let preview = document.getElementById('preview'),
 			image = document.createElement('img');
 			image.src = '';
 			preview.innerHTML = '';
 			preview.append(image);
-		},
-		complete : function(xhr, status) {
+	// jQuery('#cargaModal').modal('show');
+	// jQuery.ajax({
+	// 	type:"post",
+	// 	url:ajax_object.url,
+	// 	data:{
+	// 		'action':'delete_img',
+	// 		'id_vcard':jQuery('.identificador-vcard').val()
+	// 	},
+	// 	success: function(data){
+	// 		var url = data.slice(0, -1);
+	// 		let preview = document.getElementById('preview'),
+	// 		image = document.createElement('img');
+	// 		image.src = '';
+	// 		preview.innerHTML = '';
+	// 		preview.append(image);
+	// 		jQuery('#delete_img').addClass('.trash-ocultar');
+	// 	},
+	// 	complete : function(xhr, status) {
 			
-			jQuery('#cargaModal').modal('hide');
-		}
-	});  
+	// 		jQuery('#cargaModal').modal('hide');
+	// 	}
+	// });  
 }
 
 delete_img_b.onclick = function(e) 
 {
-	jQuery('#cargaModal').modal('show');
-	jQuery.ajax({
-		type:"post",
-		url:ajax_object.url,
-		data:{
-			'action':'delete_img_b',
-			'id_vcard':jQuery('.identificador-vcard').val()
-		},
-		success: function(data){
-			var url = data.slice(0, -1);
-			let preview = document.getElementById('preview_business'),
+	imagen_negocio.value='';
+	let preview = document.getElementById('preview_business'),
 			image = document.createElement('img');
 			image.src = '';
 			preview.innerHTML = '';
 			preview.append(image);
-		},
-		complete : function(xhr, status) {
-			jQuery('#cargaModal').modal('hide');
-		}
-	}); 
+	
+	// jQuery('#cargaModal').modal('show');
+	// jQuery.ajax({
+	// 	type:"post",
+	// 	url:ajax_object.url,
+	// 	data:{
+	// 		'action':'delete_img_b',
+	// 		'id_vcard':jQuery('.identificador-vcard').val()
+	// 	},
+	// 	success: function(data){
+	// 		var url = data.slice(0, -1);
+	// 		let preview = document.getElementById('preview_business'),
+	// 		image = document.createElement('img');
+	// 		image.src = '';
+	// 		preview.innerHTML = '';
+	// 		preview.append(image);
+	// 		jQuery('#delete_img_business').addClass('.trash-ocultar');
+	// 	},
+	// 	complete : function(xhr, status) {
+	// 		jQuery('#cargaModal').modal('hide');
+	// 	}
+	// }); 
 		
 
 }

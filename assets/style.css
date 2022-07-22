@@ -154,6 +154,10 @@ input.user-select-all{
 input[type="file"] {
     display: none;
 }
+.trash-ocultar{
+    display: none !important;
+}
+
 .label-pro {
     margin-top: 10px;
     border: 1px solid #ccc;

@@ -55,14 +55,9 @@ function page_vcard()
 
             <?php endif; ?>
 
-            <?php if(empty($foto_business)): ?> 
-                <div class="img-business"> 
-                    <img class="img-perfil" src="<?=plugins_url(basename(__DIR__) . '/assets/img/ZENTOC-perfil.png')?>"/>
-                </div>
-            <?php else: ?>
-                <div class="for-border">
-
-                
+            <?php if(!empty($foto_business)): ?> 
+     
+                <div class="for-border">                
                     <div class="img-business">
                         <img class="profile-pic" src="<?=get_home_url() . '/' . $foto_business?>"/>
                     </div>

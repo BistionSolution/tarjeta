@@ -111,7 +111,7 @@ function actualizarVcard()
         $content .= "CLASS:PUBLIC\r\n";
 
 
-        // Se ha insertado un archivo
+        // Se ha insertado un archivo - FOTO EMPRESA
         if (!empty($_FILES["foto_business"]["tmp_name"])) 
         {
             // Si ya hay foto previa almacenada en la BD y se está actualizando la foto
@@ -127,10 +127,14 @@ function actualizarVcard()
             move_uploaded_file($photo_business,$imgSubida_business);
             // $binarioImagen = fread($imgSubida, $tamano);
             $ar['photo_business'] = $imgCarpetaBusiness;
+        }else{
+            $path_directory_photo = realpath(dirname(__FILE__) . '/../../..');
+            unlink($path_directory_photo . '/' . $file_photo_business);
+            $ar['photo_business'] = NULL;
         }
 
 
-        // Se ha insertado un archivo
+        // Se ha insertado un archivo FOTO PERFIL
         if (!empty($_FILES["foto"]["tmp_name"])) 
         {
             // Si ya hay foto previa almacenada en la BD y se está actualizando la foto
@@ -154,12 +158,15 @@ function actualizarVcard()
         // No se ha insertado un archivo
         }else{
             // El campo de url de la foto en la BD no está vacía
-            if(!empty($file_photo)){
-                $path = get_home_url() . '/' . $file_photo;
-                $contentBinary = file_get_contents($path);
-                $imageBase64 = base64_encode($contentBinary);
-                $content .= "PHOTO;ENCODING=b;TYPE:$imageBase64\r\n";
-            }
+            // if(!empty($file_photo)){
+            //     $path = get_home_url() . '/' . $file_photo;
+            //     $contentBinary = file_get_contents($path);
+            //     $imageBase64 = base64_encode($contentBinary);
+            //     $content .= "PHOTO;ENCODING=b;TYPE:$imageBase64\r\n";
+            // }
+            $path_directory_photo = realpath(dirname(__FILE__) . '/../../..');
+                unlink($path_directory_photo . '/' . $file_photo);
+            $ar['photo'] = NULL;
         }
         
         $content .= "N:$last_names;$names;;;\r\n";
