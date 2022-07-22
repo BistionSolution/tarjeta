@@ -14,16 +14,14 @@ class Cuenta_lista_table extends WP_List_Table
           global $wpdb;
 
           if (!empty($search)) {
-                $sql = "SELECT id_vcard, order_id, product_id, url_token, user_id,state FROM {$wpdb->prefix}vcards GROUP BY id_vcard DESC";
+                $sql = "SELECT id_vcard, order_id, product_id, url_token, user_id, state FROM {$wpdb->prefix}vcards GROUP BY id_vcard DESC";
                 // $sql = "SELECT ID,user_login,user_email,display_name from {$wpdb->prefix}users WHERE ID Like '%{$search}%' OR user_login Like '%{$search}%' OR user_email Like '%{$search}%' OR display_name Like '%{$search}%'";
-
                 return $wpdb->get_results(
                       $sql,
                       ARRAY_A
                 );
           }else{
-                $sql = "SELECT id_vcard, order_id, product_id, url_token, user_id,state FROM {$wpdb->prefix}vcards GROUP BY id_vcard DESC";
-
+                $sql = "SELECT id_vcard, order_id, product_id, url_token, user_id, state FROM {$wpdb->prefix}vcards";
                 // $sql = "SELECT ID,user_login,user_email,display_name from {$wpdb->prefix}users";
                 return $wpdb->get_results(
                       $sql,
@@ -63,7 +61,7 @@ class Cuenta_lista_table extends WP_List_Table
           $this->_column_headers = array($columns, $hidden, $sortable);
 
           /* pagination */
-          $per_page = 100;
+          $per_page = 30;
           $current_page = $this->get_pagenum();
           $total_items = count($this->users_data);  
 
@@ -145,17 +143,17 @@ class Cuenta_lista_table extends WP_List_Table
     }
 
     // Sorting function
-    // function usort_reorder($a, $b)
-    // {
-    //       // If no sort, default to user_login
-    //       $orderby = (!empty($_GET['orderby'])) ? $_GET['orderby'] : 'id_vcard';
-    //       // If no order, default to asc
-    //       $order = (!empty($_GET['order'])) ? $_GET['order'] : 'desc';
-    //       // Determine sort order
-    //       $result = strcmp($a[$orderby], $b[$orderby]);
-    //       // Send final sort direction to usort
-    //       return ($order === 'desc') ? $result : -$result;
-    // }
+    function usort_reorder($a, $b)
+    {
+          // If no sort, default to user_login
+          $orderby = (!empty($_GET['orderby'])) ? $_GET['orderby'] : 'id_vcard';
+          // If no order, default to asc
+          $order = (!empty($_GET['order'])) ? $_GET['order'] : 'desc';
+          // Determine sort order
+          $result = strcmp($a[$orderby], $b[$orderby]);
+          // Send final sort direction to usort
+          return ($order === 'desc') ? $result : -$result;
+    }
 }
 
 function cuenta_list(){
