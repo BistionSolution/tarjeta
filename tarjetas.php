@@ -171,7 +171,7 @@ function card_edit_endpoint_content()
 {
 	global $wpdb;
 	// echo 'VAMO GO : '.$_GET['ga'];
-
+	require "modal_carga.php";
 	if (isset($_GET['id'])) :
 
 		$id = $_GET['id'];
@@ -182,7 +182,7 @@ function card_edit_endpoint_content()
 		if (!empty($vcards)) {?>
 			<div>
 				<form id="perfil-qr-form" class="woocommerce-EditProfileQrForm edit-profile-qr" action="<?=esc_url(admin_url('admin-post.php')) ?>" method="post" enctype="multipart/form-data">
-				<input type="hidden" name="identificador" value="<?=$id?>">
+				<input type="hidden" class="identificador-vcard" name="identificador" value="<?=$id?>">
 				<?php foreach( $vcards as $v): ?>
 					<header class="form-header">
 						<h2 class="entry-title featured ">Datos de Contacto</h2>
@@ -199,11 +199,14 @@ function card_edit_endpoint_content()
 								</div>
 							</div>
 							<div class="profile-button">
-								
 								<input class="file-upload" id="file_img" type="file" accept="image/png, image/jpeg, image/jpg" name="foto" >
 								<label for="file_img" class="label-pro"><i class="fa fa-camera upload-button"></i> Subir archivo</label>
 								<div id="text-img"  style="width: 300px;"></div>
 							</div>
+							<div>
+								<label id="delete_img" class="label-pro"><i class="fa fa-trash"></i></label>
+							</div>
+							
 						</div>
 
 
@@ -215,10 +218,12 @@ function card_edit_endpoint_content()
 								</div>
 							</div>
 							<div class="profile-button">
-
 								<input class="file-upload" id="file_img_business" type="file" accept="image/png, image/jpeg, image/jpg" name="foto_business" multiple>
-								<label for="file_img_business" class="label-pro-business"><i class="fa fa-camera upload-button"></i> Subir archivo</label>
+								<label for="file_img_business" class="label-pro"><i class="fa fa-camera upload-button"></i> Subir archivo</label>
 								<div id="text-img-business"  style="width: 300px;"></div>
+							</div>
+							<div>
+								<label id="delete_img_business" class="label-pro"><i class="fa fa-trash"></i></label>
 							</div>
 						</div>
 					</div>
@@ -229,6 +234,7 @@ function card_edit_endpoint_content()
 
 							<header id="field-group-1-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-1" aria-expanded="true" aria-controls="field-group-1">
 								<h6 class="title">Datos Personales</h6>
+								<input type="file" name="imasd" id="asd">
 								<span class="icon"><i class="fas fa-plus"></i></span>
 							</header>
 							<div id="field-group-1" class="accordion-content collapse show" aria-labelledby="field-group-1-heading" data-parent="#perfil-qr-form">
@@ -305,7 +311,7 @@ function card_edit_endpoint_content()
 								<h6 class="title">Trabajo</h6>
 								<span class="icon"><i class="fas fa-plus"></i></span>
 							</header>
-							<div id="field-group-2" class="accordion-content collapse " aria-labelledby="field-group-2-heading" data-parent="#perfil-qr-form">
+							<div id="field-group-2" class="accordion-content collapse show" aria-labelledby="field-group-2-heading" data-parent="#perfil-qr-form">
 								<div class="row row-fields row-form-container">
 									<div class="form-row col-6">
 										<div class="field-container">
@@ -361,13 +367,13 @@ function card_edit_endpoint_content()
 						</section>
 
 
-						<section class="accordion-row">
+						<section class="accordion-row ">
 
 							<header id="field-group-3-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-3" aria-expanded="false" aria-controls="field-group-3">
 								<h6 class="title">Domicilio</h6>
 								<span class="icon"><i class="fas fa-plus"></i></span>
 							</header>
-							<div id="field-group-3" class="accordion-content collapse " aria-labelledby="field-group-3-heading" data-parent="#perfil-qr-form">
+							<div id="field-group-3" class="accordion-content collapse show" aria-labelledby="field-group-3-heading" data-parent="#perfil-qr-form">
 								<div class="row row-fields row-form-container">
 									<div class="form-row col-6">
 										<div class="field-container">
@@ -399,7 +405,7 @@ function card_edit_endpoint_content()
 								<h6 class="title">Perfiles Sociales</h6>
 								<span class="icon"><i class="fas fa-plus"></i></span>
 							</header>
-							<div id="field-group-4" class="accordion-content collapse " aria-labelledby="field-group-4-heading" data-parent="#perfil-qr-form">
+							<div id="field-group-4" class="accordion-content collapse show" aria-labelledby="field-group-4-heading" data-parent="#perfil-qr-form">
 								<div class="row row-fields row-form-container">
 									<div class="form-row col-6">
 										<div class="field-container">
@@ -466,7 +472,7 @@ function card_edit_endpoint_content()
 								<h6 class="title">Web 3</h6>
 								<span class="icon"><i class="fas fa-plus"></i></span>
 							</header>
-							<div id="field-group-3" class="accordion-content collapse " aria-labelledby="field-group-3-heading" data-parent="#perfil-qr-form">
+							<div id="field-group-3" class="accordion-content collapse show" aria-labelledby="field-group-3-heading" data-parent="#perfil-qr-form">
 								<div class="row row-fields row-form-container">
 									<div class="form-row col-6">
 										<div class="field-container">

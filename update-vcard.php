@@ -9,15 +9,14 @@ function actualizarVcard()
     $file_photo = $wpdb->get_var("SELECT photo FROM {$wpdb->prefix}vcards where id_vcard='$id_tarje'");
     $file_photo_business = $wpdb->get_var("SELECT photo_business FROM {$wpdb->prefix}vcards where id_vcard='$id_tarje'");
     // $url_photo = get_home_url().'/'.$photo;
-    
     $names = sanitize_text_field($_POST['nombres']);
     $last_names = sanitize_text_field($_POST['apellidos']);
     $pseudonym = sanitize_text_field($_POST['seudonimo']);
     $birthday = sanitize_text_field($_POST['cumpleanios']);
     $personal_web = sanitize_text_field($_POST['paginaWebPersonal']);
     $personal_email = sanitize_text_field($_POST['emailPrincipal']);
-    $personal_cell_phone = sanitize_text_field($_POST['celular']);
-    $personal_telephone = sanitize_text_field($_POST['telefonoFijo']);
+    $personal_cell_phone = str_replace(" ","",sanitize_text_field($_POST['celular']));
+    $personal_telephone = str_replace(" ","",sanitize_text_field($_POST['telefonoFijo']));
     $personal_address = sanitize_text_field($_POST['direccion']);
     $personal_department = sanitize_text_field($_POST['departamento']);
     $personal_country = sanitize_text_field($_POST['pais']);
@@ -80,8 +79,8 @@ function actualizarVcard()
             'birthday' => $_POST['cumpleanios'],
             'personal_web' => $_POST['paginaWebPersonal'],
             'personal_email' => $_POST['emailPrincipal'],
-            'personal_cell_phone' => $_POST['celular'],
-            'personal_telephone' => $_POST['telefonoFijo'],
+            'personal_cell_phone' => str_replace(" ","",$_POST['celular']),
+            'personal_telephone' => str_replace(" ","",$_POST['telefonoFijo']),
             'personal_address' => $_POST['direccion'],
             'personal_department' => $_POST['departamento'],
             'personal_country' => $_POST['pais'],
