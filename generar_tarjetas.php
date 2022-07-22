@@ -148,7 +148,7 @@ class Cuenta_lista_table extends WP_List_Table
           // If no sort, default to user_login
           $orderby = (!empty($_GET['orderby'])) ? $_GET['orderby'] : 'id_vcard';
           // If no order, default to asc
-          $order = (!empty($_GET['order'])) ? $_GET['order'] : 'desc';
+          $order = (!empty($_GET['order'])) ? $_GET['order'] : 'asc';
           // Determine sort order
           $result = strcmp($a[$orderby], $b[$orderby]);
           // Send final sort direction to usort
