@@ -9,6 +9,8 @@ function actualizarVcard()
     $file_photo = $wpdb->get_var("SELECT photo FROM {$wpdb->prefix}vcards where id_vcard='$id_tarje'");
     $file_photo_business = $wpdb->get_var("SELECT photo_business FROM {$wpdb->prefix}vcards where id_vcard='$id_tarje'");
     // $url_photo = get_home_url().'/'.$photo;
+    $imgvacio_bus = $_POST["imgvacio_bus"];
+    $imgvacio = $_POST["imgvacio"];
     $names = sanitize_text_field($_POST['nombres']);
     $last_names = sanitize_text_field($_POST['apellidos']);
     $pseudonym = sanitize_text_field($_POST['seudonimo']);
@@ -111,63 +113,69 @@ function actualizarVcard()
         $content .= "CLASS:PUBLIC\r\n";
 
 
-        // Se ha insertado un archivo - FOTO EMPRESA
-        if (!empty($_FILES["foto_business"]["tmp_name"])) 
-        {
-            // Si ya hay foto previa almacenada en la BD y se está actualizando la foto
-            if(!empty($file_photo_business)){
-                // Borramos la foto anterior
+        if ($imgvacio_bus != "si"){
+            // Se ha insertado un archivo - FOTO EMPRESA
+            if (!empty($_FILES["foto_business"]["tmp_name"])) 
+            {
+                // Si ya hay foto previa almacenada en la BD y se está actualizando la foto
+                if(!empty($file_photo_business)){
+                    // Borramos la foto anterior
+                    $path_directory_photo = realpath(dirname(__FILE__) . '/../../..');
+                    unlink($path_directory_photo . '/' . $file_photo_business);
+                }
+                $nombre_img_business = $_FILES['foto_business']['name'];
+                $photo_business = $_FILES["foto_business"]["tmp_name"];
+                $imgSubida_business = $path_directory."/$carpeta_user/$id_tarje-business-$nombre_img_business";
+                $imgCarpetaBusiness =  "wp-photos/$carpeta_user/$id_tarje-business-$nombre_img_business";
+                move_uploaded_file($photo_business,$imgSubida_business);
+                // $binarioImagen = fread($imgSubida, $tamano);
+                $ar['photo_business'] = $imgCarpetaBusiness;
+                
+                
+            }else{
                 $path_directory_photo = realpath(dirname(__FILE__) . '/../../..');
                 unlink($path_directory_photo . '/' . $file_photo_business);
+                $ar['photo_business'] = NULL;
             }
-            $nombre_img_business = $_FILES['foto_business']['name'];
-            $photo_business = $_FILES["foto_business"]["tmp_name"];
-            $imgSubida_business = $path_directory."/$carpeta_user/$id_tarje-business-$nombre_img_business";
-            $imgCarpetaBusiness =  "wp-photos/$carpeta_user/$id_tarje-business-$nombre_img_business";
-            move_uploaded_file($photo_business,$imgSubida_business);
-            // $binarioImagen = fread($imgSubida, $tamano);
-            $ar['photo_business'] = $imgCarpetaBusiness;
-        }else{
-            $path_directory_photo = realpath(dirname(__FILE__) . '/../../..');
-            unlink($path_directory_photo . '/' . $file_photo_business);
-            $ar['photo_business'] = NULL;
         }
-
-
-        // Se ha insertado un archivo FOTO PERFIL
-        if (!empty($_FILES["foto"]["tmp_name"])) 
-        {
-            // Si ya hay foto previa almacenada en la BD y se está actualizando la foto
-            if(!empty($file_photo)){
-                // Borramos la foto anterior
+        
+        if($imgvacio != "si"){
+            // Se ha insertado un archivo FOTO PERFIL
+            if (!empty($_FILES["foto"]["tmp_name"])) 
+            {
+                // Si ya hay foto previa almacenada en la BD y se está actualizando la foto
+                if(!empty($file_photo)){
+                    // Borramos la foto anterior
+                    $path_directory_photo = realpath(dirname(__FILE__) . '/../../..');
+                    unlink($path_directory_photo . '/' . $file_photo);
+                }
+                $nombre_img = $_FILES['foto']['name'];
+                $photo = $_FILES["foto"]["tmp_name"];
+                $imgSubida = $path_directory."/$carpeta_user/$id_tarje-$nombre_img";
+                $imgCarpeta =  "wp-photos/$carpeta_user/$id_tarje-$nombre_img";
+                move_uploaded_file($photo,$imgSubida);
+                // $binarioImagen = fread($imgSubida, $tamano);
+                $ar['photo'] = $imgCarpeta;
+                $url_photo = get_home_url() . '/' . $imgCarpeta;
+                
+                $contenidoBinario = file_get_contents($url_photo);
+                $imagenComoBase64 = base64_encode($contenidoBinario);
+                $content .= "PHOTO;ENCODING=b;TYPE:$imagenComoBase64\r\n";            
+            // No se ha insertado un archivo
+            }else{
+                // El campo de url de la foto en la BD no está vacía
+                // if(!empty($file_photo)){
+                //     $path = get_home_url() . '/' . $file_photo;
+                //     $contentBinary = file_get_contents($path);
+                //     $imageBase64 = base64_encode($contentBinary);
+                //     $content .= "PHOTO;ENCODING=b;TYPE:$imageBase64\r\n";
+                // }
                 $path_directory_photo = realpath(dirname(__FILE__) . '/../../..');
-                unlink($path_directory_photo . '/' . $file_photo);
+                    unlink($path_directory_photo . '/' . $file_photo);
+                $ar['photo'] = NULL;
             }
-            $nombre_img = $_FILES['foto']['name'];
-            $photo = $_FILES["foto"]["tmp_name"];
-            $imgSubida = $path_directory."/$carpeta_user/$id_tarje-$nombre_img";
-            $imgCarpeta =  "wp-photos/$carpeta_user/$id_tarje-$nombre_img";
-            move_uploaded_file($photo,$imgSubida);
-            // $binarioImagen = fread($imgSubida, $tamano);
-            $ar['photo'] = $imgCarpeta;
-            $url_photo = get_home_url() . '/' . $imgCarpeta;
-            
-            $contenidoBinario = file_get_contents($url_photo);
-            $imagenComoBase64 = base64_encode($contenidoBinario);
-            $content .= "PHOTO;ENCODING=b;TYPE:$imagenComoBase64\r\n";            
-        // No se ha insertado un archivo
-        }else{
-            // El campo de url de la foto en la BD no está vacía
-            // if(!empty($file_photo)){
-            //     $path = get_home_url() . '/' . $file_photo;
-            //     $contentBinary = file_get_contents($path);
-            //     $imageBase64 = base64_encode($contentBinary);
-            //     $content .= "PHOTO;ENCODING=b;TYPE:$imageBase64\r\n";
-            // }
-            $path_directory_photo = realpath(dirname(__FILE__) . '/../../..');
-                unlink($path_directory_photo . '/' . $file_photo);
-            $ar['photo'] = NULL;
         }
+        
         
         $content .= "N:$last_names;$names;;;\r\n";
         $content .= "FN:$names $last_names\r\n";

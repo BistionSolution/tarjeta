@@ -195,11 +195,23 @@ function card_edit_endpoint_content()
 							<h5>Foto perfil</h5>
 							<div class="profile-img">
 								<div id="preview">
-									<img class="profile-pic" src="<?=get_home_url().'/'.$v->photo?>">
+								<?php
+									if(!empty($v->photo)){
+											?>
+											<input type="hidden" name="imgvacio" value="si">
+											<img class="profile-pic" src="<?=get_home_url().'/'.$v->photo?>">
+											<?php
+										}else{
+											?>
+											<input type="hidden" name="imgvacio" value="no">
+											<img class="profile-pic">
+											<?php
+										}
+								?>
 								</div>
 							</div>
 							<div class="profile-button">
-								<input class="file-upload" id="file_img" type="file" accept="image/png, image/jpeg, image/jpg" name="foto" >
+								<input class="file-upload" id="file_img" type="file" accept="image/png, image/jpeg, image/jpg" name="foto">
 								<label for="file_img" class="label-pro"><i class="fa fa-camera upload-button"></i> Subir archivo</label>
 								<div id="text-img"  style="width: 300px;"></div>
 							</div>
@@ -212,9 +224,23 @@ function card_edit_endpoint_content()
 
 						<div class="profile-img-container">
 							<h5>Foto logo</h5>
+							
 							<div class="profile-img">
 								<div id="preview_business">
-									<img class="profile-pic" src="<?=get_home_url().'/'.$v->photo_business?>">
+								<?php
+									if(!empty($v->photo_business)){
+											?>
+											<input type="hidden" name="imgvacio_bus" value="si">
+											<img class="profile-pic" src="<?=get_home_url().'/'.$v->photo_business?>">
+											
+											<?php
+										}else{
+											?>
+											<input type="hidden" name="imgvacio_bus" value="no">
+											<img class="profile-pic">
+											<?php
+										}
+								?>
 								</div>
 							</div>
 							<div class="profile-button">
