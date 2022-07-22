@@ -21,7 +21,7 @@ class Cuenta_lista_table extends WP_List_Table
                       ARRAY_A
                 );
           }else{
-                $sql = "SELECT id_vcard, order_id, product_id, url_token, user_id, state FROM {$wpdb->prefix}vcards";
+                $sql = "SELECT id_vcard, order_id, product_id, url_token, user_id, state FROM {$wpdb->prefix}vcards GROUP BY id_vcard DESC";
                 // $sql = "SELECT ID,user_login,user_email,display_name from {$wpdb->prefix}users";
                 return $wpdb->get_results(
                       $sql,
