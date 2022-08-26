@@ -9,6 +9,7 @@ function create_table_vcards()
         order_id INT NOT NULL,
         product_id INT NOT NULL,
         customer_id INT NOT NULL,
+		user_id INT NOT NULL,
 		names VARCHAR(100),
 		last_names VARCHAR(100),
 		pseudonym VARCHAR(100),
@@ -43,7 +44,9 @@ function create_table_vcards()
 		url_tiktok VARCHAR(200),
 		url_spotify VARCHAR(200),
 		url_apple_music VARCHAR(200),
-		token varchar(100)
+		token varchar(100),
+		hiden_ref varchar(50),
+		whatsapp_ms text
 	);";
 	
 	// Comprueba si existe la tabla en la BD
