@@ -136,7 +136,7 @@ class Cuenta_lista_table extends WP_List_Table
     protected function get_sortable_columns()
     {
           $sortable_columns = array(
-            'id_vcard' => array('id_vcard', true),
+            'id_vcard' => array('id_vcard', false),
             'product_id'  => array('product_id', false)
           );
           return $sortable_columns;
@@ -148,7 +148,7 @@ class Cuenta_lista_table extends WP_List_Table
           // If no sort, default to user_login
           $orderby = (!empty($_GET['orderby'])) ? $_GET['orderby'] : 'id_vcard';
           // If no order, default to asc
-          $order = (!empty($_GET['order'])) ? $_GET['order'] : 'asc';
+          $order = (!empty($_GET['order'])) ? $_GET['order'] : 'desc';
           // Determine sort order
           $result = strnatcmp($a[$orderby], $b[$orderby]);
           // Send final sort direction to usort
