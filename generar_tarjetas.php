@@ -150,7 +150,7 @@ class Cuenta_lista_table extends WP_List_Table
           // If no order, default to asc
           $order = (!empty($_GET['order'])) ? $_GET['order'] : 'asc';
           // Determine sort order
-          $result = strcmp($a[$orderby], $b[$orderby]);
+          $result = strnatcmp($a[$orderby], $b[$orderby]);
           // Send final sort direction to usort
           return ($order === 'asc') ? $result : -$result;
     }
