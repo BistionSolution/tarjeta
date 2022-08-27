@@ -94,7 +94,7 @@ class Cuenta_lista_table extends WP_List_Table
 
             case 'url_token':
                   $GLOBALS['url_token'] = $item[$column_name];
-                  return '<input value="'.$item[$column_name].'">';
+                  return '<p>'.$item[$column_name].'</p>';
 
             case 'qr_generate':
                   return '<a href="'.home_url().'/qr-download/?url_token='.$GLOBALS['url_token'].'" target="_blank">Ir a descargar</a>';
@@ -152,7 +152,7 @@ class Cuenta_lista_table extends WP_List_Table
           // Determine sort order
           $result = strcmp($a[$orderby], $b[$orderby]);
           // Send final sort direction to usort
-          return ($order === 'desc') ? $result : -$result;
+          return ($order === 'asc') ? $result : -$result;
     }
 }
 

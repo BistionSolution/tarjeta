@@ -12,12 +12,12 @@ function update_nfc($atts){
 
 
     // NEW asdsad
-    $get_id = $wpdb->get_results("SELECT id_vcard FROM `wp_vcards` WHERE user_id = 0 LIMIT 1"); // THE LAST REGISTER UPDATE FOR ASIGNED BY ADMIN
+    $get_id = $wpdb->get_results("SELECT id_vcard FROM {$wpdb->prefix}vcards WHERE user_id = 0 AND order_id = 0 AND product_id = 0 LIMIT 1"); // THE LAST REGISTER UPDATE FOR ASIGNED BY ADMIN
     if(count($get_id)){
       foreach($get_id as $n1):
             $wpdb->update(
             $wpdb->prefix . 'vcards',
-            $vcard_info, // ARREGLO OF ELEMENTS TO UPDATE
+            $vcard_info, // ARRay OF ELEMENTS TO UPDATE
             array('id_vcard' => $n1->id_vcard) // ID OF REGISTER WHERE UPDATE
             );
             

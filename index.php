@@ -214,7 +214,7 @@ class Employees_List_Table extends WP_List_Table
                   $id_tabla = $GLOBALS['tablita_id'];
                   //$custo = $wpdb->get_var("SELECT customer_id FROM {$wpdb->prefix}wc_customer_lookup where user_id='$id_tabla'");  // activar si no finciona
                   //return '<a class="button" href="'.esc_url(admin_url('admin.php?page='.$value_pag.'/tarjeta_detalle.php&valor='.$custo)).'">Ver tarjetas</a>'; // activar si no finciona
-                  return '<a class="button" href="'.esc_url(admin_url('admin.php?page='.$value_pag.'/tarjeta_detalle.php&valor='.$id_tabla)).'">Ver tarjetas</a>';// quitar si no finciona
+                  return '<a class="button" href="'.esc_url(admin_url('admin.php?page='.$value_pag.'/tarjeta_detalle.php&valor='.$id_tabla)).'">Crear y Ver tarjetas</a>';// quitar si no finciona
             default:
                     return print_r($item, true); //Show the whole array for troubleshooting purposes
         }
@@ -289,7 +289,7 @@ function my_add_menu_items()
       add_submenu_page(
             'employees_list_table', // parent slug
             'Cuentas tarjetas', // titulo de la pagina
-            'Cuentas tarjetas', // titulo del menu
+            'Generar tarjetas', // titulo del menu
             'manage_options', // permisos al admin solo - capability
             'pendient_cuenta_table', // slug
             'cuenta_list' // funcion
@@ -431,7 +431,7 @@ class Pendient_List_Table extends WP_List_Table
                   $id_tabla = $GLOBALS['tablita_id'];
                   //$custo = $wpdb->get_var("SELECT customer_id FROM {$wpdb->prefix}wc_customer_lookup where user_id='$id_tabla'");  // activar si no finciona
                   //return '<a class="button" href="'.esc_url(admin_url('admin.php?page='.$value_pag.'/tarjeta_detalle.php&valor='.$custo)).'">Ver tarjetas</a>'; // activar si no finciona
-                  return '<a class="button" href="'.esc_url(admin_url('admin.php?page='.$value_pag.'/tarjeta_detalle.php&valor='.$id_tabla)).'">Ver tarjetas</a>';// quitar si no finciona
+                  return '<a class="button" href="'.esc_url(admin_url('admin.php?page='.$value_pag.'/tarjeta_detalle.php&valor='.$id_tabla)).'">Crear y ver tarjetas</a>';// quitar si no finciona
             default:
                     return print_r($item, true); //Show the whole array for troubleshooting purposes
         }

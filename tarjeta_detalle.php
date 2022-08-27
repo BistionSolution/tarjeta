@@ -26,6 +26,7 @@
         $vcar = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}vcards where user_id = $id and order_id = $product->order_id and product_id = $product->product_id ");
         if (empty($vcar)){ 
             $i = 1;
+            // Asigna usuario a tarjeta
             do{
                 $count_rest += do_shortcode("[update_nfc order={$product->order_id} product={$product->product_id} customer={$customer_id} hiden_ref={$hiden_ref} user={$id}]");
                 $i = $i + 1;
