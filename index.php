@@ -245,9 +245,9 @@ class Employees_List_Table extends WP_List_Table
     function usort_reorder($a, $b)
     {
           // If no sort, default to user_login
-          $orderby = (!empty($_GET['orderby'])) ? $_GET['orderby'] : 'username';
+          $orderby = (!empty($_GET['orderby'])) ? $_GET['orderby'] : 'max_order';
           // If no order, default to asc
-          $order = (!empty($_GET['order'])) ? $_GET['order'] : 'asc';
+          $order = (!empty($_GET['order'])) ? $_GET['order'] : 'desc';
           // Determine sort order
           $result = strcmp($a[$orderby], $b[$orderby]);
           // Send final sort direction to usort
