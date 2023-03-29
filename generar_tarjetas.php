@@ -119,12 +119,12 @@ class Cuenta_lista_table extends WP_List_Table
                             </div>
                         </form>';
                   case 'type_card':
-                        $options = array('pvc', 'metal', 'bambu','custom');
-                        $tipo = ucwords($item[$column_name]);
+                        $options = array('pvc', 'metal', 'bambu', 'custom');
+                        $tipo = $item[$column_name];
                         $output = '';
                         for ($i = 0; $i < count($options); $i++) {
                               $output .= '<option '
-                                    . ($tipo == $options[$i] ? 'selected="selected"' : '') . '>'
+                                    . ($tipo === $options[$i] ? 'selected="selected"' : '') . '>'
                                     . $options[$i]
                                     . '</option>';
                         }
@@ -175,24 +175,34 @@ function cuenta_list()
       $empTable = new Cuenta_lista_table();
       echo '<div class="wrap"><h2>Tarjetas pendientes de creacion</h2>';
       echo '<div class="wrap"><p>Si se crean todas las tarjetas pendientes el cliente desaparecera de esta lista</p></div>';
-
+      $options = array('pvc', 'metal', 'bambu', 'custom');
+      $tipo = 'pvc';
+      $output = '';
+      for ($i = 0; $i < count($options); $i++) {
+            $output .= '<option '
+                  . ($tipo === $options[$i] ? 'selected="selected"' : '') . '>'
+                  . $options[$i]
+                  . '</option>';
+      }
       require "modal_carga.php";
 ?>
       <form method="post" action="">
             <label>Cantidad de tarjetas a generar</label>
             <input type="number" name="cant" placeholder="Cantidad">
+            <select name="tipo" class="form-control" title="Choose Plan"><?= $output ?></select>
             <input type="submit" name="btncant" value="GENERAR" class="button">
       </form>
       <?php
 
       if (isset($_POST['btncant'])) {
             $cant = $_POST['cant'];
+            $tipo_card = $_POST['tipo'];
             if ($cant <= 0) {
                   show_message('<div style="background:#EB6F6B;padding:3px 3px 3px 3px; border-radius:10px;"><h3><strong>Ingresar numero mayor a 0</strong></h3></div>');
             } else {
                   for ($j = 0; $j < $cant; $j++) {
                         $defect_null = NULL;
-                        do_shortcode("[insert_contact order={$defect_null} product={$defect_null} customer={$defect_null} hiden_ref={$defect_null} user={$defect_null}]");
+                        do_shortcode("[insert_contact order='VAMOS' product={$defect_null} customer={$defect_null} hiden_ref={$defect_null} user={$defect_null} tipo={$tipo_card}]");
                   }
             }
       }
