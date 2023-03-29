@@ -46,7 +46,8 @@ function create_table_vcards()
 		url_apple_music VARCHAR(200),
 		token varchar(100),
 		hiden_ref varchar(50),
-		whatsapp_ms text
+		whatsapp_ms text,
+		type_card enum('pvc','bambu','metal','custom')
 	);";
 	
 	// Comprueba si existe la tabla en la BD
