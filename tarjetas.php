@@ -177,7 +177,7 @@ function card_edit_endpoint_content()
 		$id = $_GET['id'];
 		$user_id = get_current_user_id();
 		$customer_id = $wpdb->get_var("SELECT customer_id FROM {$wpdb->prefix}wc_customer_lookup where user_id='$user_id'");
-		$vcards = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}vcards where customer_id='$customer_id' and id_vcard = $id");
+		$vcards = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}vcards where user_id='$user_id' and id_vcard = $id");
 
 		if (!empty($vcards)) {?>
 			<div>
