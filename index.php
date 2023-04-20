@@ -114,6 +114,7 @@ class Employees_List_Table extends WP_List_Table
             global $wpdb;
 
             if (!empty($search)) {
+
                   $sql = "SELECT sum(wo.num_items_sold) as sum_items, wo.customer_id, max(wo.order_id) as max_order, wo.status,wc.username as username, wc.user_id as id_user
                         FROM {$wpdb->prefix}wc_order_stats as wo
                         INNER JOIN {$wpdb->prefix}wc_customer_lookup AS wc

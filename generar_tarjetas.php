@@ -14,7 +14,7 @@ class Cuenta_lista_table extends WP_List_Table
             global $wpdb;
 
             if (!empty($search)) {
-                  $sql = "SELECT id_vcard, order_id, product_id, url_token, user_id, state, type_card FROM {$wpdb->prefix}vcards ORDER BY id_vcard DESC";
+                  $sql = "SELECT id_vcard, order_id, product_id, url_token, user_id, state, type_card FROM {$wpdb->prefix}vcards WHERE url_token = '{$search}' ORDER BY id_vcard DESC";
                   // $sql = "SELECT ID,user_login,user_email,display_name from {$wpdb->prefix}users WHERE ID Like '%{$search}%' OR user_login Like '%{$search}%' OR user_email Like '%{$search}%' OR display_name Like '%{$search}%'";
                   return $wpdb->get_results(
                         $sql,
@@ -42,7 +42,8 @@ class Cuenta_lista_table extends WP_List_Table
                   'qr_generate' => 'QR',
                   'user_id' => 'ID usuario',
                   'state' => 'Estado Impresa',
-                  'type_card' => 'Tipo'
+                  'type_card' => 'Tipo',
+                  'editar' => 'Editar'
             );
             return $columns;
       }
@@ -105,6 +106,7 @@ class Cuenta_lista_table extends WP_List_Table
                         if ($item[$column_name] == 0) {
                               $color = '#fe5e41';
                         }
+                        $GLOBALS['user_id'] = $item[$column_name];
                         return '<p style="background:' . $color . ';" class="detect-id">' . $item[$column_name] . '</p>'; // quitar si no finciona
 
                   case 'state':
@@ -112,12 +114,10 @@ class Cuenta_lista_table extends WP_List_Table
                         if ($item[$column_name] == 1) {
                               $estado = 'checked';
                         }
-                        return '<form method="post">
-                            <div class="switch-button">
+                        return '<div class="switch-button">
                                 <input type="checkbox" name="' . $GLOBALS['vcard_id'] . '" id="switch-label-' . $GLOBALS['vcard_id'] . '" class="switch-button__checkbox" ' . $estado . '>
                                 <label for="switch-label-' . $GLOBALS['vcard_id'] . '" class="switch-button__label"></label>
-                            </div>
-                        </form>';
+                            </div>';
                   case 'type_card':
                         $options = array('pvc', 'metal', 'bambu', 'custom');
                         $tipo = $item[$column_name];
@@ -129,6 +129,10 @@ class Cuenta_lista_table extends WP_List_Table
                                     . '</option>';
                         }
                         return '<select class="form-control" title="Choose Plan">' . $output . '</select>';
+                  case 'editar':
+                        return '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editaData(`' . $GLOBALS['vcard_id'] . '||' . $GLOBALS['user_id'] . '`)">
+                        Editar
+                      </button>';
 
                   default:
                         return print_r($item, true); //Show the whole array for troubleshooting purposes
@@ -192,6 +196,29 @@ function cuenta_list()
             <select name="tipo" class="form-control" title="Choose Plan"><?= $output ?></select>
             <input type="submit" name="btncant" value="GENERAR" class="button">
       </form>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                  <div class="modal-content">
+                        <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">Tarjeta ID: <span id="idcard"></span></h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                              <form>
+                                    <div class="mb-3">
+                                          <label for="recipient-name" class="col-form-label">User id:</label>
+                                          <input type="text" class="form-control" id="iduser">
+                                    </div>
+                              </form>
+                        </div>
+                        <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary" onclick="updataData()">Save changes</button>
+                        </div>
+                  </div>
+            </div>
+      </div>
       <?php
 
       if (isset($_POST['btncant'])) {
@@ -257,3 +284,21 @@ function detect_swicht_state()
       }
 }
 add_action('wp_ajax_swicht_state', 'detect_swicht_state');
+
+function detect_update_user()
+{
+      global $wpdb;
+      ob_clean();
+
+      if (isset($_REQUEST)) {
+            $vcard_info = array(
+                  'user_id' => $_REQUEST['user_id']
+            );
+            $wpdb->update(
+                  $wpdb->prefix . 'vcards',
+                  $vcard_info, // ARREGLO OF ELEMENTS TO UPDATE
+                  array('id_vcard' => $_REQUEST['id_vcard']) // ID OF REGISTER WHERE UPDATE
+            );
+      }
+}
+add_action('wp_ajax_update_user', 'detect_update_user');
