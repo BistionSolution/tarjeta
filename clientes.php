@@ -15,17 +15,18 @@ function dcms_list_data() {
 
     // Count items
     $sqlTotalReg = "SELECT sum(wo.num_items_sold) as sum_items, wo.customer_id, wo.status,wc.username as username, wc.user_id as id_user FROM {$wpdb->prefix}wc_order_stats as wo INNER JOIN {$wpdb->prefix}wc_customer_lookup AS wc ON wo.customer_id = wc.customer_id WHERE wo.status in ('wc-processing','wc-completed') GROUP BY wo.customer_id";
-
     $resultTotalReg = $wpdb->get_results($sqlTotalReg, OBJECT);
     $numTotalRegistros = count($resultTotalReg);
 
-    //Cantidad de registros por pagina
+    // Cantidad de registros por pagina
     $tamanoPagina = 1;
-    //Jalamos las variables del paginador para calcular el offset
+    
+    // Jalamos las variables del paginador para calcular el offset
     if ((isset($_GET['paged'])) && ($_GET['paged'] != '')) {
         $offset = ($_GET['paged'] - 1) * $tamanoPagina;
         var_dump($offset);
     }
+
     else {
         $offset = 0;
     }

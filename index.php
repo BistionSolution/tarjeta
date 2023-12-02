@@ -15,7 +15,6 @@ require "qr-download.php";
 require "generar_tarjetas.php";
 require "edit_card.php";
 
-
 // Este hook nos sirve cuando ativamos este fragmento de código para crear la tabla
 register_activation_hook(__FILE__, 'create_table_vcards');
 // register_activation_hook(__FILE__, 'add_page_view_contact');
