@@ -4,17 +4,17 @@ function update_nfc($atts)
   global $wpdb;
   $tipo_card = '';
   switch (intval($atts['product'])) {
-    case 49:
-      $tipo_card = 'pvc';
+    case 57:
+      $tipo_card = 'blanca';
       break;
-    case 53:
-      $tipo_card = 'metal';
+    case 74:
+      $tipo_card = 'negra';
       break;
-    case 51:
-      $tipo_card = 'bambu';
+    case 75:
+      $tipo_card = 'colores';
       break;
-    case 464:
-      $tipo_card = 'custom';
+    case 76:
+      $tipo_card = 'personalizada';
       break;
   }
 
