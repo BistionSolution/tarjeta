@@ -44,10 +44,11 @@ function create_table_vcards()
 		url_tiktok VARCHAR(200),
 		url_spotify VARCHAR(200),
 		url_apple_music VARCHAR(200),
+		state BOOLEAN,
 		token varchar(100),
 		hiden_ref varchar(50),
 		whatsapp_ms text,
-		type_card enum('pvc','bambu','metal','custom')
+		type_card enum('blanca','negra','colores','personalizada')
 	);";
 	
 	// Comprueba si existe la tabla en la BD

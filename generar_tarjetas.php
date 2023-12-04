@@ -16,13 +16,16 @@ class Cuenta_lista_table extends WP_List_Table
             if (!empty($search)) {
                   $sql = "SELECT id_vcard, order_id, product_id, url_token, user_id, state, type_card FROM {$wpdb->prefix}vcards WHERE url_token = '{$search}' ORDER BY id_vcard DESC";
                   // $sql = "SELECT ID,user_login,user_email,display_name from {$wpdb->prefix}users WHERE ID Like '%{$search}%' OR user_login Like '%{$search}%' OR user_email Like '%{$search}%' OR display_name Like '%{$search}%'";
+                  
                   return $wpdb->get_results(
                         $sql,
                         ARRAY_A
                   );
+                 
             } else {
                   $sql = "SELECT id_vcard, order_id, product_id, url_token, user_id, state, type_card FROM {$wpdb->prefix}vcards ORDER BY id_vcard DESC";
                   // $sql = "SELECT ID,user_login,user_email,display_name from {$wpdb->prefix}users";
+         
                   return $wpdb->get_results(
                         $sql,
                         ARRAY_A
@@ -56,8 +59,9 @@ class Cuenta_lista_table extends WP_List_Table
             } else {
                   $this->users_data = $this->get_users_data();
             }
-
+            
             $columns = $this->get_columns();
+            // Imprimir columnas
             $hidden = array();
             $sortable = $this->get_sortable_columns();
             $this->_column_headers = array($columns, $hidden, $sortable);
@@ -77,6 +81,7 @@ class Cuenta_lista_table extends WP_List_Table
             usort($this->users_data, array(&$this, 'usort_reorder'));
 
             $this->items = $this->users_data;
+
       }
 
       // bind data with column
@@ -119,7 +124,7 @@ class Cuenta_lista_table extends WP_List_Table
                                 <label for="switch-label-' . $GLOBALS['vcard_id'] . '" class="switch-button__label"></label>
                             </div>';
                   case 'type_card':
-                        $options = array('pvc', 'metal', 'bambu', 'custom');
+                        $options = array('blanca', 'negra', 'colores', 'personalizada');
                         $tipo = $item[$column_name];
                         $output = '';
                         for ($i = 0; $i < count($options); $i++) {
@@ -179,8 +184,8 @@ function cuenta_list()
       $empTable = new Cuenta_lista_table();
       echo '<div class="wrap"><h2>Tarjetas pendientes de creacion</h2>';
       echo '<div class="wrap"><p>Si se crean todas las tarjetas pendientes el cliente desaparecera de esta lista</p></div>';
-      $options = array('pvc', 'metal', 'bambu', 'custom');
-      $tipo = 'pvc';
+      $options = array('blanca', 'negra', 'colores', 'personalizada');
+      $tipo = 'blanca';
       $output = '';
       for ($i = 0; $i < count($options); $i++) {
             $output .= '<option '

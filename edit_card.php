@@ -3,6 +3,7 @@ function update_nfc($atts)
 {
   global $wpdb;
   $tipo_card = '';
+  // 57,74,75,76
   switch (intval($atts['product'])) {
     case 57:
       $tipo_card = 'blanca';
