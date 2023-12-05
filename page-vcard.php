@@ -205,15 +205,12 @@ function page_vcard()
                                     <img class="img-web" src="<?=plugins_url(basename(__DIR__) . '/assets/img/MetaMask_Fox.svg')?>"/>
                                     
                                     <span>Metamask: </span>
-                                    
+                                
                                         <button id="buttongo" class="button-go "><i class="fa fa-copy" title="Copiar para pegar"></i><span class="for-copy"><?= $metamask ?>  </span>
                                     
                                         </button>
-                                        <span id="tooltip"></span> 
-                                      
-                                    
-                                    <!-- <i class="fab fa-tiktok"></i> -->
-    
+                                        <!-- <span id="tooltip"></span>  -->                                      
+                                    <!-- <i class="fab fa-tiktok"></i> -->    
                                 </div>
                                 
 

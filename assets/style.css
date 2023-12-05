@@ -376,7 +376,7 @@ input[type="file"] {
     border-radius: 50%;
     color:#000;    
     backdrop-filter: blur(5px);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2) !important;
     border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     width: 55px;
@@ -413,13 +413,13 @@ input[type="file"] {
 .items .vcard a{
     color: #000;
 } 
-.items .vcard i{
+.items .vcard {
     background: rgba(255, 255, 255, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 5px;
     color: #000;
     backdrop-filter: blur(5px);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2) !important;
     border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     width: 100%;
@@ -594,12 +594,10 @@ input[type="file"] {
     /* position: absolute; */
 
     background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(107, 107, 107, 0.2);
     border-radius: 50%;
     backdrop-filter: blur(5px);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1) !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
     /* animation: animate 10s linear infinite; */
     /* background-color: #4717f5; */
     color: #000;
