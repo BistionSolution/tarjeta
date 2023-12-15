@@ -677,11 +677,16 @@ function order_impresion()
 
 function bootstrap_admin_style()
 {
-      wp_enqueue_style('boostrap_admin_style', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css');
-      wp_enqueue_style('own_admin_style', plugins_url(basename(__DIR__)) . '/assets/styles_admin.css');
+      wp_enqueue_style('boostrap_admin_style', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css');    
       wp_enqueue_script('boostrap_admin_js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js');
 }
-add_action('admin_enqueue_scripts', 'bootstrap_admin_style');
+function tarjetas_admin_style()
+{
+      wp_enqueue_style('boostrap_admin_style', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css');    
+      wp_enqueue_script('boostrap_admin_js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js');
+      wp_enqueue_style('own_admin_style', plugins_url(basename(__DIR__)) . '/assets/styles_admin.css');
+}
+add_action('admin_enqueue_scripts', 'tarjetas_admin_style');
 add_action('wp_enqueue_scripts', 'bootstrap_admin_style');
 
 function ow_enqueue_script()
