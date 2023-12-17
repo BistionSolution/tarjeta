@@ -118,7 +118,7 @@ class Employees_List_Table extends WP_List_Table
                         FROM {$wpdb->prefix}wc_order_stats as wo
                         INNER JOIN {$wpdb->prefix}wc_customer_lookup AS wc
                         ON wo.customer_id = wc.customer_id
-                        WHERE wo.status in ('wc-processing','wc-completed') AND username Like '%{$search}%' OR url_token Like '%{$search}%'
+                        WHERE wo.status in ('wc-processing','wc-completed') AND username Like '%{$search}%'
                         GROUP BY wo.customer_id
                         ORDER BY max_order DESC";
                   // $sql = "SELECT ID,user_login,user_email,display_name from {$wpdb->prefix}users WHERE ID Like '%{$search}%' OR user_login Like '%{$search}%' OR user_email Like '%{$search}%' OR display_name Like '%{$search}%'";

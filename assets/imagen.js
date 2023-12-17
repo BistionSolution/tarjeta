@@ -13,7 +13,7 @@ imagen.onchange = function(e)
 	reader.readAsDataURL(e.target.files[0]);
 	let texto = document.getElementById('text-img');
 	texto.innerHTML = '';
-	if (peso>2097152){ //Limitar el peso		
+	if (peso>5097152){ //Limitar el peso		
 		texto.append('El peso de la imagen excede el permitido(2MB).');
 		texto.style.color='#ff0000'
 		// btnActualizar.disabled = true;
@@ -44,7 +44,7 @@ imagen_negocio.onchange = function(e)
 	}
 	let texto = document.getElementById('text-img-business');
 	texto.innerHTML = '';
-	if (peso>2097152){ //Limitar el peso		
+	if (peso>5097152){ //Limitar el peso		
 		texto.append('El peso de la imagen excede el permitido (2MB).');
 		texto.style.color='#ff0000'
 		btnActualizar.disabled = true;	
