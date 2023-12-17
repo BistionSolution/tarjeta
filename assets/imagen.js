@@ -14,7 +14,7 @@ imagen.onchange = function(e)
 	let texto = document.getElementById('text-img');
 	texto.innerHTML = '';
 	if (peso>5097152){ //Limitar el peso		
-		texto.append('El peso de la imagen excede el permitido(2MB).');
+		texto.append('El peso de la imagen excede el permitido(5MB).');
 		texto.style.color='#ff0000'
 		// btnActualizar.disabled = true;
 		peso_imagen = true;	
@@ -45,7 +45,7 @@ imagen_negocio.onchange = function(e)
 	let texto = document.getElementById('text-img-business');
 	texto.innerHTML = '';
 	if (peso>5097152){ //Limitar el peso		
-		texto.append('El peso de la imagen excede el permitido (2MB).');
+		texto.append('El peso de la imagen excede el permitido (5MB).');
 		texto.style.color='#ff0000'
 		btnActualizar.disabled = true;	
 		peso_imagen_business = true;		
