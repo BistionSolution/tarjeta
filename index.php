@@ -742,7 +742,7 @@ function delete_img()
                   $vcard_info, // ARREGLO OF ELEMENTS TO UPDATE
                   array('id_vcard' => $id_tarje) // ID OF REGISTER WHERE UPDATE
             );
-            $data = plugins_url(basename(__DIR__) . '/assets/img/ZENTOC-perfil.png');
+            $data = plugins_url(basename(__DIR__) . '/assets/img/perfil.jpg');
             print($data);
       }
 }
@@ -769,7 +769,7 @@ function delete_img_b()
                   $vcard_info, // ARREGLO OF ELEMENTS TO UPDATE
                   array('id_vcard' => $id_tarje) // ID OF REGISTER WHERE UPDATE
             );
-            $data = plugins_url(basename(__DIR__) . '/assets/img/ZENTOC-perfil.png');
+            $data = plugins_url(basename(__DIR__) . '/assets/img/perfil.jpg');
             print($data);
       }
 }

@@ -46,7 +46,7 @@ function page_vcard()
         <div class="perfil">
             <?php if(empty($foto)): ?> 
                 <div class="profile-img"> 
-                    <img class="img-perfil" src="<?=plugins_url(basename(__DIR__) . '/assets/img/ZENTOC-perfil.png')?>"/>
+                    <img class="img-perfil" src="<?=plugins_url(basename(__DIR__) . '/assets/img/perfil.jpg')?>"/>
                 </div>
             <?php else: ?>
                 <div class="profile-img">
