@@ -406,12 +406,16 @@ input[type="file"] {
 
 .items .vcard{
     position: relative;
-    float: left;
-    width: 100%;
     
+    width: 100%;
+   
 }
 .items .vcard a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #000;
+    gap: 5px;  
 } 
 .items .vcard {
     background: rgba(255, 255, 255, 0.5);
