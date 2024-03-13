@@ -81,7 +81,6 @@ function editaData(datos) {
 }
 
 function updataData() {
-
     idvcard = jQuery('#idcard').text()
     iduser = jQuery('#iduser').val()
     jQuery.ajax({

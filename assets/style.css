@@ -103,12 +103,18 @@ body {
     object-position: center;
 }
 
+.tarjeta-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .col-left .btn-block{
     display: block;
     text-align: center;
     width: 100%;
     padding: 10px;
-    border-radius: 15px;
+    border-radius: 10px;
     background: #4717f5;
     color:#fff;
 }
@@ -180,7 +186,6 @@ input[type="file"] {
     width: 150px;
     cursor: pointer;
 }
-/**/
 
 .discard-pro .profile-img-container{
     position: absolute;
@@ -204,6 +209,7 @@ input[type="file"] {
     overflow: hidden;
     z-index: 1;
 }
+
 #perfil-qr-form .profile-img-container .profile-img img {
     display: block;
     position: absolute;
@@ -323,7 +329,7 @@ input[type="file"] {
 }
 .wrap .perfil{
     text-align: left;
-    padding: 15px;
+    padding: 5px;
 }
 .wrap h1{
     color: #000;
@@ -347,6 +353,7 @@ input[type="file"] {
     overflow: hidden;
     z-index: 1;
 }
+
 .wrap .profile-img img {
     display: block;
     position: absolute;
@@ -363,13 +370,12 @@ input[type="file"] {
 
 .wrap .items{
     width: 100%;
-    height: 60px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 1.5rem;
     margin-top: 1.5rem;
     text-align: center;
-    
+    gap: 10px;
 }
 .items .cell {
     padding-left: 10px;
@@ -409,12 +415,6 @@ input[type="file"] {
   }
 
 
-.items .vcard{
-    position: relative;
-    
-    width: 100%;
-   
-}
 .items .vcard a{
     display: flex;
     align-items: center;
@@ -423,6 +423,8 @@ input[type="file"] {
     gap: 5px;  
 } 
 .items .vcard {
+    display: flex;
+    justify-content: center;
     background: rgba(255, 255, 255, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 5px;
@@ -434,9 +436,17 @@ input[type="file"] {
     width: 100%;
     height: 55px;
     font-size: 16px;
-    padding: 17px 17px;
 
 }
+.items button{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding: 0;
+    gap: 5px;
+}
+
 .wrap .web3{
     margin-top: 15px;
 }

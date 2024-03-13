@@ -1,28 +1,56 @@
 <?php
 
 /**
- * Plugin Name: Mis tarjetas
- * Version: 4.2.0
+ * Plugin Name: Mis Tarjetas
+ * Description: Plugin para crear tarjetas de presentación
+ * Version: 1.0.3
  */
 
 require "tarjetas.php";
+require "dashboard/card_contact.php";
 require "create-vcard.php";
-require "delete-vcard.php";
-require "page-vcard.php";
+require "pages/update_contact.php";
+require "table/contact.php";
+require "pages/page-vcard.php";
 require "error.php";
 require "update-vcard.php";
 require "qr-download.php";
 require "generar_tarjetas.php";
 require "edit_card.php";
 
+
 // Este hook nos sirve cuando ativamos este fragmento de código para crear la tabla
 register_activation_hook(__FILE__, 'create_table_vcards');
+
 // register_activation_hook(__FILE__, 'add_page_view_contact');
 // Este hook nos sirve cuando desactivamos este fragmento de código y con esto borraremos la tabla
 // register_deactivation_hook(__FILE__, 'drop_table_vcards');
 // register_deactivation_hook(__FILE__, 'drop_directory_vcards');
 // register_deactivation_hook(__FILE__, 'drop_directory_photos');
 // register_deactivation_hook( __FILE__, 'delete_page_view_contact');
+
+define('mis_tarjetas_version', '1.0.20');
+
+function mi_plugin_check_version()
+{
+      if (get_option('mis_tarjetas_version') != mis_tarjetas_version) {
+            mi_plugin_instalar_actualizaciones();
+      }
+}
+add_action('plugins_loaded', 'mi_plugin_check_version');
+
+function mi_plugin_instalar_actualizaciones()
+{
+      echo "Instalando o actualizando el plugin";
+      require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+
+      if (get_option('mis_tarjetas_version') != mis_tarjetas_version) {
+            create_table_contact();
+            // Actualizar la versión en la base de datos
+            update_option('mis_tarjetas_version', mis_tarjetas_version);
+      }
+}
+
 
 function insert_contact($atts)
 {
@@ -677,12 +705,13 @@ function order_impresion()
 
 function bootstrap_admin_style()
 {
-      wp_enqueue_style('boostrap_admin_style', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css');    
+      wp_enqueue_style('boostrap_admin_style', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css');
       wp_enqueue_script('boostrap_admin_js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js');
+      wp_enqueue_script('mi-script-custom', plugins_url(basename(__DIR__)) . '/pages/modal_pro.js', array('jquery'));
 }
 function tarjetas_admin_style()
 {
-      wp_enqueue_style('boostrap_admin_style', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css');    
+      wp_enqueue_style('boostrap_admin_style', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css');
       wp_enqueue_script('boostrap_admin_js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js');
       wp_enqueue_style('own_admin_style', plugins_url(basename(__DIR__)) . '/assets/styles_admin.css');
 }

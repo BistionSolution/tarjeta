@@ -25,7 +25,7 @@ function menu_ajuste_tarjetas()
 	// 	plugin_dir_url(__FILE__) . 'assets/img/icon.svg',
 	// 	'1'
 	// );
-	
+
 	// add_submenu_page(
 	// 	null, // parent slug
 	// 	'Tarjetas Registradas', // titulo de la pagina
@@ -51,11 +51,11 @@ function menu_ajuste_tarjetas()
 function genera_hmtl_pagina()
 {
 	// $codigo_pagina = get_option('genera_hmtl_pagina')
-	?>
+?>
 	<div class="wrap">
 		<h2>Cuentas de clientes</h2>
 	</div>
-<?php 
+	<?php
 }
 //PRODUCTOS 
 add_shortcode('productos_cliente', 'productos_cliente');
@@ -76,12 +76,16 @@ function productos_cliente($parametros)
 			<div class="row block-row block-header">
 				<div class="col-4 col-left">
 					<div class="col-container">
-						<div class="col-container">                
-        </div>
+						<div class="col-container">
+						</div>
 						<figure class="perfil-image">
-							<?=do_shortcode("[kaya_qrcode content=$vcard->url_token]");?>
+							<?= do_shortcode("[kaya_qrcode content=$vcard->url_token]"); ?>
 						</figure>
-						<a href="<?= $href . '/card-edit/?id=' . $vcard->id_vcard ?>" class="btn btn-beige btn-block btn-sm">Actualizar datos</a>
+						<div class="tarjeta-buttons">
+							<a href="<?= $href . '/card-edit/?id=' . $vcard->id_vcard ?>" class="btn-block">Actualizar datos</a>
+							<a href="<?= $href . '/card-contacts/?id=' . $vcard->id_vcard ?>" class="btn-block">Contactos generados</a>
+						</div>
+
 						<!-- <div class="qr-download">
 							<i class="fas fa-qrcode"></i> <a href="https://tarjetacenturion.com/wp-content/uploads/perfil-qr/user-qr-be8fb0c5422c0b692b08e65a490c6a1d.png" target="_blank" class="link link-light featured">Descargar QR</a>
 						</div> -->
@@ -91,40 +95,41 @@ function productos_cliente($parametros)
 					<div class="col-container">
 						<div class="content-block fullname">
 							<h3>
-								Tipo: <?php  echo $wpdb->get_var("SELECT post_title FROM {$wpdb->prefix}posts where id=$vcard->product_id"); 
-							?>
+								Tipo: <?php echo $wpdb->get_var("SELECT post_title FROM {$wpdb->prefix}posts where id=$vcard->product_id");
+										?>
 							</h3>
-							<h3><?php 
-							if (empty($vcard->names) & empty($vcard->last_names)){ 
-							echo 'Nombres y Apellidos';
-							 }else{
-							echo ucwords($vcard->names.' '. $vcard->last_names); }
-							?></h3>
+							<h3><?php
+								if (empty($vcard->names) & empty($vcard->last_names)) {
+									echo 'Nombres y Apellidos';
+								} else {
+									echo ucwords($vcard->names . ' ' . $vcard->last_names);
+								}
+								?></h3>
 						</div>
 						<div class="content-block profile-lins">
 							<small class="label-small">Enlace para compartir</small>
 							<ul class="profile-qr-links">
 								<li>
 									<div class="copy-link">
-									
-										
+
+
 										<div class="copy-link-container">
-											
-										<input type="text" id="url" class="textLink<?=$count?> user-select-all" value="<?=$vcard->url_token?>"/>
-                                            <span class="icon">
-                                                <i class="fa fa-copy" id="<?=$count?>" title="Copiar para pegar"></i>
-                                            </span>
+
+											<input type="text" id="url" class="textLink<?= $count ?> user-select-all" value="<?= $vcard->url_token ?>" />
+											<span class="icon">
+												<i class="fa fa-copy" id="<?= $count ?>" title="Copiar para pegar"></i>
+											</span>
 										</div>
 									</div>
-									<span id="tooltip" class="tooltip"></span> 
-									<?php 
-										$count += 1;
+									<span id="tooltip" class="tooltip"></span>
+									<?php
+									$count += 1;
 									?>
 								</li>
 								<li>
-								
+
 								</li>
-								
+
 							</ul>
 						</div>
 
@@ -132,11 +137,11 @@ function productos_cliente($parametros)
 							<small class="label-small">Compartir por</small>
 							<ul class="social-share-icons">
 								<li class="social-network messenger">
-									<a href="javascript:void(0)" onclick="javascript:window.open( this.dataset.href, '_blank', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600' );return false;" data-href="http://www.facebook.com/dialog/send?app_id=891268654262273&amp;redirect_uri=https%3A%2F%2Ftarjetacenturion.com%2Fu%2Fwdz37219h54v&amp;link=<?php echo $vcard->url_token ;?>&amp;display=popup" target="_blank">
+									<a href="javascript:void(0)" onclick="javascript:window.open( this.dataset.href, '_blank', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600' );return false;" data-href="http://www.facebook.com/dialog/send?app_id=891268654262273&amp;redirect_uri=https%3A%2F%2Ftarjetacenturion.com%2Fu%2Fwdz37219h54v&amp;link=<?php echo $vcard->url_token; ?>&amp;display=popup" target="_blank">
 										<i class="fab fa-facebook-messenger"></i> </a>
 								</li>
 								<li class="social-network whatsapp">
-									<a href="https://wa.me/?text=Ahora+tengo+mi+Tarjeta+Zentoc+y+puedes+descargar+mis+datos+aqu%C3%AD%3A+<?php echo $vcard->url_token?>" target="_blank">
+									<a href="https://wa.me/?text=Ahora+tengo+mi+Tarjeta+Zentoc+y+puedes+descargar+mis+datos+aqu%C3%AD%3A+<?php echo $vcard->url_token ?>" target="_blank">
 										<i class="fab fa-whatsapp"></i> </a>
 								</li>
 							</ul>
@@ -145,7 +150,7 @@ function productos_cliente($parametros)
 				</div>
 			</div>
 		</div>
-		<script src="<?=plugins_url(basename(__DIR__))?>/assets/copy_text.js"></script>
+		<script src="<?= plugins_url(basename(__DIR__)) ?>/assets/copy_text.js"></script>
 		<?php }
 }
 /** 
@@ -160,6 +165,7 @@ function my_account_new_endpoints()
 {
 	add_rewrite_endpoint('cards', EP_ROOT | EP_PAGES);
 	add_rewrite_endpoint('card-edit', EP_ROOT | EP_PAGES);
+	add_rewrite_endpoint('card-contacts', EP_ROOT | EP_PAGES);
 }
 
 /**
@@ -179,359 +185,359 @@ function card_edit_endpoint_content()
 		$customer_id = $wpdb->get_var("SELECT customer_id FROM {$wpdb->prefix}wc_customer_lookup where user_id='$user_id'");
 		$vcards = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}vcards where user_id='$user_id' and id_vcard = $id");
 
-		if (!empty($vcards)) {?>
+		if (!empty($vcards)) { ?>
 			<div>
-				<form id="perfil-qr-form" class="woocommerce-EditProfileQrForm edit-profile-qr" action="<?=esc_url(admin_url('admin-post.php')) ?>" method="post" enctype="multipart/form-data">
-				<input type="hidden" class="identificador-vcard" name="identificador" value="<?=$id?>">
-				<?php foreach( $vcards as $v): ?>
-					<header class="form-header">
-						<h2 class="entry-title featured ">Datos de Contacto</h2>
-						<p class="text-muted">Agrega la información que quieras compartir cuando escaneen tu tarjeta. Puedes actualizarla cada vez que lo requieras.</p>
-					</header>
+				<form id="perfil-qr-form" class="woocommerce-EditProfileQrForm edit-profile-qr" action="<?= esc_url(admin_url('admin-post.php')) ?>" method="post" enctype="multipart/form-data">
+					<input type="hidden" class="identificador-vcard" name="identificador" value="<?= $id ?>">
+					<?php foreach ($vcards as $v) : ?>
+						<header class="form-header">
+							<h2 class="entry-title featured ">Datos de Contacto</h2>
+							<p class="text-muted">Agrega la información que quieras compartir cuando escaneen tu tarjeta. Puedes actualizarla cada vez que lo requieras.</p>
+						</header>
 
-					<div class="profile-img discard-pro" >
-						
-						<div class="profile-img-container">
-							<h5>Foto perfil</h5>
-							<div class="profile-img">
-								<div id="preview">
-								<?php
-									if(!empty($v->photo)){
-											?>
+						<div class="profile-img discard-pro">
+
+							<div class="profile-img-container">
+								<h5>Foto perfil</h5>
+								<div class="profile-img">
+									<div id="preview">
+										<?php
+										if (!empty($v->photo)) {
+										?>
 											<input type="hidden" name="imgvacio" value="si">
-											<img class="profile-pic" src="<?=get_home_url().'/'.$v->photo?>">
-											<?php
-										}else{
-											?>
+											<img class="profile-pic" src="<?= get_home_url() . '/' . $v->photo ?>">
+										<?php
+										} else {
+										?>
 											<input type="hidden" name="imgvacio" value="no">
 											<img class="profile-pic">
-											<?php
+										<?php
 										}
-								?>
+										?>
+									</div>
 								</div>
+								<div class="profile-button">
+									<input class="file-upload" id="file_img" type="file" accept="image/png, image/jpeg, image/jpg" name="foto">
+									<label for="file_img" class="label-pro"><i class="fa fa-camera upload-button"></i> Subir archivo</label>
+									<div id="text-img" style="width: 300px;"></div>
+								</div>
+								<div>
+									<label id="delete_img" class="label-pro"><i class="fa fa-trash"></i></label>
+								</div>
+
 							</div>
-							<div class="profile-button">
-								<input class="file-upload" id="file_img" type="file" accept="image/png, image/jpeg, image/jpg" name="foto">
-								<label for="file_img" class="label-pro"><i class="fa fa-camera upload-button"></i> Subir archivo</label>
-								<div id="text-img"  style="width: 300px;"></div>
-							</div>
-							<div>
-								<label id="delete_img" class="label-pro"><i class="fa fa-trash"></i></label>
-							</div>
-							
-						</div>
 
 
-						<div class="profile-img-container">
-							<h5>Foto logo</h5>
-							
-							<div class="profile-img">
-								<div id="preview_business">
-								<?php
-									if(!empty($v->photo_business)){
-											?>
+							<div class="profile-img-container">
+								<h5>Foto logo</h5>
+
+								<div class="profile-img">
+									<div id="preview_business">
+										<?php
+										if (!empty($v->photo_business)) {
+										?>
 											<input type="hidden" name="imgvacio_bus" value="si">
-											<img class="profile-pic" src="<?=get_home_url().'/'.$v->photo_business?>">
-											
-											<?php
-										}else{
-											?>
+											<img class="profile-pic" src="<?= get_home_url() . '/' . $v->photo_business ?>">
+
+										<?php
+										} else {
+										?>
 											<input type="hidden" name="imgvacio_bus" value="no">
 											<img class="profile-pic">
-											<?php
+										<?php
 										}
-								?>
+										?>
+									</div>
 								</div>
-							</div>
-							<div class="profile-button">
-								<input class="file-upload" id="file_img_business" type="file" accept="image/png, image/jpeg, image/jpg" name="foto_business" multiple>
-								<label for="file_img_business" class="label-pro"><i class="fa fa-camera upload-button"></i> Subir archivo</label>
-								<div id="text-img-business"  style="width: 300px;"></div>
-							</div>
-							<div>
-								<label id="delete_img_business" class="label-pro"><i class="fa fa-trash"></i></label>
+								<div class="profile-button">
+									<input class="file-upload" id="file_img_business" type="file" accept="image/png, image/jpeg, image/jpg" name="foto_business" multiple>
+									<label for="file_img_business" class="label-pro"><i class="fa fa-camera upload-button"></i> Subir archivo</label>
+									<div id="text-img-business" style="width: 300px;"></div>
+								</div>
+								<div>
+									<label id="delete_img_business" class="label-pro"><i class="fa fa-trash"></i></label>
+								</div>
 							</div>
 						</div>
-					</div>
 
 
-					<div class="accordion">
-						<section class="accordion-row">
+						<div class="accordion">
+							<section class="accordion-row">
 
-							<header id="field-group-1-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-1" aria-expanded="true" aria-controls="field-group-1">
-								<h6 class="title">Datos Personales</h6>
-								<input type="file" name="imasd" id="asd">
-								<span class="icon"><i class="fas fa-plus"></i></span>
-							</header>
-							<div id="field-group-1" class="accordion-content collapse show" aria-labelledby="field-group-1-heading" data-parent="#perfil-qr-form">
-								<div class="row row-fields row-form-container">
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-1-1">Nombres</label>
-											<input id="field-1-1" name="nombres" value="<?=$v->names?>">
+								<header id="field-group-1-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-1" aria-expanded="true" aria-controls="field-group-1">
+									<h6 class="title">Datos Personales</h6>
+									<input type="file" name="imasd" id="asd">
+									<span class="icon"><i class="fas fa-plus"></i></span>
+								</header>
+								<div id="field-group-1" class="accordion-content collapse show" aria-labelledby="field-group-1-heading" data-parent="#perfil-qr-form">
+									<div class="row row-fields row-form-container">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-1-1">Nombres</label>
+												<input id="field-1-1" name="nombres" value="<?= $v->names ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-1-2">Apellidos</label>
-											<input id="field-1-2" name="apellidos" value="<?=$v->last_names?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-1-2">Apellidos</label>
+												<input id="field-1-2" name="apellidos" value="<?= $v->last_names ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-1-3">Seudónimo</label>
-											<input id="field-1-3" name="seudonimo" value="<?=$v->pseudonym?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-1-3">Seudónimo</label>
+												<input id="field-1-3" name="seudonimo" value="<?= $v->pseudonym ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-1-4">Cumpleaños</label>
-											<input type="date" id="field-1-4" name="cumpleanios" value="<?=$v->birthday?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-1-4">Cumpleaños</label>
+												<input type="date" id="field-1-4" name="cumpleanios" value="<?= $v->birthday ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-1-7">Página Web Personal</label>
-											<input id="field-1-7" name="paginaWebPersonal" value="<?=$v->personal_web?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-1-7">Página Web Personal</label>
+												<input id="field-1-7" name="paginaWebPersonal" value="<?= $v->personal_web ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-1-8">Email Principal</label>
-											<input id="field-1-8" name="emailPrincipal" value="<?=$v->personal_email?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-1-8">Email Principal</label>
+												<input id="field-1-8" name="emailPrincipal" value="<?= $v->personal_email ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-1-9">Celular</label>
-											<input id="field-1-9" name="celular" value="<?=$v->personal_cell_phone?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-1-9">Celular</label>
+												<input id="field-1-9" name="celular" value="<?= $v->personal_cell_phone ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-1-10">Fijo / Casa</label>
-											<input id="field-1-10" name="telefonoFijo" value="<?=$v->personal_telephone?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-1-10">Fijo / Casa</label>
+												<input id="field-1-10" name="telefonoFijo" value="<?= $v->personal_telephone ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-1-10">Whatsapp Msg</label>
-											<textarea class="form-control" id="field-1-11" rows="3" name="whatsapp_mensaje"><?=$v->whatsapp_ms?></textarea>
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-1-10">Whatsapp Msg</label>
+												<textarea class="form-control" id="field-1-11" rows="3" name="whatsapp_mensaje"><?= $v->whatsapp_ms ?></textarea>
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-1-10">Sobre Mi</label>
-											<textarea class="form-control" id="field-1-11" rows="3" name="mi_informacion"><?=$v->personal_information?></textarea>
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-1-10">Sobre Mi</label>
+												<textarea class="form-control" id="field-1-11" rows="3" name="mi_informacion"><?= $v->personal_information ?></textarea>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
 
-						</section>
+							</section>
 
 
-						<section class="accordion-row">
+							<section class="accordion-row">
 
-							<header id="field-group-2-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-2" aria-expanded="false" aria-controls="field-group-2">
-								<h6 class="title">Trabajo</h6>
-								<span class="icon"><i class="fas fa-plus"></i></span>
-							</header>
-							<div id="field-group-2" class="accordion-content collapse show" aria-labelledby="field-group-2-heading" data-parent="#perfil-qr-form">
-								<div class="row row-fields row-form-container">
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-2-11">Empresa</label>
-											<input id="field-2-11" name="empresa" value="<?=$v->company_name?>">
+								<header id="field-group-2-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-2" aria-expanded="false" aria-controls="field-group-2">
+									<h6 class="title">Trabajo</h6>
+									<span class="icon"><i class="fas fa-plus"></i></span>
+								</header>
+								<div id="field-group-2" class="accordion-content collapse show" aria-labelledby="field-group-2-heading" data-parent="#perfil-qr-form">
+									<div class="row row-fields row-form-container">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-2-11">Empresa</label>
+												<input id="field-2-11" name="empresa" value="<?= $v->company_name ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-2-12">Cargo</label>
-											<input id="field-2-12" name="cargo" value="<?=$v->company_charge?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-2-12">Cargo</label>
+												<input id="field-2-12" name="cargo" value="<?= $v->company_charge ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-2-13">Página Web</label>
-											<input id="field-2-13" name="paginaWeb" value="<?=$v->company_web?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-2-13">Página Web</label>
+												<input id="field-2-13" name="paginaWeb" value="<?= $v->company_web ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-2-14">Email Corporativo</label>
-											<input id="field-2-14" name="emailCorporativo" value="<?=$v->company_mail?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-2-14">Email Corporativo</label>
+												<input id="field-2-14" name="emailCorporativo" value="<?= $v->company_mail ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-2-15">Teléfono</label>
-											<input id="field-2-15" name="telefonoTrabajo" value="<?=$v->company_cell_phone?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-2-15">Teléfono</label>
+												<input id="field-2-15" name="telefonoTrabajo" value="<?= $v->company_cell_phone ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-2-16">Dirección</label>
-											<input id="field-2-16" name="direccionTrabajo" value="<?=$v->company_address?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-2-16">Dirección</label>
+												<input id="field-2-16" name="direccionTrabajo" value="<?= $v->company_address ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-2-17">Departamento / Región</label>
-											<input id="field-2-17" name="departamentoTrabajo" value="<?=$v->company_department?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-2-17">Departamento / Región</label>
+												<input id="field-2-17" name="departamentoTrabajo" value="<?= $v->company_department ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-2-18">País</label>
-											<input id="field-2-18" name="paisTrabajo" value="<?=$v->company_country?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-2-18">País</label>
+												<input id="field-2-18" name="paisTrabajo" value="<?= $v->company_country ?>">
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
 
-						</section>
+							</section>
 
 
-						<section class="accordion-row ">
+							<section class="accordion-row ">
 
-							<header id="field-group-3-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-3" aria-expanded="false" aria-controls="field-group-3">
-								<h6 class="title">Domicilio</h6>
-								<span class="icon"><i class="fas fa-plus"></i></span>
-							</header>
-							<div id="field-group-3" class="accordion-content collapse show" aria-labelledby="field-group-3-heading" data-parent="#perfil-qr-form">
-								<div class="row row-fields row-form-container">
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-3-19">Dirección</label>
-											<input id="field-3-19" name="direccion" value="<?=$v->personal_address?>">
+								<header id="field-group-3-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-3" aria-expanded="false" aria-controls="field-group-3">
+									<h6 class="title">Domicilio</h6>
+									<span class="icon"><i class="fas fa-plus"></i></span>
+								</header>
+								<div id="field-group-3" class="accordion-content collapse show" aria-labelledby="field-group-3-heading" data-parent="#perfil-qr-form">
+									<div class="row row-fields row-form-container">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-3-19">Dirección</label>
+												<input id="field-3-19" name="direccion" value="<?= $v->personal_address ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-3-20">Departamento / Región</label>
-											<input id="field-3-20" name="departamento" value="<?=$v->personal_department?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-3-20">Departamento / Región</label>
+												<input id="field-3-20" name="departamento" value="<?= $v->personal_department ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-3-21">País</label>
-											<input id="field-3-21" name="pais" value="<?=$v->personal_country?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-3-21">País</label>
+												<input id="field-3-21" name="pais" value="<?= $v->personal_country ?>">
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
 
-						</section>
+							</section>
 
 
-						<section class="accordion-row">
+							<section class="accordion-row">
 
-							<header id="field-group-4-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-4" aria-expanded="false" aria-controls="field-group-4">
-								<h6 class="title">Perfiles Sociales</h6>
-								<span class="icon"><i class="fas fa-plus"></i></span>
-							</header>
-							<div id="field-group-4" class="accordion-content collapse show" aria-labelledby="field-group-4-heading" data-parent="#perfil-qr-form">
-								<div class="row row-fields row-form-container">
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-4-22">Facebook</label>
-											<input id="field-4-22" name="facebook" value="<?=$v->url_facebook?>">
+								<header id="field-group-4-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-4" aria-expanded="false" aria-controls="field-group-4">
+									<h6 class="title">Perfiles Sociales</h6>
+									<span class="icon"><i class="fas fa-plus"></i></span>
+								</header>
+								<div id="field-group-4" class="accordion-content collapse show" aria-labelledby="field-group-4-heading" data-parent="#perfil-qr-form">
+									<div class="row row-fields row-form-container">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-4-22">Facebook</label>
+												<input id="field-4-22" name="facebook" value="<?= $v->url_facebook ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-4-22">Youtube</label>
-											<input id="field-4-22" name="youtube" value="<?=$v->url_youtube?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-4-22">Youtube</label>
+												<input id="field-4-22" name="youtube" value="<?= $v->url_youtube ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-4-23">Instagram</label>
-											<input id="field-4-23" name="instagram" value="<?=$v->url_instagram?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-4-23">Instagram</label>
+												<input id="field-4-23" name="instagram" value="<?= $v->url_instagram ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-4-24">LinkedIn</label>
-											<input id="field-4-24" name="linkedin" value="<?=$v->url_linkedin?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-4-24">LinkedIn</label>
+												<input id="field-4-24" name="linkedin" value="<?= $v->url_linkedin ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-4-25">Twitter</label>
-											<input id="field-4-25" name="twitter" value="<?=$v->url_twitter?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-4-25">Twitter</label>
+												<input id="field-4-25" name="twitter" value="<?= $v->url_twitter ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-4-26">Tiktok</label>
-											<input id="field-4-26" name="tiktok" value="<?=$v->url_tiktok?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-4-26">Tiktok</label>
+												<input id="field-4-26" name="tiktok" value="<?= $v->url_tiktok ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-4-26">Spotify</label>
-											<input id="field-4-26" name="spotify" value="<?=$v->url_spotify?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-4-26">Spotify</label>
+												<input id="field-4-26" name="spotify" value="<?= $v->url_spotify ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-4-26">Apple Music</label>
-											<input id="field-4-26" name="apple_music" value="<?=$v->url_apple_music?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-4-26">Apple Music</label>
+												<input id="field-4-26" name="apple_music" value="<?= $v->url_apple_music ?>">
+											</div>
 										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-4-26">Calendly</label>
-											<input id="field-4-26" name="calendly" value="<?=$v->calendly?>">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-4-26">Calendly</label>
+												<input id="field-4-26" name="calendly" value="<?= $v->calendly ?>">
+											</div>
 										</div>
-									</div>
-									
-								</div>
-							</div>
-						</section>
 
-						<section class="accordion-row">
-
-							<header id="field-group-3-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-3" aria-expanded="false" aria-controls="field-group-3">
-								<h6 class="title">Web 3</h6>
-								<span class="icon"><i class="fas fa-plus"></i></span>
-							</header>
-							<div id="field-group-3" class="accordion-content collapse show" aria-labelledby="field-group-3-heading" data-parent="#perfil-qr-form">
-								<div class="row row-fields row-form-container">
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-4-26">Opensea</label>
-											<input id="field-4-26" name="opensea" value="<?=$v->opensea?>">
-										</div>
-									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-4-26">Metamask</label>
-											<input id="field-4-26" name="metamask" value="<?=$v->metamask?>">
-										</div>
 									</div>
 								</div>
+							</section>
+
+							<section class="accordion-row">
+
+								<header id="field-group-3-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-3" aria-expanded="false" aria-controls="field-group-3">
+									<h6 class="title">Web 3</h6>
+									<span class="icon"><i class="fas fa-plus"></i></span>
+								</header>
+								<div id="field-group-3" class="accordion-content collapse show" aria-labelledby="field-group-3-heading" data-parent="#perfil-qr-form">
+									<div class="row row-fields row-form-container">
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-4-26">Opensea</label>
+												<input id="field-4-26" name="opensea" value="<?= $v->opensea ?>">
+											</div>
+										</div>
+										<div class="form-row col-6">
+											<div class="field-container">
+												<label for="field-4-26">Metamask</label>
+												<input id="field-4-26" name="metamask" value="<?= $v->metamask ?>">
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</section>
+
+							<div class="form-buttons">
+								<!-- <input type="hidden" id="_nonce" name="_nonce" value="b45be13a75"><input type="hidden" name="_wp_http_referer" value="/cuenta/actualizar-mi-tarjeta/"> <a href="https://tarjetacenturion.com/cuenta/mi-tarjeta/" class="btn btn-light">Cancelar</a> -->
+								<button type="submit" id="btn-actualizar" class="button btn btn-dark" name="arct_save_profile_qr" value="Guardar cambios">Guardar cambios</button>
+								<input type="hidden" name="action" value="updateVcard">
 							</div>
 
-						</section>
-
-						<div class="form-buttons">
-							<!-- <input type="hidden" id="_nonce" name="_nonce" value="b45be13a75"><input type="hidden" name="_wp_http_referer" value="/cuenta/actualizar-mi-tarjeta/"> <a href="https://tarjetacenturion.com/cuenta/mi-tarjeta/" class="btn btn-light">Cancelar</a> -->
-							<button type="submit" id="btn-actualizar" class="button btn btn-dark" name="arct_save_profile_qr" value="Guardar cambios">Guardar cambios</button>
-							<input type="hidden" name="action" value="updateVcard">
 						</div>
-
-					</div>
 					<?php endforeach; ?>
 				</form>
 			</div>
-			<script src="<?=plugins_url(basename(__DIR__))?>/assets/imagen.js"></script>
-		<?php } else {
-			echo "No tienes autorización para acceder aqui."; }
+			<script src="<?= plugins_url(basename(__DIR__)) ?>/assets/imagen.js"></script>
+<?php } else {
+			echo "No tienes autorización para acceder aqui.";
+		}
 	endif;
-
 }
 
 add_action('woocommerce_account_cards_endpoint', 'cards_endpoint_content');
@@ -561,12 +567,10 @@ function my_account_menu_order()
 function carga_stilos()
 {
 	wp_register_style('fontawesomecss', plugin_dir_url(__FILE__) . "assets/style.css");
-	wp_register_style('estilos_404',plugin_dir_url(__FILE__) . "assets/error.css");
+	wp_register_style('estilos_404', plugin_dir_url(__FILE__) . "assets/error.css");
 	wp_enqueue_style('fontawesomecss');
 	wp_enqueue_style('estilos_404');
 }
 
 add_filter('woocommerce_account_menu_items', 'my_account_menu_order');
 add_action('wp_enqueue_scripts', 'carga_stilos');
-
-
