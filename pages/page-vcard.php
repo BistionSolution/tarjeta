@@ -8,42 +8,44 @@ function encodeURIComponent($str)
 
 function page_vcard()
 {
-?><div class="wrap"><?php
-                    if (isset($_GET['token']) && !empty($_GET['token'])) :
-                        global $wpdb;
-                        $token = sanitize_text_field($_GET['token']);
-                        $table_name = $wpdb->prefix . "vcards";
-                        $sql = "SELECT * FROM $table_name WHERE token='$token'";
-                        $wpdb->query($sql);
-                        $result = $wpdb->last_result;
-                        // Si es una token válido
-                        if (!empty($result)) :
-                            $foto = $result[0]->photo;
-                            $foto_business = $result[0]->photo_business;
-                            $nombres = $result[0]->names;
-                            $apellidos = $result[0]->last_names;
-                            $personal_phone = $result[0]->personal_cell_phone;
-                            $whatsapp_message = $result[0]->whatsapp_ms;
-                            $cell_phone = $result[0]->company_cell_phone;
-                            $correo = $result[0]->personal_email;
-                            $company_name = $result[0]->company_name;
-                            $company_charge = $result[0]->company_charge;
-                            $company_mail = $result[0]->company_mail;
-                            $facebook = $result[0]->url_facebook;
-                            $youtube = $result[0]->url_youtube;
-                            $instagram = $result[0]->url_instagram;
-                            $linkedin = $result[0]->url_linkedin;
-                            $twitter = $result[0]->url_twitter;
-                            $calendly = $result[0]->calendly;
-                            $opensea = $result[0]->opensea;
-                            $metamask = $result[0]->metamask;
-                            $tiktok = $result[0]->url_tiktok;
-                            $spotify = $result[0]->url_spotify;
-                            $apple_music = $result[0]->url_apple_music;
-                            $token = $result[0]->token;
-                            $per_infor = $result[0]->personal_information;
-                            $href = home_url() . "/wp-vcards/$token.vcf";
-                    ?>
+?>
+    <div class="wrap">
+        <?php
+        if (isset($_GET['token']) && !empty($_GET['token'])) :
+            global $wpdb;
+            $token = sanitize_text_field($_GET['token']);
+            $table_name = $wpdb->prefix . "vcards";
+            $sql = "SELECT * FROM $table_name WHERE token='$token'";
+            $wpdb->query($sql);
+            $result = $wpdb->last_result;
+            // Si es una token válido
+            if (!empty($result)) :
+                $foto = $result[0]->photo;
+                $foto_business = $result[0]->photo_business;
+                $nombres = $result[0]->names;
+                $apellidos = $result[0]->last_names;
+                $personal_phone = $result[0]->personal_cell_phone;
+                $whatsapp_message = $result[0]->whatsapp_ms;
+                $cell_phone = $result[0]->company_cell_phone;
+                $correo = $result[0]->personal_email;
+                $company_name = $result[0]->company_name;
+                $company_charge = $result[0]->company_charge;
+                $company_mail = $result[0]->company_mail;
+                $facebook = $result[0]->url_facebook;
+                $youtube = $result[0]->url_youtube;
+                $instagram = $result[0]->url_instagram;
+                $linkedin = $result[0]->url_linkedin;
+                $twitter = $result[0]->url_twitter;
+                $calendly = $result[0]->calendly;
+                $opensea = $result[0]->opensea;
+                $metamask = $result[0]->metamask;
+                $tiktok = $result[0]->url_tiktok;
+                $spotify = $result[0]->url_spotify;
+                $apple_music = $result[0]->url_apple_music;
+                $token = $result[0]->token;
+                $per_infor = $result[0]->personal_information;
+                $href = home_url() . "/wp-vcards/$token.vcf";
+        ?>
                 <div class="perfil">
                     <?php if (empty($foto)) : ?>
                         <div class="profile-img">
@@ -290,32 +292,32 @@ function page_vcard()
     </div>
     <script src="<?= plugins_url(basename(__DIR__)) ?>/assets/copy_fast.js"></script>
 <?php
-                        else :
-                            // $atts = [
-                            //     'message' => 'Link caído',
-                            //     'bye' => 'Consulte con su proveedor →',
-                            //     'href' => 'Volver a página principal'
-                            // ];
-                            // page_error($atts);
+            else :
+                // $atts = [
+                //     'message' => 'Link caído',
+                //     'bye' => 'Consulte con su proveedor →',
+                //     'href' => 'Volver a página principal'
+                // ];
+                // page_error($atts);
 
-                            global $wp_query;
-                            $wp_query->set_404();
-                            status_header(404);
-                            get_template_part(404);
-                            exit();
-                        endif;
-                    else :
-                        // $atts = [
-                        //     'message' => 'No se encontraron resultados',
-                        //     'bye' => 'Vuelve a',
-                        //     'href' => 'casa campeón!'
-                        // ];
-                        // page_error($atts);
+                global $wp_query;
+                $wp_query->set_404();
+                status_header(404);
+                get_template_part(404);
+                exit();
+            endif;
+        else :
+            // $atts = [
+            //     'message' => 'No se encontraron resultados',
+            //     'bye' => 'Vuelve a',
+            //     'href' => 'casa campeón!'
+            // ];
+            // page_error($atts);
 
-                        global $wp_query;
-                        $wp_query->set_404();
-                        status_header(404);
-                        get_template_part(404);
-                        exit();
-                    endif;
-                }
+            global $wp_query;
+            $wp_query->set_404();
+            status_header(404);
+            get_template_part(404);
+            exit();
+        endif;
+    }

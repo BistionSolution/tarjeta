@@ -17,6 +17,7 @@ require "update-vcard.php";
 require "qr-download.php";
 require "generar_tarjetas.php";
 require "edit_card.php";
+require "controllers/link_perfil.php";
 
 
 // Este hook nos sirve cuando ativamos este fragmento de código para crear la tabla
