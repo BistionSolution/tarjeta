@@ -1,17 +1,17 @@
 <?php
-function agregar_ruta_dinamica_al_dominio()
-{
-    // Captura cualquier cosa que siga a tu dominio principal, por ejemplo, https://tudominio.com/lo-que-sea
-    add_rewrite_rule('ga/^([^/]+)/?$', 'index.php?mi_variable=$matches[1]', 'top');
-}
-add_action('init', 'agregar_ruta_dinamica_al_dominio');
+// function agregar_ruta_dinamica_al_dominio()
+// {
+//     // Captura cualquier cosa que siga a tu dominio principal, por ejemplo, https://tudominio.com/lo-que-sea
+//     add_rewrite_rule('ga/^([^/]+)/?$', 'index.php?mi_variable=$matches[1]', 'top');
+// }
+// add_action('init', 'agregar_ruta_dinamica_al_dominio');
 
-function registrar_mi_variable_query($vars)
-{
-    $vars[] = 'mi_variable';
-    return $vars;
-}
-add_filter('query_vars', 'registrar_mi_variable_query');
+// function registrar_mi_variable_query($vars)
+// {
+//     $vars[] = 'mi_variable';
+//     return $vars;
+// }
+// add_filter('query_vars', 'registrar_mi_variable_query');
 
 function cargar_contenido_para_ruta_dinamica()
 {
@@ -35,13 +35,13 @@ function cargar_contenido_para_ruta_dinamica()
             // GENERAR vista TABLA DE TARJETAS DEL USUARIO
             $userCard = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}vcards where token='$token'");
 
-            $pseudonym = '';
+            $profile_url = '';
             // foreach ($userCard as $i) :
             //     $pseudonym = $i->pseudonym;
             // endforeach;
-            $pseudonym = $userCard[0]->pseudonym;
+            $profile_url = $userCard[0]->profile_url;
             $ruta_plantilla = plugin_dir_path(__FILE__) . 'goes.php';
-            if (empty($pseudonym)) {
+            if (empty($profile_url)) {
                 $parameters = array(
                     'token' => $token // Agrega tantos pares clave-valor como necesites
                 );
@@ -55,7 +55,7 @@ function cargar_contenido_para_ruta_dinamica()
             }
 
             // Obtener la url de la pagina
-            $url = home_url('/' . $pseudonym);
+            $url = home_url('/' . $profile_url);
             // Redireccionar a la nueva url
             wp_redirect($url, 301);
             exit;
@@ -71,7 +71,7 @@ function cargar_contenido_para_ruta_dinamica()
         global $wp_query;
 
         $table_name = $wpdb->prefix . "vcards";
-        $sql = "SELECT * FROM $table_name WHERE pseudonym='$ruta_actual'";
+        $sql = "SELECT * FROM $table_name WHERE profile_url='$ruta_actual'";
         $wpdb->query($sql);
         $result = $wpdb->last_result;
         if (!empty($result)) :

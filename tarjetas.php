@@ -284,12 +284,19 @@ function card_edit_endpoint_content()
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
+											<label for="field-1-3">Seudonimo</label>
+											<input id="field-1-3" name="seudonimo" value="<?= $v->pseudonym ?>">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
 											<label for="field-1-3">URL de perfil</label>
 											<div class="url-brin">
-												<span>http://brin.la/</span><input id="field-1-3" name="seudonimo" value="<?= $v->pseudonym ?>">
+												<span>http://brin.la/</span><input id="field-1-3" name="profile_url" value="<?= $v->profile_url ?>">
 											</div>
 										</div>
 									</div>
+
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-1-4">Cumpleaños</label>

@@ -6,6 +6,7 @@ function create_table_vcards()
 	$table_name = $wpdb->prefix . "vcards";
 	$sql = "CREATE TABLE IF NOT EXISTS $table_name (
 		id_vcard INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+		profile_url VARCHAR(100) UNIQUE,
         order_id INT NOT NULL,
         product_id INT NOT NULL,
         customer_id INT NOT NULL,
@@ -50,7 +51,7 @@ function create_table_vcards()
 		whatsapp_ms text,
 		type_card enum('blanca','negra','colores','personalizada')
 	);";
-	
+
 	// Comprueba si existe la tabla en la BD
 	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 	dbDelta($sql);

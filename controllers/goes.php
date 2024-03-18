@@ -8,7 +8,7 @@ Template Name: Lista de Productos
 // Obtener el valor de 'mi_variable' pasado desde la URL
 // Incluir los estilos y scripts necesarios
 $mi_variable = isset($parameters['username']) ? $parameters['username'] : ($parameters['token'] ?? ''); // Obtener el valor de 'username' desde los parámetros, o usar 'token' si 'username' no está presente
-$column_name = isset($parameters['username']) ? 'pseudonym' : 'token'; // Determinar el nombre de la columna según el valor de 'username'
+$column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Determinar el nombre de la columna según el valor de 'username'
 ?>
 
 <head>
@@ -42,6 +42,7 @@ function div_go($mi_variable, $column_name)
                     $foto_business = $result[0]->photo_business;
                     $nombres = $result[0]->names;
                     $apellidos = $result[0]->last_names;
+                    $profile_url = $result[0]->profile_url;
                     $personal_phone = $result[0]->personal_cell_phone;
                     $whatsapp_message = $result[0]->whatsapp_ms;
                     $cell_phone = $result[0]->company_cell_phone;

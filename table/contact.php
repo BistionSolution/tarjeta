@@ -2,7 +2,7 @@
 
 function create_table_contact()
 {
-	echo "creamndssss s            create_table_contact";
+	echo "creamndssss create_table_contact";
 	global $wpdb;
 	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
