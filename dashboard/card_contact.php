@@ -26,7 +26,7 @@ function card_contacts_template()
                         </figure>
                         <div class="tarjeta-buttons">
                             <a href="<?= $href . '/card-edit/?id=' . $vcard->id_vcard ?>" class="btn-block">Actualizar datos</a>
-                            <a href="<?= $href . '/card-edit/?id=' . $vcard->id_vcard ?>" class="btn-block">Contactos generados</a>
+                            <a href="<?= $href . '/card-contacts/?id=' . $vcard->id_vcard ?>" class="btn-block">Contactos generados</a>
                         </div>
 
                         <!-- <div class="qr-download">
@@ -54,13 +54,10 @@ function card_contacts_template()
                             <ul class="profile-qr-links">
                                 <li>
                                     <div class="copy-link">
-
-
                                         <div class="copy-link-container">
-
                                             <input type="text" id="url" class="textLink<?= $count ?> user-select-all" value="<?= $vcard->url_token ?>" />
                                             <span class="icon">
-                                                <i class="fa fa-copy" id="<?= $count ?>" title="Copiar para pegar"></i>
+                                                <i class="fa fa-copy copy-token" id="<?= $count ?>" title="Copiar para pegar"></i>
                                             </span>
                                         </div>
                                     </div>
@@ -70,9 +67,16 @@ function card_contacts_template()
                                     ?>
                                 </li>
                                 <li>
-
+                                    <div class="copy-link">
+                                        <div class="copy-link-container">
+                                            <input type="text" id="url" class="textLink<?= $count ?> user-select-all" value="<?= $vcard->profile_url ?>" />
+                                            <span class="icon">
+                                                <i class="fa fa-copy copy-url" id="<?= $count ?>" title="Copiar para pegar"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <span id="tooltip" class="tooltip"></span>
                                 </li>
-
                             </ul>
                         </div>
 

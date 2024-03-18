@@ -39,6 +39,7 @@ function create_table_vcards()
 		url_token VARCHAR(200),
 		url_facebook VARCHAR(200),
 		url_youtube VARCHAR(200),
+		video_youtube VARCHAR(200),
 		url_instagram VARCHAR(200),
 		url_linkedin VARCHAR(200),
 		url_twitter VARCHAR(200),

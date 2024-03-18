@@ -53,6 +53,7 @@ function div_go($mi_variable, $column_name)
                     $company_mail = $result[0]->company_mail;
                     $facebook = $result[0]->url_facebook;
                     $youtube = $result[0]->url_youtube;
+                    $video_youtube = $result[0]->video_youtube;
                     $instagram = $result[0]->url_instagram;
                     $linkedin = $result[0]->url_linkedin;
                     $twitter = $result[0]->url_twitter;
@@ -146,12 +147,12 @@ function div_go($mi_variable, $column_name)
                                     <?php if (!empty($personal_web)) : ?>
                                         <div class="img-icon cell">
                                             <a class="perfil-button" href="<?= $personal_web ?>" target="_blank">
-                                                <i class="fa-regular fa-globe"></i>
+                                                <i class="fa fa-globe"></i>
                                                 <!-- <i class="fab fa-tiktok"></i> -->
                                             </a>
                                         </div>
                                     <?php endif; ?>
-                                    
+
                                     <?php if (!empty($whatsapp_message)) : ?>
                                         <div class="img-icon cell wsp-efect">
                                             <a class="perfil-button" href="<?= "https://wa.me/" . $personal_phone . "?text=" . encodeURIComponent($whatsapp_message) ?>" target="_blank">
@@ -295,6 +296,16 @@ function div_go($mi_variable, $column_name)
                                         <?php endif; ?>
                                     </div>
                                 <?php endif; ?>
+
+                                <div>
+                                    <h2>Video Youtube</h2>
+                                    <?php if (!empty($video_youtube)) : ?>
+                                        <div class="video-youtube">
+                                            <iframe width="100%" height="315" src="<?= $video_youtube ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        </div>
+                                    <?php endif; ?>
+
+                                </div>
 
                                 <?php if (!empty($spotify) && (!empty($apple_music))) : ?>
                                     <div class="musica">

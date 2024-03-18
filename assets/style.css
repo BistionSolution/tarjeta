@@ -147,6 +147,9 @@ ul {
 }
 
 #perfil-qr-page ul.profile-qr-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   list-style: none;
   margin: 0;
   padding: 0;

@@ -111,13 +111,10 @@ function productos_cliente($parametros)
 							<ul class="profile-qr-links">
 								<li>
 									<div class="copy-link">
-
-
 										<div class="copy-link-container">
-
 											<input type="text" id="url" class="textLink<?= $count ?> user-select-all" value="<?= $vcard->url_token ?>" />
 											<span class="icon">
-												<i class="fa fa-copy" id="<?= $count ?>" title="Copiar para pegar"></i>
+												<i class="fa fa-copy copy-token" id="<?= $count ?>" title="Copiar para pegar"></i>
 											</span>
 										</div>
 									</div>
@@ -127,9 +124,16 @@ function productos_cliente($parametros)
 									?>
 								</li>
 								<li>
-
+									<div class="copy-link">
+										<div class="copy-link-container">
+											<input type="text" id="url" class="textLink<?= $count ?> user-select-all" value="<?= get_home_url() . '/' . $vcard->profile_url ?>" />
+											<span class="icon">
+												<i class="fa fa-copy copy-url" id="<?= $count ?>" title="Copiar para pegar"></i>
+											</span>
+										</div>
+									</div>
+									<span id="tooltip" class="tooltip"></span>
 								</li>
-
 							</ul>
 						</div>
 
@@ -403,6 +407,24 @@ function card_edit_endpoint_content()
 							</div>
 
 						</section>
+
+						<section class="accordion-row">
+							<header id="field-group-9-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-2" aria-expanded="false" aria-controls="field-group-2">
+								<h6 class="title">Video de youtube</h6>
+								<span class="icon"><i class="fas fa-plus"></i></span>
+							</header>
+							<div id="field-group-2" class="accordion-content collapse show" aria-labelledby="field-group-2-heading" data-parent="#perfil-qr-form">
+								<div class="row row-fields row-form-container">
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-2-11">Enlace de video de youtube</label>
+											<input id="field-2-11" name="video_youtube" value="<?= $v->video_youtube ?>">
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+
 
 
 						<section class="accordion-row ">

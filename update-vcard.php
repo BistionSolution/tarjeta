@@ -103,6 +103,7 @@ function actualizarVcard()
             'metamask' => $_POST['metamask'],
             'url_facebook' => $_POST['facebook'],
             'url_youtube' => $_POST['youtube'],
+            'video_youtube' => $_POST['video_youtube'],
             'url_instagram' => $_POST['instagram'],
             'url_linkedin' => $_POST['linkedin'],
             'url_twitter' => $_POST['twitter'],
