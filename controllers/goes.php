@@ -299,9 +299,29 @@ function div_go($mi_variable, $column_name)
 
                                 <div>
                                     <h2>Video Youtube</h2>
-                                    <?php if (!empty($video_youtube)) : ?>
+                                    <?php if (!empty($video_youtube)) :
+                                        $cantidad_url_video     = strlen($video_youtube);
+                                        if ($cantidad_url_video == '28') {
+                                            $cortar_url             = str_replace('https://youtu.be/', '', $video_youtube);
+                                            $url_final_video         = 'https://www.youtube.com/embed/' . $cortar_url;
+                                        } elseif ($cantidad_url_video == '41') {
+                                            $cortar_url = str_replace('https://m.youtube.com/watch?v=', '', $video_youtube);
+                                            $url_final_video = 'https://www.youtube.com/embed/' . $cortar_url;
+                                        } elseif ($cantidad_url_video == '43') {
+                                            $cortar_url = str_replace('https://www.youtube.com/watch?v=', '', $video_youtube);
+                                            $url_final_video = 'https://www.youtube.com/embed/' . $cortar_url;
+                                        } elseif ($cantidad_url_video == '58') {
+                                            $cortar_url = str_replace('https://m.youtube.com/watch?v=', '', $video_youtube);
+                                            $url_final_video = 'https://www.youtube.com/embed/' . $cortar_url;
+                                        } elseif ($cantidad_url_video == '60') {
+                                            $cortar_url = str_replace('https://www.youtube.com/watch?v=', '', $video_youtube);
+                                            $url_final_video = 'https://www.youtube.com/embed/' . $cortar_url;
+                                        } else {
+                                            echo "URL INVALIDA";
+                                        } ?>
+
                                         <div class="video-youtube">
-                                            <iframe width="100%" height="315" src="<?= $video_youtube ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            <iframe width="100%" height="315" src="<?= $url_final_video ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                         </div>
                                     <?php endif; ?>
 
