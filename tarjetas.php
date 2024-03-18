@@ -259,10 +259,8 @@ function card_edit_endpoint_content()
 						</div>
 					</div>
 
-
 					<div class="accordion">
 						<section class="accordion-row">
-
 							<header id="field-group-1-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-1" aria-expanded="true" aria-controls="field-group-1">
 								<h6 class="title">Datos Personales</h6>
 								<input type="file" name="imasd" id="asd">

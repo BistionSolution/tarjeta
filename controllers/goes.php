@@ -43,6 +43,7 @@ function div_go($mi_variable, $column_name)
                     $nombres = $result[0]->names;
                     $apellidos = $result[0]->last_names;
                     $profile_url = $result[0]->profile_url;
+                    $personal_web = $result[0]->personal_web;
                     $personal_phone = $result[0]->personal_cell_phone;
                     $whatsapp_message = $result[0]->whatsapp_ms;
                     $cell_phone = $result[0]->company_cell_phone;
@@ -142,6 +143,15 @@ function div_go($mi_variable, $column_name)
                                             </a>
                                         </div>
                                     <?php endif; ?>
+                                    <?php if (!empty($personal_web)) : ?>
+                                        <div class="img-icon cell">
+                                            <a class="perfil-button" href="<?= $personal_web ?>" target="_blank">
+                                                <i class="fa-regular fa-globe"></i>
+                                                <!-- <i class="fab fa-tiktok"></i> -->
+                                            </a>
+                                        </div>
+                                    <?php endif; ?>
+                                    
                                     <?php if (!empty($whatsapp_message)) : ?>
                                         <div class="img-icon cell wsp-efect">
                                             <a class="perfil-button" href="<?= "https://wa.me/" . $personal_phone . "?text=" . encodeURIComponent($whatsapp_message) ?>" target="_blank">
