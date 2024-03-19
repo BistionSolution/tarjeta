@@ -373,6 +373,9 @@ input[type="file"] {
   text-align: left;
   padding: 5px;
 }
+.wrap .perfil h2 {
+  font-weight: bold;
+}
 .wrap h1 {
   color: #000;
   font-size: 25px;
@@ -537,6 +540,9 @@ input[type="file"] {
 }
 
 .wrap .web3 {
+  margin-top: 15px;
+}
+.wrap .video-yutu {
   margin-top: 15px;
 }
 .web3-img {
