@@ -709,6 +709,7 @@ function bootstrap_admin_style()
       wp_enqueue_style('boostrap_admin_style', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css');
       wp_enqueue_script('boostrap_admin_js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js');
       wp_enqueue_script('mi-script-custom', plugins_url(basename(__DIR__)) . '/pages/modal_pro.js', array('jquery'));
+      wp_enqueue_script('mi-two-script', plugins_url(basename(__DIR__)) . '/update_url.js', array('jquery'));
 }
 function tarjetas_admin_style()
 {

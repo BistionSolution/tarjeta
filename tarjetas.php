@@ -229,8 +229,6 @@ function card_edit_endpoint_content()
 							</div>
 
 						</div>
-
-
 						<div class="profile-img-container">
 							<h5>Foto logo</h5>
 
@@ -264,6 +262,24 @@ function card_edit_endpoint_content()
 					</div>
 
 					<div class="accordion">
+
+						<section class="accordion-row">
+							<header id="field-group-9-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-2" aria-expanded="false" aria-controls="field-group-2">
+								<h6 class="title">URL de perfil</h6>
+								<span class="icon"><i class="fas fa-plus"></i></span>
+							</header>
+							<div id="field-group-2" class="accordion-content collapse show" aria-labelledby="field-group-2-heading" data-parent="#perfil-qr-form">
+								<div class="row row-fields row-form-container">
+									<div class="form-row col-12">
+										<div class="url-brin">
+											<span><?= get_home_url() . '/' ?><span id="my_url"><?= $v->profile_url ?></span></span>
+											<button type="button" id="button-edit" class="btn btn-primary btn-edit" data-bs-toggle="modal" data-bs-target="#modalUpdateUrl"><i class="fa fa-edit"></i> <span>Editar</span></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+
 						<section class="accordion-row">
 							<header id="field-group-1-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-1" aria-expanded="true" aria-controls="field-group-1">
 								<h6 class="title">Datos Personales</h6>
@@ -290,14 +306,7 @@ function card_edit_endpoint_content()
 											<input id="field-1-3" name="seudonimo" value="<?= $v->pseudonym ?>">
 										</div>
 									</div>
-									<div class="form-row col-6">
-										<div class="field-container">
-											<label for="field-1-3">URL de perfil</label>
-											<div class="url-brin">
-												<span>http://brin.la/</span><input id="field-1-3" name="profile_url" value="<?= $v->profile_url ?>">
-											</div>
-										</div>
-									</div>
+
 
 									<div class="form-row col-6">
 										<div class="field-container">
@@ -560,6 +569,40 @@ function card_edit_endpoint_content()
 					</div>
 				<?php endforeach; ?>
 			</form>
+			<div class="modal fade" id="modalUpdateUrl" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<form id="editurl" method="post">
+						<input type="hidden" name="id_tarje" value="<?= $id ?>">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h1 class="modal-title fs-5" id="exampleModalLabel">Datos contacto</h1>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								<p>Al cambiar tu nombre de usuario, también se modificará la dirección de la cuenta de Brin.
+									<br>
+									<span class="text-muted">Ejemplo: http://brin.la/usuario</span>
+								</p>
+								<div class="form-row col-12">
+									<div class="field-container">
+										<label for="field-1-3">Nombre de usuario</label>
+									</div>
+									<div id="field-group-2" class="accordion-content collapse show" aria-labelledby="field-group-2-heading" data-parent="#perfil-qr-form">
+										<div class="url-edit">
+											<span><?= get_home_url() . '/' ?></span><input id="field-1-3" name="profile_url" value="<?= $v->profile_url ?>">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+								<input type="submit" class="btn btn-primary" value="Guardar" class="btn btn-primary">
+							</div>
+						</div>
+					</form>
+
+				</div>
+			</div>
 			<script src="<?= plugins_url(basename(__DIR__)) ?>/assets/imagen.js"></script>
 <?php } else {
 			echo "No tienes autorización para acceder aqui.";
