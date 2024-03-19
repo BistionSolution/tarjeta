@@ -160,8 +160,8 @@ function page_vcard()
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <input type="submit" class="btn btn-primary" value="GENERAR" class="button">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                <input type="submit" class="btn btn-primary" value="Guardar" class="button">
                                             </div>
                                         </div>
                                     </form>
