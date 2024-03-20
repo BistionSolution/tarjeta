@@ -109,7 +109,10 @@ function actualizarVcard()
             'url_twitter' => $_POST['twitter'],
             'url_tiktok' => $_POST['tiktok'],
             'url_spotify' => $_POST['spotify'],
-            'url_apple_music' => $_POST['apple_music']
+            'url_apple_music' => $_POST['apple_music'],
+            'background_color' => $_POST['background_color'],
+            'button_text_color' => $_POST['button_text_color'],
+            'button_background_color' => $_POST['button_background_color']
         );
         $content = "BEGIN:VCARD\r\n";
         $content .= "VERSION:3.0\r\n";

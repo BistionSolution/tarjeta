@@ -560,6 +560,28 @@ function card_edit_endpoint_content()
 
 						</section>
 
+						<section class="accordion-row">
+							<header id="field-group-3-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-3" aria-expanded="false" aria-controls="field-group-3">
+								<h6 class="title">Colores</h6>
+								<span class="icon"><i class="fas fa-plus"></i></span>
+							</header>
+							<div class="colors-tarjeta">
+								<div class="color">
+									<label for="background-color">Color de Fondo:</label>
+									<input type="color" id="background-color" name="background_color" value="<?= $v->background_color ?>">
+								</div>
+								<div class="color">
+									<label for="button-text-color">Color del Texto del Botón:</label>
+									<input type="color" id="button-text-color" name="button_text_color" value="<?= $v->button_text_color ?>">
+								</div>
+								<div class="color">
+									<label for="button-background-color">Color de Fondo del Botón:</label>
+									<input type="color" id="button-background-color" name="button_background_color" value="<?= $v->button_background_color ?>">
+								</div>
+							</div>
+
+						</section>
+
 						<div class="form-buttons">
 							<!-- <input type="hidden" id="_nonce" name="_nonce" value="b45be13a75"><input type="hidden" name="_wp_http_referer" value="/cuenta/actualizar-mi-tarjeta/"> <a href="https://tarjetacenturion.com/cuenta/mi-tarjeta/" class="btn btn-light">Cancelar</a> -->
 							<button type="submit" id="btn-actualizar" class="button btn btn-dark" name="arct_save_profile_qr" value="Guardar cambios">Guardar cambios</button>
