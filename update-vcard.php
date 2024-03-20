@@ -14,7 +14,6 @@ function actualizarVcard()
     $names = sanitize_text_field($_POST['nombres']);
     $last_names = sanitize_text_field($_POST['apellidos']);
     $pseudonym = sanitize_text_field($_POST['seudonimo']);
-    $profile_url = sanitize_text_field($_POST['profile_url']);
     $birthday = sanitize_text_field($_POST['cumpleanios']);
     $personal_web = sanitize_text_field($_POST['paginaWebPersonal']);
     $personal_email = sanitize_text_field($_POST['emailPrincipal']);
@@ -79,7 +78,6 @@ function actualizarVcard()
             'names' => $_POST['nombres'],
             'last_names' => $_POST['apellidos'],
             'pseudonym' => $_POST['pseudonym'],
-            'profile_url' => $_POST['profile_url'],
             'birthday' => $_POST['cumpleanios'],
             'personal_web' => $_POST['paginaWebPersonal'],
             'personal_email' => $_POST['emailPrincipal'],
