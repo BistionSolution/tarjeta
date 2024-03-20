@@ -123,17 +123,20 @@ function productos_cliente($parametros)
 									$count += 1;
 									?>
 								</li>
-								<li>
-									<div class="copy-link">
-										<div class="copy-link-container">
-											<input type="text" id="url" class="textLink<?= $count ?> user-select-all" value="<?= get_home_url() . '/' . $vcard->profile_url ?>" />
-											<span class="icon">
-												<i class="fa fa-copy copy-url" id="<?= $count ?>" title="Copiar para pegar"></i>
-											</span>
+								<?php if (!empty($vcard->profile_url)) : ?>
+									<li>
+										<div class="copy-link">
+											<div class="copy-link-container">
+												<input type="text" id="url" class="textLink<?= $count ?> user-select-all" value="<?= get_home_url() . '/' . $vcard->profile_url ?>" />
+												<span class="icon">
+													<i class="fa fa-copy copy-url" id="<?= $count ?>" title="Copiar para pegar"></i>
+												</span>
+											</div>
 										</div>
-									</div>
-									<span id="tooltip" class="tooltip"></span>
-								</li>
+										<span id="tooltip" class="tooltip"></span>
+									</li>
+								<?php endif; ?>
+
 							</ul>
 						</div>
 
@@ -272,7 +275,11 @@ function card_edit_endpoint_content()
 								<div class="row row-fields row-form-container">
 									<div class="form-row col-12">
 										<div class="url-brin">
-											<span><?= get_home_url() . '/' ?><span id="my_url"><?= $v->profile_url ?></span></span>
+											<?php if (!empty($v->profile_url)) : ?>
+												<span><?= get_home_url() . '/' ?><span id="my_url"><?= $v->profile_url ?></span></span>
+											<?php else : ?>
+												<span><?= get_home_url() . '/card/?token=' ?><span id="my_url"><?= $v->token ?></span></span>
+											<?php endif; ?>
 											<button type="button" id="button-edit" class="btn btn-primary btn-edit" data-bs-toggle="modal" data-bs-target="#modalUpdateUrl"><i class="fa fa-edit"></i> <span>Editar</span></button>
 										</div>
 									</div>
