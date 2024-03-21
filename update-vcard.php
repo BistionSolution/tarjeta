@@ -110,7 +110,9 @@ function actualizarVcard()
             'url_apple_music' => $_POST['apple_music'],
             'background_color' => $_POST['background_color'],
             'button_text_color' => $_POST['button_text_color'],
-            'button_background_color' => $_POST['button_background_color']
+            'button_background_color' => $_POST['button_background_color'],
+            'text_title_color' => $_POST['text_title_color'],
+            'text_color' => $_POST['text_color']
         );
         $content = "BEGIN:VCARD\r\n";
         $content .= "VERSION:3.0\r\n";

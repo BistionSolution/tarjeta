@@ -585,6 +585,14 @@ function card_edit_endpoint_content()
 									<label for="button-background-color">Color de Fondo del Botón:</label>
 									<input type="color" id="button-background-color" name="button_background_color" value="<?= $v->button_background_color ?>">
 								</div>
+								<div class="color">
+									<label for="text-title-color">Color del Texto de titulos:</label>
+									<input type="color" id="text-title-color" name="text_title_color" value="<?= $v->text_title_color ?>">
+								</div>
+								<div class="color">
+									<label for="text-color">Color del Texto de Parrafos:</label>
+									<input type="color" id="text-color" name="text_color" value="<?= $v->text_title_color ?>">
+								</div>
 							</div>
 
 						</section>

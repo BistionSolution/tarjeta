@@ -355,6 +355,9 @@ input[type="file"] {
 .wrap {
   padding: 10px 20px;
 }
+.wrap .contenido {
+  margin-top: 20px;
+}
 
 .wrap .contenido .names {
   padding-right: 100px;
@@ -388,9 +391,6 @@ input[type="file"] {
   align-items: center;
 }
 
-.wrap .mail a {
-  color: #000;
-}
 .wrap .perfil {
   position: relative;
   text-align: left;
@@ -400,11 +400,9 @@ input[type="file"] {
   font-weight: bold;
 }
 .wrap h1 {
-  color: #000;
   font-size: 25px;
 }
 .wrap h2 {
-  color: #000;
   font-size: 18px;
 }
 .wrap .names {

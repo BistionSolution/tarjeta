@@ -38,6 +38,7 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
             $cell_phone = $result[0]->company_cell_phone;
             $correo = $result[0]->personal_email;
             $company_name = $result[0]->company_name;
+            $company_web = $result[0]->company_web;
             $company_charge = $result[0]->company_charge;
             $company_mail = $result[0]->company_mail;
             $facebook = $result[0]->url_facebook;
@@ -56,6 +57,8 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
             $background_color = $result[0]->background_color;
             $button_text_color = $result[0]->button_text_color;
             $button_background_color = $result[0]->button_background_color;
+            $text_title_color = $result[0]->text_title_color;
+            $text_color = $result[0]->text_color;
             $per_infor = $result[0]->personal_information;
             $href = home_url() . "/wp-vcards/$token.vcf";
     ?>
@@ -78,6 +81,16 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
                 .perfil-button i {
                     color: <?= $button_text_color ?>;
                     background-color: <?= $button_background_color ?>;
+                }
+
+                h1,
+                h2 {
+                    color: <?= $text_title_color ?>;
+                }
+
+                p,
+                a {
+                    color: <?= $text_color ?>;
                 }
 
                 /* Asegúrate de ajustar los selectores .button según tu tema o plantilla */
@@ -123,14 +136,14 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
                     <?php endif; ?>
 
                     <?php if (!empty($company_charge)) : ?>
-                        <h2>
+                        <p>
                             <?= $company_charge ?> de
                             <?= $company_name ?>
-                        </h2>
+                        </p>
                     <?php else : ?>
-                        <h2>
+                        <p>
                             <?= $company_name ?>
-                        </h2>
+                        </p>
                     <?php endif; ?>
                     <div>
                         <?php if (!empty($correo)) : ?>
@@ -138,7 +151,6 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
                                 <a href="mailto:<?= $correo ?>" target="_blank"><i class="fa fa-envelope"></i> <?= $correo ?></a>
                             </div>
                         <?php endif; ?>
-
                     </div>
 
                     <div class="items">
@@ -220,68 +232,92 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
                         </div>
                     </div>
 
+
                     <div>
                         <h2>Redes Sociales</h2>
+                        <div class="redes-sociales">
+                            <?php if (!empty($facebook)) : ?>
+                                <div>
+                                    <a class="perfil-button" href="<?= $facebook ?>" target="_blank">
+
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (!empty($youtube)) : ?>
+                                <div>
+                                    <a class="perfil-button" href="<?= $youtube ?>" target="_blank">
+
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (!empty($instagram)) : ?>
+                                <div>
+                                    <a class="perfil-button" href="<?= $instagram ?>" target="_blank">
+
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+
+                                </div>
+                            <?php endif; ?>
+                            <?php if (!empty($linkedin)) : ?>
+                                <div>
+                                    <a class="perfil-button" href="<?= $linkedin ?>" target="_blank">
+
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (!empty($twitter)) : ?>
+                                <div>
+                                    <a class="perfil-button" href="<?= $twitter ?>" target="_blank">
+
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (!empty($tiktok)) : ?>
+                                <div>
+                                    <a class="perfil-button" href="<?= $tiktok ?>" target="_blank">
+
+                                        <i class="fab fa-tiktok"></i>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+
+                        </div>
                     </div>
 
-                    <div class="redes-sociales">
-                        <?php if (!empty($facebook)) : ?>
-                            <div>
-                                <a class="perfil-button" href="<?= $facebook ?>" target="_blank">
 
-                                    <i class="fab fa-facebook"></i>
-                                </a>
-                            </div>
-                        <?php endif; ?>
-                        <?php if (!empty($youtube)) : ?>
-                            <div>
-                                <a class="perfil-button" href="<?= $youtube ?>" target="_blank">
-
-                                    <i class="fab fa-youtube"></i>
-                                </a>
-                            </div>
-                        <?php endif; ?>
-                        <?php if (!empty($instagram)) : ?>
-                            <div>
-                                <a class="perfil-button" href="<?= $instagram ?>" target="_blank">
-
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-
-                            </div>
-                        <?php endif; ?>
-                        <?php if (!empty($linkedin)) : ?>
-                            <div>
-                                <a class="perfil-button" href="<?= $linkedin ?>" target="_blank">
-
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                            </div>
-                        <?php endif; ?>
-                        <?php if (!empty($twitter)) : ?>
-                            <div>
-                                <a class="perfil-button" href="<?= $twitter ?>" target="_blank">
-
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                            </div>
-                        <?php endif; ?>
-                        <?php if (!empty($tiktok)) : ?>
-                            <div>
-                                <a class="perfil-button" href="<?= $tiktok ?>" target="_blank">
-
-                                    <i class="fab fa-tiktok"></i>
-                                </a>
-                            </div>
-                        <?php endif; ?>
-
+                    <div>
+                        <h2>Información Empresarial</h2>
+                        <div>
+                            <?php if (!empty($company_mail)) : ?>
+                                <div class="img-icon mail">
+                                    <a href="mailto:<?= $company_mail ?>" target="_blank"><i class="fa fa-envelope"></i> <?= $company_mail ?></a>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                        <div class="redes-sociales">
+                            <?php if (!empty($company_web)) : ?>
+                                <div>
+                                    <a class="perfil-button" href="<?= $company_web ?>" target="_blank">
+                                        <i class="fa fa-globe"></i>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+                        </div>
                     </div>
+
+
+
                     <?php if (!empty($per_infor)) : ?>
                         <div class="sobre-mi">
                             <h2>Sobre mí</h2>
-                            <div>
+                            <p>
                                 <?= $per_infor ?>
-                            </div>
+                            </p>
                         </div>
                     <?php endif; ?>
 
@@ -300,7 +336,7 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
 
                                     <img class="img-web" src="<?= plugins_url(basename(__DIR__) . '/assets/img/MetaMask_Fox.svg') ?>" />
 
-                                    <span>Metamask: </span>
+                                    <p>Metamask: </p>
 
                                     <button id="buttongo" class="button-go "><i class="fa fa-copy" title="Copiar para pegar"></i><span class="for-copy"><?= $metamask ?> </span>
 
