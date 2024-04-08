@@ -420,6 +420,27 @@ input[type="file"] {
   z-index: 1;
 }
 
+/* tabletas */
+@media (min-width: 768px) {
+  .profile-img {
+    height: 330px;
+  }
+}
+
+/* escritorio normales */
+@media (min-width: 992px) {
+  .profile-img {
+    height: 450px;
+  }
+}
+
+/* pantallas grandes */
+@media (min-width: 1200px) {
+  .profile-img {
+    height: 500px;
+  }
+}
+
 .wrap .profile-img img {
   display: block;
   position: absolute;
