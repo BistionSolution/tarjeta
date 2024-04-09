@@ -422,21 +422,21 @@ input[type="file"] {
 
 /* tabletas */
 @media (min-width: 768px) {
-  .profile-img {
+  .wrap .profile-img {
     height: 330px;
   }
 }
 
 /* escritorio normales */
 @media (min-width: 992px) {
-  .profile-img {
+  .wrap .profile-img {
     height: 450px;
   }
 }
 
 /* pantallas grandes */
 @media (min-width: 1200px) {
-  .profile-img {
+  .wrap .profile-img {
     height: 500px;
   }
 }

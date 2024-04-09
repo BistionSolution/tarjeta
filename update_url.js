@@ -1,5 +1,4 @@
 jQuery(document).ready(function ($) {
-  console.log("NICES");
   // Escucha el evento submit en el formulario
   jQuery("#editurl").submit(function (e) {
     e.preventDefault(); // Previene el envío normal del formulario

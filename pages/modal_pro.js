@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
           document.getElementById("mi_formulario").reset();
           // Mostrar mensaje de éxito
           // jQuery("#modalSuccess").modal("show");
+          alert("Contacto creado exitosamente.");
         },
       });
     });
