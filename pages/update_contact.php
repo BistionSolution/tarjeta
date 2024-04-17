@@ -1,5 +1,5 @@
 <?php
-function create_contact()
+function create_contact_handler()
 {
     echo "Datos";
 
@@ -26,7 +26,8 @@ function create_contact()
     exit;
 }
 
-add_action('wp_ajax_create_contact', 'create_contact');
+add_action('wp_ajax_create_contact', 'create_contact_handler');
+add_action('wp_ajax_nopriv_create_contact', 'create_contact_handler');
 
 // Actualizar la url de la tarjeta
 function update_url()
