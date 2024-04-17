@@ -1,8 +1,8 @@
 <?php
 function create_contact()
 {
-    global $wpdb;
-    ob_clean();
+    echo "Datos";
+
     $id_vcard = isset($_POST['id_vcard']) ? sanitize_text_field($_POST['id_vcard']) : '';
     $user_id = isset($_POST['user_id']) ? sanitize_text_field($_POST['user_id']) : '';
     $names = isset($_POST['names']) ? sanitize_text_field($_POST['names']) : '';
@@ -10,14 +10,20 @@ function create_contact()
     $email = isset($_POST['email']) ? sanitize_email($_POST['email']) : '';
     $phone = isset($_POST['phone']) ? sanitize_text_field($_POST['phone']) : '';
 
-    if (isset($_REQUEST)) {
-    }
     $vcard_info = array(
         'user_id' => $user_id, 'vcard_id' => $id_vcard, 'names' => $names, 'last_names' => $last_names, 'phone' => $phone, 'email' => $email
     );
-    // crear en la tabla de contactos
+    // Mostrar en modo de depuración los datos recibidos
+    echo "<pre>";
+    print_r($vcard_info);
+    echo "</pre>";
+    
+    global $wpdb;
+    ob_clean();
     $table_name = $wpdb->prefix . "vcards_contacts";
     $wpdb->insert($table_name, $vcard_info);
+    wp_send_json_success($vcard_info);
+    exit;
 }
 
 add_action('wp_ajax_create_contact', 'create_contact');
@@ -25,7 +31,6 @@ add_action('wp_ajax_create_contact', 'create_contact');
 // Actualizar la url de la tarjeta
 function update_url()
 {
-    echo 'hola -.>>>>>>>>>>>>>>>>>>>>>>>>>>>>>';
     global $wpdb;
     ob_clean();
     // Asegurar que la petición es de tipo POST

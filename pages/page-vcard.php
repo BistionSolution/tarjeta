@@ -101,7 +101,7 @@ function page_vcard()
                         <div class="items">
                             <?php if (!empty($href)) : ?>
                                 <div class="img-icon vcard">
-                                    <a href="<?= $href ?>"><i class="fa fa-user-plus" target="_blank"> </i><span>Contacto</span> </a>
+                                    <a href="<?= $href ?>" download><i class="fa fa-user-plus" target="_blank"> </i><span>Contacto</span> </a>
                                 </div>
                             <?php endif; ?>
                             <button type="button" class="vcard" data-bs-toggle="modal" data-bs-target="#modalContact"><i class="fa fa-exchange"></i> <span>Intercambio contacto</span></button>

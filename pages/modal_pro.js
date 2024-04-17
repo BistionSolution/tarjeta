@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+jQuery(document).ready(function () {
   document
     .getElementById("mi_formulario")
     .addEventListener("submit", function (e) {
@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
       var form = document.getElementById("mi_formulario");
       var formData = new FormData(form);
       formData.append("action", "create_contact"); // Añadir la acción para WordPress
-      console.log(formData);
       // enviar los datos al servidor con ajax
 
       jQuery.ajax({
@@ -25,6 +24,12 @@ document.addEventListener("DOMContentLoaded", function () {
           // Mostrar mensaje de éxito
           // jQuery("#modalSuccess").modal("show");
           alert("Contacto creado exitosamente.");
+        },
+        error: function (error) {
+          console.log({ error });
+          // Mostrar mensaje de error
+          // jQuery("#modalError").modal("show");
+          alert("Error al crear el contacto.");
         },
       });
     });
