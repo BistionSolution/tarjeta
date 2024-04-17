@@ -155,7 +155,7 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
 
                     <div class="items">
                         <?php if (!empty($href)) : ?>
-                            <a class="img-icon vcard" href="<?= $href ?> download"><i class="fa fa-user-plus"> </i><span>Contactos</span> </a>
+                            <a class="img-icon vcard" href="<?= $href ?> download"><i class="fa fa-user-plus"> </i><span>Contacto</span> </a>
                         <?php endif; ?>
                         <button type="button" class="vcard" data-bs-toggle="modal" data-bs-target="#modalContact"><i class="fa fa-exchange"></i> <span>Enviar contacto</span></button>
                     </div>
