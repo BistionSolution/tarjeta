@@ -720,8 +720,9 @@ input[type="file"] {
 .wrap .redes-sociales {
   padding-top: 5px;
   padding-bottom: 15px;
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
 }
 .redes-sociales div {
   /* position: absolute; */
