@@ -307,7 +307,7 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
                     </div>
 
                     <div>
-                        <h2>Información Empresarial</h2>
+                        <h2>Información Empresarials</h2>
                         <div>
                             <?php if (!empty($company_mail)) : ?>
                                 <div class="img-icon mail">
