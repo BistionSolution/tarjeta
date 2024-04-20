@@ -190,6 +190,14 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
                                 </a>
                             </div>
                         <?php endif; ?>
+                        <?php if (!empty($personal_presentation)) : ?>
+                            <div class="img-icon cell wsp-efect">
+                                <a class="presentation-button" href="<?= $personal_presentation ?>" target="_blank">
+                                    <i class="fa fa-file"></i>
+                                    <!-- <i class="fab fa-tiktok"></i> -->
+                                </a>
+                            </div>
+                        <?php endif; ?>
                     </div>
 
                     <div>
@@ -233,6 +241,15 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
                     </div>
 
 
+                    <?php if (!empty($per_infor)) : ?>
+                        <div class="sobre-mi">
+                            <h2>Sobre mí</h2>
+                            <p>
+                                <?= $per_infor ?>
+                            </p>
+                        </div>
+                    <?php endif; ?>
+
                     <div>
                         <h2>Redes Sociales</h2>
                         <div class="redes-sociales">
@@ -273,7 +290,7 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
                                 <div>
                                     <a class="perfil-button" href="<?= $twitter ?>" target="_blank">
 
-                                        <i class="fab fa-twitter"></i>
+                                        <i class="fab fa-x-twitter"></i>
                                     </a>
                                 </div>
                             <?php endif; ?>
@@ -288,7 +305,6 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
 
                         </div>
                     </div>
-
 
                     <div>
                         <h2>Información Empresarial</h2>
@@ -307,19 +323,50 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
                                     </a>
                                 </div>
                             <?php endif; ?>
+                            <?php if (!empty($facebook_business)) : ?>
+                                <div>
+                                    <a class="perfil-button" href="<?= $facebook_business ?>" target="_blank">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (!empty($youtube_business)) : ?>
+                                <div>
+                                    <a class="perfil-button" href="<?= $youtube_business ?>" target="_blank">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (!empty($instagram_business)) : ?>
+                                <div>
+                                    <a class="perfil-button" href="<?= $instagram_business ?>" target="_blank">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (!empty($linkedin_business)) : ?>
+                                <div>
+                                    <a class="perfil-button" href="<?= $linkedin_business ?>" target="_blank">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (!empty($twitter_business)) : ?>
+                                <div>
+                                    <a class="perfil-button" href="<?= $twitter_business ?>" target="_blank">
+                                        <i class="fab fa-x-twitter"></i>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (!empty($tiktok_business)) : ?>
+                                <div>
+                                    <a class="perfil-button" href="<?= $tiktok_business ?>" target="_blank">
+                                        <i class="fab fa-tiktok"></i>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
-
-
-
-                    <?php if (!empty($per_infor)) : ?>
-                        <div class="sobre-mi">
-                            <h2>Sobre mí</h2>
-                            <p>
-                                <?= $per_infor ?>
-                            </p>
-                        </div>
-                    <?php endif; ?>
 
                     <?php if (!empty($opensea) && (!empty($metamask))) : ?>
                         <div class="web3">

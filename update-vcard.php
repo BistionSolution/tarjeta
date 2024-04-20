@@ -112,7 +112,14 @@ function actualizarVcard()
             'button_text_color' => $_POST['button_text_color'],
             'button_background_color' => $_POST['button_background_color'],
             'text_title_color' => $_POST['text_title_color'],
-            'text_color' => $_POST['text_color']
+            'text_color' => $_POST['text_color'],
+            // Redes sociales de la empresa
+            'facebook_business' => $_POST['facebook_business'],
+            'youtube_business' => $_POST['youtube_business'],
+            'instagram_business' => $_POST['instagram_business'],
+            'linkedin_business' => $_POST['linkedin_business'],
+            'twitter_business' => $_POST['twitter_business'],
+            'tiktok_business' => $_POST['tiktok_business'],
         );
         $content = "BEGIN:VCARD\r\n";
         $content .= "VERSION:3.0\r\n";

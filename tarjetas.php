@@ -357,6 +357,12 @@ function card_edit_endpoint_content()
 											<textarea class="form-control" id="field-1-11" rows="3" name="mi_informacion"><?= $v->personal_information ?></textarea>
 										</div>
 									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-1-10">Presentacion Link</label>
+											<input id="field-1-10" name="personal_presentation" value="<?= $v->personal_presentation ?>">
+										</div>
+									</div>
 								</div>
 							</div>
 
@@ -366,7 +372,7 @@ function card_edit_endpoint_content()
 						<section class="accordion-row">
 
 							<header id="field-group-2-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-2" aria-expanded="false" aria-controls="field-group-2">
-								<h6 class="title">Trabajo</h6>
+								<h6 class="title">Empresa</h6>
 								<span class="icon"><i class="fas fa-plus"></i></span>
 							</header>
 							<div id="field-group-2" class="accordion-content collapse show" aria-labelledby="field-group-2-heading" data-parent="#perfil-qr-form">
@@ -419,9 +425,45 @@ function card_edit_endpoint_content()
 											<input id="field-2-18" name="paisTrabajo" value="<?= $v->company_country ?>">
 										</div>
 									</div>
+									<!-- Redes sociales empresa -->
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-2-19">Facebook</label>
+											<input id="field-2-19" name="facebook_business" value="<?= $v->facebook_business ?>">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-2-20">Youtube</label>
+											<input id="field-2-20" name="youtube_business" value="<?= $v->youtube_business ?>">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-2-21">Instagram</label>
+											<input id="field-2-21" name="instagram_business" value="<?= $v->instagram_business ?>">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-2-22">Linkedin</label>
+											<input id="field-2-22" name="linkedin_business" value="<?= $v->linkedin_business ?>">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-2-23">X</label>
+											<input id="field-2-23" name="twitter_business" value="<?= $v->twitter_business ?>">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-2-24">Tiktok</label>
+											<input id="field-2-24" name="tiktok_business" value="<?= $v->tiktok_business ?>">
+										</div>
+									</div>
 								</div>
 							</div>
-
 						</section>
 
 						<section class="accordion-row">
