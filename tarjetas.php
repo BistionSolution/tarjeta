@@ -580,6 +580,25 @@ function card_edit_endpoint_content()
 										</div>
 									</div>
 
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-4-26">Behance</label>
+											<input id="field-4-26" name="url_behance" value="<?= $v->url_behance ?>">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-4-26">Github</label>
+											<input id="field-4-26" name="url_github" value="<?= $v->url_github ?>">
+										</div>
+									</div>
+									<div class="form-row col-6">
+										<div class="field-container">
+											<label for="field-4-26">Telegram</label>
+											<input id="field-4-26" name="url_telegram" value="<?= $v->url_telegram ?>">
+										</div>
+									</div>
+
 								</div>
 							</div>
 						</section>

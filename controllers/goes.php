@@ -53,6 +53,10 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
             $tiktok = $result[0]->url_tiktok;
             $spotify = $result[0]->url_spotify;
             $apple_music = $result[0]->url_apple_music;
+            $url_behance = $result[0]->url_behance;
+            $url_github = $result[0]->url_github;
+            $url_telegram = $result[0]->url_telegram;
+            $personal_presentation = $result[0]->personal_presentation;
             $token = $result[0]->token;
             $background_color = $result[0]->background_color;
             $button_text_color = $result[0]->button_text_color;
@@ -61,6 +65,12 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
             $text_color = $result[0]->text_color;
             $per_infor = $result[0]->personal_information;
             $href = home_url() . "/wp-vcards/$token.vcf";
+            $facebook_business = $result[0]->facebook_business;
+            $youtube_business = $result[0]->youtube_business;
+            $instagram_business = $result[0]->instagram_business;
+            $linkedin_business = $result[0]->linkedin_business;
+            $twitter_business = $result[0]->twitter_business;
+            $tiktok_business = $result[0]->tiktok_business;
     ?>
             <style type="text/css">
                 body,
@@ -302,12 +312,35 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
                                     </a>
                                 </div>
                             <?php endif; ?>
+                            <?php if (!empty($url_telegram)) : ?>
+                                <div>
+                                    <a class="perfil-button" href="<?= $url_telegram ?>" target="_blank">
 
+                                        <i class="fab fa-telegram"></i>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (!empty($url_github)) : ?>
+                                <div>
+                                    <a class="perfil-button" href="<?= $url_github ?>" target="_blank">
+
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (!empty($url_behance)) : ?>
+                                <div>
+                                    <a class="perfil-button" href="<?= $url_behance ?>" target="_blank">
+
+                                        <i class="fab fa-behance"></i>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
 
                     <div>
-                        <h2>Información Empresarials</h2>
+                        <h2>Información Empresarial</h2>
                         <div>
                             <?php if (!empty($company_mail)) : ?>
                                 <div class="img-icon mail">
