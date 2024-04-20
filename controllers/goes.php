@@ -341,12 +341,13 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
 
                     <div>
                         <h2>Información Empresarial</h2>
+                        <?php if (!empty($company_mail)) : ?>
+                            <div class="img-icon mail">
+                                <a href="mailto:<?= $company_mail ?>" target="_blank"><i class="fa fa-envelope"></i> <?= $company_mail ?></a>
+                            </div>
+                        <?php endif; ?>
                         <div class="redes-sociales">
-                            <?php if (!empty($company_mail)) : ?>
-                                <div class="img-icon mail">
-                                    <a href="mailto:<?= $company_mail ?>" target="_blank"><i class="fa fa-envelope"></i> <?= $company_mail ?></a>
-                                </div>
-                            <?php endif; ?>
+
                             <?php if (!empty($company_web)) : ?>
                                 <div>
                                     <a class="perfil-button" href="<?= $company_web ?>" target="_blank">
