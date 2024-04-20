@@ -87,6 +87,7 @@ function actualizarVcard()
             'personal_department' => $_POST['departamento'],
             'personal_country' => $_POST['pais'],
             'personal_information' => $_POST['mi_informacion'],
+            'personal_presentation' => $_POST['personal_presentation'],
             'whatsapp_ms' => $_POST['whatsapp_mensaje'],
             'company_name' => $_POST['empresa'],
             'company_charge' => $_POST['cargo'],
@@ -108,6 +109,11 @@ function actualizarVcard()
             'url_tiktok' => $_POST['tiktok'],
             'url_spotify' => $_POST['spotify'],
             'url_apple_music' => $_POST['apple_music'],
+            // Personal redes sociales
+            'url_behance' => $_POST['url_behance'],
+            'url_github' => $_POST['url_github'],
+            'url_telegram' => $_POST['url_telegram'],
+
             'background_color' => $_POST['background_color'],
             'button_text_color' => $_POST['button_text_color'],
             'button_background_color' => $_POST['button_background_color'],
