@@ -312,6 +312,9 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
                                     </a>
                                 </div>
                             <?php endif; ?>
+
+                        </div>
+                        <div class="redes-sociales">
                             <?php if (!empty($url_telegram)) : ?>
                                 <div>
                                     <a class="perfil-button" href="<?= $url_telegram ?>" target="_blank">
@@ -356,6 +359,8 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
                                     </a>
                                 </div>
                             <?php endif; ?>
+                        </div>
+                        <div class="redes-sociales">
                             <?php if (!empty($facebook_business)) : ?>
                                 <div>
                                     <a class="perfil-button" href="<?= $facebook_business ?>" target="_blank">
