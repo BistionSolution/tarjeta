@@ -600,7 +600,7 @@ function card_edit_endpoint_content()
 									</div>
 									<div class="form-row col-6">
 										<div class="field-container">
-											<label for="field-4-26">Telegram</label>
+											<label for="field-4-26">WeChat</label>
 											<input id="field-4-26" name="url_wechat" value="<?= $v->url_wechat ?>">
 										</div>
 									</div>
