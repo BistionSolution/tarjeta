@@ -113,6 +113,7 @@ function actualizarVcard()
             'url_behance' => $_POST['url_behance'],
             'url_github' => $_POST['url_github'],
             'url_telegram' => $_POST['url_telegram'],
+            'url_wechat' => $_POST['url_wechat'],
 
             'background_color' => $_POST['background_color'],
             'button_text_color' => $_POST['button_text_color'],

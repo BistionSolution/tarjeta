@@ -56,6 +56,7 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
             $url_behance = $result[0]->url_behance;
             $url_github = $result[0]->url_github;
             $url_telegram = $result[0]->url_telegram;
+            $url_wechat = $result[0]->url_wechat;
             $personal_presentation = $result[0]->personal_presentation;
             $token = $result[0]->token;
             $background_color = $result[0]->background_color;
@@ -336,12 +337,20 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
                                     </a>
                                 </div>
                             <?php endif; ?>
+                            <?php if (!empty($url_wechat)) : ?>
+                                <div>
+                                    <a class="perfil-button" href="<?= $url_wechat ?>" target="_blank">
+                                        <i class="fab fa-weixin"></i>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+
                         </div>
                     </div>
 
                     <div>
-                        <h2>Información Empresarial</h2>
                         <?php if (!empty($company_mail)) : ?>
+                            <h2>Información Empresarial</h2>
                             <div class="img-icon mail">
                                 <a href="mailto:<?= $company_mail ?>" target="_blank"><i class="fa fa-envelope"></i> <?= $company_mail ?></a>
                             </div>
