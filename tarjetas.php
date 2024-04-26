@@ -310,7 +310,7 @@ function card_edit_endpoint_content()
 									<div class="form-row col-6">
 										<div class="field-container">
 											<label for="field-1-3">Seudonimo</label>
-											<input id="field-1-3" name="seudonimo" value="<?= $v->pseudonym ?>">
+											<input id="field-1-3" name="pseudonym" value="<?= $v->pseudonym ?>">
 										</div>
 									</div>
 

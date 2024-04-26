@@ -13,7 +13,7 @@ function actualizarVcard()
     $imgvacio = $_POST["imgvacio"];
     $names = sanitize_text_field($_POST['nombres']);
     $last_names = sanitize_text_field($_POST['apellidos']);
-    $pseudonym = sanitize_text_field($_POST['seudonimo']);
+    $pseudonym = sanitize_text_field($_POST['pseudonym']);
     $birthday = sanitize_text_field($_POST['cumpleanios']);
     $personal_web = sanitize_text_field($_POST['paginaWebPersonal']);
     $personal_email = sanitize_text_field($_POST['emailPrincipal']);
@@ -229,6 +229,12 @@ function actualizarVcard()
             $ar,
             array('id_vcard' => $id_tarje)
         );
+        if ($wpdb->last_error === '') {
+            $result = 'Successs';
+        } else {
+            $result = 'Errorsss: ' . $wpdb->last_error;
+        }
+        echo $result;
     }
     wp_redirect($href . '/card-edit/?id=' . $id_tarje);
 }
