@@ -48,11 +48,11 @@ jQuery(document).ready(function ($) {
       processData: false, // Informa a jQuery que no procese los datos
       contentType: false, // Informa a jQuery que no establezca el tipo de contenido
       success: function (response) {
-        console.log("Success:", response);
+        console.log("data  es  :", response);
         var data = JSON.parse(response);
 
         if (data.success) {
-          console.log("data:", data.data);
+          console.log("data:", data);
 
           alert("Actualización exitosa");
           // Aquí puedes redirigir o hacer lo que quieras en caso de éxito
