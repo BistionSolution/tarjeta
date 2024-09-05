@@ -3,6 +3,10 @@
 function actualizarVcard()
 {
     global $wpdb;
+
+    // Iniciar el array de respuesta
+    $response = array('success' => false, 'message' => '');
+
     $href = dirname(dirname($_SERVER["HTTP_REFERER"]));
     $id_tarje = $_POST['identificador'];
     $token = $wpdb->get_var("SELECT token FROM {$wpdb->prefix}vcards where id_vcard='$id_tarje'");
@@ -236,19 +240,22 @@ function actualizarVcard()
             $ar,
             array('id_vcard' => $id_tarje)
         );
-        
-        if ($wpdb->last_error === '') {
-            $result = 'Successs';
+
+        if ($wpdb->last_error !== '') {
+            $response['message'] = 'Error en la base de datos: ' . $wpdb->last_error;
         } else {
-            $result = 'Errorsss: ' . $wpdb->last_error;
+            $response['success'] = true;
+            $response['message'] = 'Actualización exitosa.';
         }
-        echo $result;
     }
-    wp_redirect($href . '/card-edit/?id=' . $id_tarje);
+    // Enviar la respuesta JSON
+    echo json_encode($response);
     exit();
 }
 
 // Con esto permitimos que esta vista sea visible para usuarios sin cuentas
 // add_action('admin_post_nopriv_contactform', 'actualizarVcard');
 // Con esto permitimos que esta vista sea visible para usuarios logueados
-add_action('admin_post_updateVcard', 'actualizarVcard');
+// add_action('admin_post_updateVcard', 'actualizarVcard');
+
+add_action('wp_ajax_updateVcard', 'actualizarVcard');

@@ -193,7 +193,7 @@ function card_edit_endpoint_content()
 		$vcards = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}vcards where user_id='$user_id' and id_vcard = $id");
 
 		if (!empty($vcards)) { ?>
-			<form id="perfil-qr-form" class="woocommerce-EditProfileQrForm edit-profile-qr" action="<?= esc_url(admin_url('admin-post.php')) ?>" method="post" enctype="multipart/form-data">
+			<form id="perfil-qr-form" class="woocommerce-EditProfileQrForm edit-profile-qr" method="post">
 				<input type="hidden" class="identificador-vcard" name="identificador" value="<?= $id ?>">
 				<?php foreach ($vcards as $v) : ?>
 					<header class="form-header">
@@ -483,8 +483,6 @@ function card_edit_endpoint_content()
 							</div>
 						</section>
 
-
-
 						<section class="accordion-row ">
 
 							<header id="field-group-3-heading" class="accordion-header" data-toggle="collapse" data-target="#field-group-3" aria-expanded="false" aria-controls="field-group-3">
@@ -515,7 +513,6 @@ function card_edit_endpoint_content()
 							</div>
 
 						</section>
-
 
 						<section class="accordion-row">
 
@@ -666,7 +663,7 @@ function card_edit_endpoint_content()
 						<div class="form-buttons">
 							<!-- <input type="hidden" id="_nonce" name="_nonce" value="b45be13a75"><input type="hidden" name="_wp_http_referer" value="/cuenta/actualizar-mi-tarjeta/"> <a href="https://tarjetacenturion.com/cuenta/mi-tarjeta/" class="btn btn-light">Cancelar</a> -->
 							<button type="submit" id="btn-actualizar" class="button btn btn-dark" name="arct_save_profile_qr" value="Guardar cambios">Guardar cambios</button>
-							<input type="hidden" name="action" value="updateVcard">
+							<!-- <input type="hidden" name="action" value="updateVcard"> -->
 						</div>
 
 					</div>
@@ -699,11 +696,10 @@ function card_edit_endpoint_content()
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-								<input type="submit" class="btn btn-primary" value="Guardar cambios" class="btn btn-primary">
+								<input type="submit" class="btn btn-primary" value="Guardar" class="btn btn-primary">
 							</div>
 						</div>
 					</form>
-
 				</div>
 			</div>
 			<script src="<?= plugins_url(basename(__DIR__)) ?>/assets/imagen.js"></script>
