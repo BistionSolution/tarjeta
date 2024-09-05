@@ -246,6 +246,8 @@ function actualizarVcard()
         }
         wp_send_json_success('Actualización exitosa.');
     }
+    // No olvides siempre terminar con exit en las peticiones AJAX para evitar enviar contenido extra.
+    exit;
 }
 
 // Con esto permitimos que esta vista sea visible para usuarios sin cuentas
