@@ -47,9 +47,18 @@ jQuery(document).ready(function ($) {
       data: formData,
       processData: false, // Informa a jQuery que no procese los datos
       contentType: false, // Informa a jQuery que no establezca el tipo de contenido
-      success: function (data) {
-        console.log("Success:", data);
-        
+      success: function (response) {
+        console.log("Success:", response);
+        var data = JSON.parse(response);
+
+        if (data.success) {
+          console.log("data:", data.data);
+
+          alert("Actualización exitosa");
+          // Aquí puedes redirigir o hacer lo que quieras en caso de éxito
+        } else {
+          alert("Error: " + data.message);
+        }
       },
       error: function (xhr, status, error) {
         console.error("Error se:", status, error);
