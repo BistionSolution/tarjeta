@@ -699,7 +699,7 @@ function card_edit_endpoint_content()
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-								<input type="submit" class="btn btn-primary" value="Guardar" class="btn btn-primary">
+								<input type="submit" class="btn btn-primary" value="Guardar cambios" class="btn btn-primary">
 							</div>
 						</div>
 					</form>
