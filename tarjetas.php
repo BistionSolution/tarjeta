@@ -662,10 +662,9 @@ function card_edit_endpoint_content()
 
 						<div class="form-buttons">
 							<!-- <input type="hidden" id="_nonce" name="_nonce" value="b45be13a75"><input type="hidden" name="_wp_http_referer" value="/cuenta/actualizar-mi-tarjeta/"> <a href="https://tarjetacenturion.com/cuenta/mi-tarjeta/" class="btn btn-light">Cancelar</a> -->
-							<button type="submit" id="btn-actualizar" class="button btn btn-dark" name="arct_save_profile_qr" value="Guardar cambios">Guardar cambios</button>
+							<button type="submit" id="btn-actualizar" class="button btn btn-dark">Guardar cambios</button>
 							<!-- <input type="hidden" name="action" value="updateVcard"> -->
 						</div>
-
 					</div>
 				<?php endforeach; ?>
 			</form>

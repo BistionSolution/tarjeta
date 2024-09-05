@@ -5,7 +5,7 @@ function actualizarVcard()
     global $wpdb;
 
     // Iniciar el array de respuesta
-    $response = array('success' => false, 'message' => '');
+    // $response = array('success' => false, 'message' => '');
 
     $href = dirname(dirname($_SERVER["HTTP_REFERER"]));
     $id_tarje = $_POST['identificador'];
@@ -244,7 +244,6 @@ function actualizarVcard()
         if ($wpdb->last_error !== '') {
             wp_send_json_error('Error en la base de datos: ' . $wpdb->last_error);
         }
-        
         wp_send_json_success('Actualización exitosa.');
     }
 }
