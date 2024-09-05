@@ -38,7 +38,7 @@ jQuery(document).ready(function ($) {
 
     // Recoge los datos del formulario
     var formData = new FormData(this);
-    formData.append("updateVcard", "update_url"); // Añade la acción para WordPress
+    formData.append("action", "updateVcard"); // Añade la acción para WordPress
 
     // Envía los datos al servidor con AJAX
     jQuery.ajax({
@@ -57,7 +57,7 @@ jQuery(document).ready(function ($) {
         if (xhr.status === 409) {
           alert("Error: El usuario ya existe.");
         } else {
-          alert("Error al procesar la solicitud.");
+          alert("Error al procesar la solicitud. now");
         }
       },
     });
