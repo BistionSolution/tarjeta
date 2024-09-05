@@ -50,14 +50,12 @@ jQuery(document).ready(function ($) {
       success: function (response) {
         console.log("data  es  :", response);
 
-        if (response.success) {
-          console.log("data:", data);
+        // if (response.success) {
+        //   console.log("data:", data);
 
-          alert("Actualización exitosa");
-          // Aquí puedes redirigir o hacer lo que quieras en caso de éxito
-        } else {
-          alert("Error: " + data.message);
-        }
+        //   alert("Actualización exitosa");
+        //   // Aquí puedes redirigir o hacer lo que quieras en caso de éxito
+        // } 
       },
       error: function (xhr, status, error) {
         console.error("Error se:", status, error);
@@ -65,7 +63,7 @@ jQuery(document).ready(function ($) {
         if (xhr.status === 409) {
           alert("Error: El usuario ya existe.");
         } else {
-          alert("Error al procesar la solicitud. now");
+          alert("Error al procesar la solicitud.");
         }
       },
     });
