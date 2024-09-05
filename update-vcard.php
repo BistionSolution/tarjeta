@@ -236,12 +236,11 @@ function actualizarVcard()
             $ar,
             array('id_vcard' => $id_tarje)
         );
-
+        
         if ($wpdb->last_error === '') {
             $result = 'Successs';
         } else {
             $result = 'Errorsss: ' . $wpdb->last_error;
-            wp_die('Error en la base de datos: ' . $wpdb->last_error);
         }
         echo $result;
     }
