@@ -74,6 +74,12 @@ function actualizarVcard()
         //     $image = $_FILES['foto']['tmp_name'];
         //     $imgContent = addslashes(file_get_contents($image));
         // }
+
+        // Validar email
+        if (!is_email($personal_email)) {
+            wp_die('El email personal no es válido.');
+        }
+
         $ar = array(
             'names' => $_POST['nombres'],
             'last_names' => $_POST['apellidos'],
@@ -224,19 +230,23 @@ function actualizarVcard()
         fwrite($file, $content);
         fclose($file);
         var_dump($ar);
+
         $wpdb->update(
             $wpdb->prefix . 'vcards',
             $ar,
             array('id_vcard' => $id_tarje)
         );
+
         if ($wpdb->last_error === '') {
             $result = 'Successs';
         } else {
             $result = 'Errorsss: ' . $wpdb->last_error;
+            wp_die('Error en la base de datos: ' . $wpdb->last_error);
         }
         echo $result;
     }
     wp_redirect($href . '/card-edit/?id=' . $id_tarje);
+    exit();
 }
 
 // Con esto permitimos que esta vista sea visible para usuarios sin cuentas
