@@ -5,7 +5,7 @@ function actualizarVcard()
     global $wpdb;
 
     // Iniciar el array de respuesta
-    // $response = array('success' => false, 'message' => '');
+    $response = array('success' => false, 'message' => '');
 
     $href = dirname(dirname($_SERVER["HTTP_REFERER"]));
     $id_tarje = $_POST['identificador'];
@@ -242,12 +242,15 @@ function actualizarVcard()
         );
 
         if ($wpdb->last_error !== '') {
-            wp_send_json_error('Error en la base de datos: ' . $wpdb->last_error);
+            $response['message'] = 'Error en la base de datos: ' . $wpdb->last_error;
+        } else {
+            $response['success'] = true;
+            $response['message'] = 'Actualización exitosa.';
         }
-        wp_send_json_success('Actualización exitosa.');
     }
-    // No olvides siempre terminar con exit en las peticiones AJAX para evitar enviar contenido extra.
-    exit;
+    // Enviar la respuesta JSON
+    echo json_encode($response);
+    exit();
 }
 
 // Con esto permitimos que esta vista sea visible para usuarios sin cuentas
