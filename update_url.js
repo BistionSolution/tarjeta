@@ -49,9 +49,8 @@ jQuery(document).ready(function ($) {
       contentType: false, // Informa a jQuery que no establezca el tipo de contenido
       success: function (response) {
         console.log("data  es  :", response);
-        var data = JSON.parse(response);
 
-        if (data.success) {
+        if (response.success) {
           console.log("data:", data);
 
           alert("Actualización exitosa");
