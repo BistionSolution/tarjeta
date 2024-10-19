@@ -35,7 +35,8 @@ jQuery(document).ready(function ($) {
 
   jQuery("#perfil-qr-form").submit(function (e) {
     e.preventDefault(); // Previene el envío normal del formulario
-
+    jQuery("#btn-text").text("Guardando...");
+    jQuery("#spinner").show();
     // Recoge los datos del formulario
     var formData = new FormData(this);
     formData.append("action", "updateVcard"); // Añade la acción para WordPress
@@ -49,22 +50,42 @@ jQuery(document).ready(function ($) {
       contentType: false, // Informa a jQuery que no establezca el tipo de contenido
       success: function (response) {
         console.log("data  es  :", response);
-
+        jQuery("#spinner").hide();
+        jQuery("#btn-text").text("Guardar cambios");
         // if (response.success) {
         //   console.log("data:", data);
 
         //   alert("Actualización exitosa");
         //   // Aquí puedes redirigir o hacer lo que quieras en caso de éxito
-        // } 
+        // }
+
+        // Configurar y mostrar el modal de éxito
+        Toastify({
+          text: "Guardado exitoso",
+          duration: 3000, // dura 3 segundos
+          close: true, // permite cerrar la notificación
+          gravity: "top", // `top` o `bottom`
+          position: "right", // `left`, `center` o `right`
+          style: {
+            background: "linear-gradient(to right, #7f10d1, #17002a)",
+          },
+        }).showToast();
       },
       error: function (xhr, status, error) {
         console.error("Error se:", status, error);
+        jQuery("#spinner").hide();
+        jQuery("#btn-text").text("Guardar cambios");
         // Aquí puedes manejar el error, mostrando un mensaje al usuario
-        if (xhr.status === 409) {
-          alert("Error: El usuario ya existe.");
-        } else {
-          alert("Error al procesar la solicitud.");
-        }
+        Toastify({
+          text: "Error al procesar la solicitud",
+          duration: 3000,
+          close: true,
+          gravity: "top",
+          position: "right",
+          style: {
+            background: "linear-gradient(to right, #ff5f6d, #ffc371)",
+          },
+        }).showToast();
       },
     });
   });

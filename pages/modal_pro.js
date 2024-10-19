@@ -3,7 +3,6 @@ jQuery(document).ready(function () {
     .getElementById("mi_formulario")
     .addEventListener("submit", function (e) {
       e.preventDefault(); // Prevenir el envío normal del formulario
-      console.log("Another nice created");
       // capturar los datos del formulario
       var form = document.getElementById("mi_formulario");
       var formData = new FormData(form);

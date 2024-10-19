@@ -662,12 +662,36 @@ function card_edit_endpoint_content()
 
 						<div class="form-buttons">
 							<!-- <input type="hidden" id="_nonce" name="_nonce" value="b45be13a75"><input type="hidden" name="_wp_http_referer" value="/cuenta/actualizar-mi-tarjeta/"> <a href="https://tarjetacenturion.com/cuenta/mi-tarjeta/" class="btn btn-light">Cancelar</a> -->
-							<button type="submit" id="btn-actualizar" class="button btn btn-dark">Guardar cambios</button>
+							<button type="submit" id="btn-actualizar" class="button btn btn-dark">
+								<span id="btn-text">Guardar cambios</span>
+								<span id="spinner" style="display: none;" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+							</button>
 							<!-- <input type="hidden" name="action" value="updateVcard"> -->
 						</div>
 					</div>
 				<?php endforeach; ?>
 			</form>
+			
+			<!-- Modal -->
+			<div class="modal fade" id="resultadoModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="modalLabel">Resultado del Envío</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body" id="modalMsg">
+							<!-- El mensaje se insertará dinámicamente aquí -->
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<div class="modal fade" id="modalUpdateUrl" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 					<form id="editurl" method="post">

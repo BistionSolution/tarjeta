@@ -734,6 +734,9 @@ function ow_enqueue_script()
             'hook' => 'ow_action'
       ));
       wp_enqueue_script('ow-js');
+
+      wp_enqueue_script('toastify-js', 'https://cdn.jsdelivr.net/npm/toastify-js', array(), null, true);
+      wp_enqueue_style('toastify-css', 'https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css', array(), null);
 }
 
 add_action('admin_enqueue_scripts', 'ow_enqueue_script');
