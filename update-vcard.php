@@ -5,7 +5,7 @@ function actualizarVcard()
     global $wpdb;
 
     // Iniciar el array de respuesta
-    $response = array('success' => false, 'message' => '');
+    $response = array();
 
     $href = dirname(dirname($_SERVER["HTTP_REFERER"]));
     $id_tarje = $_POST['identificador'];
@@ -81,7 +81,13 @@ function actualizarVcard()
 
         // Validar email
         if (!is_email($personal_email)) {
-            wp_die('El email personal no es válido.');
+            $response['errors']['emailPrincipal'] = 'El email personal no es válido.';
+        }
+
+        // Verificar si hay errores de validación
+        if (!empty($response['errors'])) {
+            echo json_encode($response);
+            exit();
         }
 
         $ar = array(
@@ -233,7 +239,6 @@ function actualizarVcard()
         $file = fopen($path_directory . "/$token.vcf", 'w');
         fwrite($file, $content);
         fclose($file);
-        var_dump($ar);
 
         $wpdb->update(
             $wpdb->prefix . 'vcards',

@@ -830,3 +830,10 @@ input[type="file"] {
   color: #fff;
   background: #000000;
 }
+
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  display: none;
+  padding: 0 5px;
+}

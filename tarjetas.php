@@ -331,6 +331,7 @@ function card_edit_endpoint_content()
 										<div class="field-container">
 											<label for="field-1-8">Email Principal</label>
 											<input id="field-1-8" name="emailPrincipal" value="<?= $v->personal_email ?>">
+											<span class="error-message"></span>
 										</div>
 									</div>
 									<div class="form-row col-6">

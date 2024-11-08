@@ -37,6 +37,10 @@ jQuery(document).ready(function ($) {
     e.preventDefault(); // Previene el envío normal del formulario
     jQuery("#btn-text").text("Guardando...");
     jQuery("#spinner").show();
+
+    // Limpia mensajes de error previos
+    jQuery(".error-message").text("").hide();
+    
     // Recoge los datos del formulario
     var formData = new FormData(this);
     formData.append("action", "updateVcard"); // Añade la acción para WordPress
@@ -50,6 +54,17 @@ jQuery(document).ready(function ($) {
       contentType: false, // Informa a jQuery que no establezca el tipo de contenido
       success: function (response) {
         console.log("data  es  :", response);
+        console.log("errors  :", response.errors);
+
+        if (typeof response === "string") {
+          try {
+            response = JSON.parse(response); // Intenta parsear si es string
+          } catch (e) {
+            console.error("Error al parsear la respuesta JSON:", e);
+            return;
+          }
+        }
+        
         jQuery("#spinner").hide();
         jQuery("#btn-text").text("Guardar cambios");
         // if (response.success) {
@@ -58,6 +73,28 @@ jQuery(document).ready(function ($) {
         //   alert("Actualización exitosa");
         //   // Aquí puedes redirigir o hacer lo que quieras en caso de éxito
         // }
+
+        if (response.errors) {
+          for (const [field, message] of Object.entries(response.errors)) {
+            const input = jQuery(`[name="${field}"]`);
+            if (input.length) {
+              const errorContainer = input.siblings(".error-message");
+              errorContainer.text(message).show(); // Muestra el mensaje de error
+            }
+          }
+          // Aquí puedes manejar el error, mostrando un mensaje al usuario
+          Toastify({
+            text: "Corrige algunos campos antes de continuar",
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "right",
+            style: {
+              background: "linear-gradient(to right, #ff5f6d, #ffc371)",
+            },
+          }).showToast();
+          return;
+        }
 
         // Configurar y mostrar el modal de éxito
         Toastify({
