@@ -7,45 +7,13 @@ function actualizarVcard()
     // Iniciar el array de respuesta
     $response = array();
 
-    $href = dirname(dirname($_SERVER["HTTP_REFERER"]));
     $id_tarje = $_POST['identificador'];
-    $token = $wpdb->get_var("SELECT token FROM {$wpdb->prefix}vcards where id_vcard='$id_tarje'");
     $file_photo = $wpdb->get_var("SELECT photo FROM {$wpdb->prefix}vcards where id_vcard='$id_tarje'");
     $file_photo_business = $wpdb->get_var("SELECT photo_business FROM {$wpdb->prefix}vcards where id_vcard='$id_tarje'");
     // $url_photo = get_home_url().'/'.$photo;
     $imgvacio_bus = $_POST["imgvacio_bus"];
     $imgvacio = $_POST["imgvacio"];
-    $names = sanitize_text_field($_POST['nombres']);
-    $last_names = sanitize_text_field($_POST['apellidos']);
-    $pseudonym = sanitize_text_field($_POST['pseudonym']);
-    $birthday = sanitize_text_field($_POST['cumpleanios']);
-    $personal_web = sanitize_text_field($_POST['paginaWebPersonal']);
-    $personal_email = sanitize_text_field($_POST['emailPrincipal']);
-    $personal_cell_phone = str_replace(" ", "", sanitize_text_field($_POST['celular']));
-    $personal_telephone = str_replace(" ", "", sanitize_text_field($_POST['telefonoFijo']));
-    $personal_address = sanitize_text_field($_POST['direccion']);
-    $personal_department = sanitize_text_field($_POST['departamento']);
-    $personal_country = sanitize_text_field($_POST['pais']);
-    // $personal_information = sanitize_text_field($_POST['mi_informacion']);
-    $company_name = sanitize_text_field($_POST['empresa']);
-    $company_charge = sanitize_text_field($_POST['cargo']);
-    $company_web = sanitize_text_field($_POST['paginaWeb']);
-    $company_mail = sanitize_text_field($_POST['emailCorporativo']);
-    $company_cell_phone = sanitize_text_field($_POST['telefonoTrabajo']);
-    $company_address = sanitize_text_field($_POST['direccionTrabajo']);
-    $company_department = sanitize_text_field($_POST['departamentoTrabajo']);
-    $company_country = sanitize_text_field($_POST['paisTrabajo']);
-    $url_facebook = sanitize_text_field($_POST['facebook']);
-    $url_youtube = sanitize_text_field($_POST['youtube']);
-    $url_instagram = sanitize_text_field($_POST['instagram']);
-    $url_linkedin = sanitize_text_field($_POST['linkedin']);
-    $url_twitter = sanitize_text_field($_POST['twitter']);
-    $url_tiktok = sanitize_text_field($_POST['tiktok']);
-    $url_spotify = sanitize_text_field($_POST['spotify']);
-    $url_apple_music = sanitize_text_field($_POST['apple_music']);
-    $calendly = sanitize_text_field($_POST['calendly']);
-    $opensea = sanitize_text_field($_POST['opensea']);
-    $metamask = sanitize_text_field($_POST['metamask']);
+
 
     $carpeta_user = get_current_user_id();
     $path_directory = realpath(dirname(__FILE__) . '/../../..') . '/wp-photos';
@@ -80,9 +48,9 @@ function actualizarVcard()
         // }
 
         // Validar email
-        if (!is_email($personal_email)) {
-            $response['errors']['emailPrincipal'] = 'El email personal no es válido.';
-        }
+        // if (!is_email($personal_email)) {
+        //     $response['errors']['emailPrincipal'] = 'El email personal no es válido.';
+        // }
 
         // Verificar si hay errores de validación
         if (!empty($response['errors'])) {
@@ -144,9 +112,6 @@ function actualizarVcard()
             'twitter_business' => $_POST['twitter_business'],
             'tiktok_business' => $_POST['tiktok_business'],
         );
-        $content = "BEGIN:VCARD\r\n";
-        $content .= "VERSION:3.0\r\n";
-        $content .= "CLASS:PUBLIC\r\n";
 
 
         if ($imgvacio_bus != "si") {
@@ -192,7 +157,6 @@ function actualizarVcard()
 
                 $contenidoBinario = file_get_contents($url_photo);
                 $imagenComoBase64 = base64_encode($contenidoBinario);
-                $content .= "PHOTO;ENCODING=b;TYPE:$imagenComoBase64\r\n";
                 // No se ha insertado un archivo
             } else {
                 // El campo de url de la foto en la BD no está vacía
@@ -207,38 +171,6 @@ function actualizarVcard()
                 $ar['photo'] = NULL;
             }
         }
-
-        $content .= "N:$last_names;$names;;;\r\n";
-        $content .= "FN:$names $last_names\r\n";
-        $content .= "TITLE;CHARSET=utf-8:$company_charge\r\n";
-        $content .= "ORG;CHARSET=utf-8:$company_name\r\n";
-        $content .= "BDAY;value=date:$birthday\r\n";
-        $content .= "ADR;TYPE=WORK;CHARSET=utf-8:;$company_address;;$company_department;$company_country;\r\n";
-        $content .= "ADR;TYPE=HOME;CHARSET=utf-8:;$personal_address;;$personal_department;$personal_country;\r\n";
-        $content .= "EMAIL;TYPE=INTERNET,PREF:$personal_email\r\n";
-        $content .= "EMAIL;TYPE=INTERNET,WORK:$company_mail\r\n";
-        $content .= "TEL;PREF;CELL:$company_cell_phone\r\n";
-        $content .= "TEL;TYPE=HOME:$personal_telephone\r\n";
-        $content .= "TEL;TYPE=WORK:$personal_cell_phone\r\n";
-        $content .= "URL:$personal_web\r\n";
-        $content .= "URL;WORK:$company_web\r\n";
-        $content .= "URL;TYPE=Facebook;CHARSET=UTF-8:$url_facebook\r\n";
-        $content .= "URL;TYPE=Youtube;CHARSET=UTF-8:$url_youtube\r\n";
-        $content .= "URL;TYPE=Instagram;CHARSET=UTF-8:$url_instagram\r\n";
-        $content .= "URL;TYPE=LinkedIn;CHARSET=UTF-8:$url_linkedin\r\n";
-        $content .= "URL;TYPE=Twitter;CHARSET=UTF-8:$url_twitter\r\n";
-        $content .= "URL;TYPE=Tiktok;CHARSET=UTF-8:$url_tiktok\r\n";
-        $content .= "URL;TYPE=Spotify;CHARSET=UTF-8:$url_spotify\r\n";
-        $content .= "URL;TYPE=Apple Music;CHARSET=UTF-8:$url_apple_music\r\n";
-        $content .= "URL;TYPE=Calendly;CHARSET=UTF-8:$calendly\r\n";
-        $content .= "URL;TYPE=Opensea;CHARSET=UTF-8:$opensea\r\n";
-        $content .= "URL;TYPE=Metamask;CHARSET=UTF-8:$metamask\r\n";
-        $content .= "END:VCARD\r\n";
-
-        $path_directory = realpath(dirname(__FILE__) . '/../../..') . '/wp-vcards';
-        $file = fopen($path_directory . "/$token.vcf", 'w');
-        fwrite($file, $content);
-        fclose($file);
 
         $wpdb->update(
             $wpdb->prefix . 'vcards',

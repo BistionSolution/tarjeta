@@ -20,6 +20,7 @@ function page_vcard()
             $result = $wpdb->last_result;
             // Si es una token válido
             if (!empty($result)) :
+                $id_vcard = $result[0]->id_vcard; // Define $id_vcard here
                 $foto = $result[0]->photo;
                 $foto_business = $result[0]->photo_business;
                 $nombres = $result[0]->names;
@@ -99,11 +100,12 @@ function page_vcard()
                         </div>
 
                         <div class="items">
-                            <?php if (!empty($href)) : ?>
-                                <div class="img-icon vcard">
-                                    <a href="<?= $href ?>" download><i class="fa fa-user-plus"> </i><span>Contacto</span> </a>
-                                </div>
-                            <?php endif; ?>
+                            <div class="img-icon vcard">
+                                <a href="<?php echo admin_url('admin-ajax.php?action=generarVcard&identificador=' . $id_vcard); ?>" download>
+                                    <i class="fa fa-user-plus"></i>
+                                    <span>Contacto</span>
+                                </a>
+                            </div>
                             <button type="button" class="vcard" data-bs-toggle="modal" data-bs-target="#modalContact"><i class="fa fa-exchange"></i> <span>Intercambio contacto</span></button>
                         </div>
                         <div class="items">
@@ -291,6 +293,15 @@ function page_vcard()
                 </div>
     </div>
     <script src="<?= plugins_url(basename(__DIR__)) ?>/assets/copy_fast.js"></script>
+    <script>
+        document.getElementById('descargar-vcard').addEventListener('click', function() {
+            // Supongamos que tienes el id almacenado en una variable JS
+            var idVcard = <?php echo json_encode($id_vcard); ?>;
+            // Redirige a la URL de admin-ajax.php con el parámetro en GET
+            window.location.href = "<?php echo admin_url('admin-ajax.php'); ?>?action=generarVcard&identificador=" + idVcard;
+        });
+    </script>
+
 <?php
             else :
                 // $atts = [

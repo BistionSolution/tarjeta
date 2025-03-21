@@ -27,6 +27,7 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
         $result = $wpdb->last_result;
         // Si es una token válido
         if (!empty($result)) :
+            $id_vcard = $result[0]->id_vcard;
             $foto = $result[0]->photo;
             $foto_business = $result[0]->photo_business;
             $nombres = $result[0]->names;
@@ -100,7 +101,7 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
                 }
 
                 p,
-                a {
+                a, button {
                     color: <?= $text_color ?>;
                 }
 
@@ -165,9 +166,15 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
                     </div>
 
                     <div class="items">
-                        <?php if (!empty($href)) : ?>
-                            <a class="img-icon vcard" href="<?= $href ?>" download><i class="fa fa-user-plus"> </i><span>Contacto</span> </a>
-                        <?php endif; ?>
+
+                        <div class="img-icon vcard">
+                            <a href="<?php echo admin_url('admin-ajax.php?action=generarVcard&identificador=' . $id_vcard); ?>" download>
+                                <i class="fa fa-user-plus"></i>
+                                <span>Contacto</span>
+                                <?php echo $id_vcard; ?>
+                                xd
+                            </a>
+                        </div>
                         <button type="button" class="vcard" data-bs-toggle="modal" data-bs-target="#modalContact"><i class="fa fa-exchange"></i> <span>Enviar contacto</span></button>
                     </div>
                     <div class="items">
@@ -500,6 +507,7 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
 
     </div>
     <script src="<?= plugins_url(basename(__DIR__)) ?>/assets/copy_fast.js"></script>
+
 <?php
         else :
             // $atts = [
