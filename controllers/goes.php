@@ -101,7 +101,8 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
                 }
 
                 p,
-                a, button {
+                a,
+                button {
                     color: <?= $text_color ?>;
                 }
 
