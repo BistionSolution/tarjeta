@@ -172,8 +172,6 @@ $column_name = isset($parameters['username']) ? 'profile_url' : 'token'; // Dete
                             <a href="<?php echo admin_url('admin-ajax.php?action=generarVcard&identificador=' . $id_vcard); ?>" download>
                                 <i class="fa fa-user-plus"></i>
                                 <span>Contacto</span>
-                                <?php echo $id_vcard; ?>
-                                xd
                             </a>
                         </div>
                         <button type="button" class="vcard" data-bs-toggle="modal" data-bs-target="#modalContact"><i class="fa fa-exchange"></i> <span>Enviar contacto</span></button>
